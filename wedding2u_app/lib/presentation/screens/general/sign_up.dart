@@ -201,7 +201,7 @@ class _SignUpState extends State<SignUp> {
                       child: ElevatedButton(
                         onPressed: _submitRegisterForm,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.pinkAccent,
+                          backgroundColor: const Color(0xFF222D52),
                         ),
                         child: const Text(
                           "Create an account",
@@ -247,4 +247,3 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
-

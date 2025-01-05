@@ -79,7 +79,8 @@ class _SignInState extends State<SignIn> {
       body: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -153,7 +154,8 @@ class _SignInState extends State<SignIn> {
                               ),
                               controller: _controller,
                               onChanged: (value) => password = value,
-                              obscureText: !_isPasswordVisible, // Toggle visibility
+                              obscureText:
+                                  !_isPasswordVisible, // Toggle visibility
                             ),
 
                             const SizedBox(height: 30.0),
@@ -166,7 +168,8 @@ class _SignInState extends State<SignIn> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const ForgotPassword(),
+                                      builder: (context) =>
+                                          const ForgotPassword(),
                                     ),
                                   );
                                 },
@@ -189,8 +192,10 @@ class _SignInState extends State<SignIn> {
                                 child: ElevatedButton(
                                   onPressed: _submitLoginForm,
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.pinkAccent,
-                                    padding: const EdgeInsets.symmetric(vertical: 12),
+                                    backgroundColor: const Color(
+                                        0xFF222D52), // Updated color
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 12),
                                   ),
                                   child: const Text(
                                     "Sign In",
@@ -271,4 +276,3 @@ class _SignInState extends State<SignIn> {
     );
   }
 }
-

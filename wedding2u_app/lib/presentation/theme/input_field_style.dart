@@ -28,7 +28,7 @@ class InputField extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(icon, color: Colors.pinkAccent),
+          Icon(icon, color: const Color(0xFFf7706d)),
           const SizedBox(width: 10.0),
           Expanded(
             child: TextField(
@@ -47,6 +47,3 @@ class InputField extends StatelessWidget {
     );
   }
 }
-
-
-
