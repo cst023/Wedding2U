@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-
 class BookingRequestPage extends StatefulWidget {
+  const BookingRequestPage({super.key});
+
   @override
   _BookingRequestPageState createState() => _BookingRequestPageState();
 }
@@ -36,10 +37,10 @@ class _BookingRequestPageState extends State<BookingRequestPage> {
         backgroundColor: Colors.white,
         elevation: 1,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () {},
         ),
-        title: Text(
+        title: const Text(
           'Booking Request',
           style: TextStyle(
             color: Colors.black,
@@ -55,39 +56,39 @@ class _BookingRequestPageState extends State<BookingRequestPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Request Subject
-            Text(
+            const Text(
               'Request Subject',
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             TextField(
               controller: _subjectController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Request Description
-            Text(
+            const Text(
               'Request Description',
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             TextField(
               controller: _descriptionController,
               maxLines: 4,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Date Picker Section with Smaller Box and Line Above
             Padding(
@@ -98,15 +99,15 @@ class _BookingRequestPageState extends State<BookingRequestPage> {
                   Divider(
                       thickness: 1,
                       color: Colors.grey.shade300), // Line above the box
-                  SizedBox(height: 8),
-                  Text(
+                  const SizedBox(height: 8),
+                  const Text(
                     'Date',
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Row(
                     children: [
                       SizedBox(
@@ -114,7 +115,7 @@ class _BookingRequestPageState extends State<BookingRequestPage> {
                         child: TextField(
                           controller: _dateController,
                           readOnly: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             contentPadding: EdgeInsets.symmetric(
                               vertical: 8,
@@ -123,9 +124,9 @@ class _BookingRequestPageState extends State<BookingRequestPage> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                       IconButton(
-                        icon: Icon(Icons.calendar_today_outlined,
+                        icon: const Icon(Icons.calendar_today_outlined,
                             color: Colors.black54),
                         onPressed: _selectDate,
                       ),
@@ -150,7 +151,7 @@ class _BookingRequestPageState extends State<BookingRequestPage> {
                   onPressed: () {
                     // Handle submission logic here
                   },
-                  child: Text(
+                  child: const Text(
                     'Submit Request',
                     style: TextStyle(
                       color: Colors.white,
@@ -160,7 +161,7 @@ class _BookingRequestPageState extends State<BookingRequestPage> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),

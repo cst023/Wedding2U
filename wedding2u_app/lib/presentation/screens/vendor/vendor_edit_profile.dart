@@ -4,6 +4,8 @@ import 'package:wedding2u_app/application/user_profile_controller.dart';
 import 'package:wedding2u_app/presentation/screens/vendor/vendor_profile_page.dart';
 
 class VendorEditProfile extends StatefulWidget {
+  const VendorEditProfile({super.key});
+
   @override
   _VendorEditProfileState createState() => _VendorEditProfileState();
 }
@@ -42,7 +44,7 @@ class _VendorEditProfileState extends State<VendorEditProfile> {
     _initializeUserData();
   }
 
- Future<void> _initializeUserData() async {
+  Future<void> _initializeUserData() async {
     try {
       Map<String, dynamic> userData = await _profileController.getUserData(uid);
 
@@ -107,14 +109,14 @@ class _VendorEditProfileState extends State<VendorEditProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Edit Profile',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
         elevation: 1.0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -122,64 +124,65 @@ class _VendorEditProfileState extends State<VendorEditProfile> {
       ),
       body: SafeArea(
         child: _isLoading
-            ? Center(child: CircularProgressIndicator()) // Show loading spinner
+            ? const Center(
+                child: CircularProgressIndicator()) // Show loading spinner
             : SingleChildScrollView(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // Profile Picture Section
-              Center(
-                child: Stack(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // Profile Picture
-                    CircleAvatar(
-                      radius: 50,
-                      backgroundImage:
-                          AssetImage('assets/vendor_images/gerry.jpg'),
-                      backgroundColor: Colors.grey[300],
-                    ),
-                    // Camera Icon Overlay
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: CircleAvatar(
-                        radius: 18,
-                        backgroundColor: Colors.pink[300],
-                        child: Icon(
-                          Icons.camera_alt,
-                          color: Colors.white,
-                          size: 18,
-                        ),
+                    // Profile Picture Section
+                    Center(
+                      child: Stack(
+                        children: [
+                          // Profile Picture
+                          CircleAvatar(
+                            radius: 50,
+                            backgroundImage: const AssetImage(
+                                'assets/vendor_images/gerry.jpg'),
+                            backgroundColor: Colors.grey[300],
+                          ),
+                          // Camera Icon Overlay
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: CircleAvatar(
+                              radius: 18,
+                              backgroundColor: Colors.pink[300],
+                              child: const Icon(
+                                Icons.camera_alt,
+                                color: Colors.white,
+                                size: 18,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 24.0),
+                    const SizedBox(height: 24.0),
 
-              // Input Fields with Sample Data
-              buildTextField(
-                controller: _nameController,
-                label: 'Name',
-                hintText: 'Enter your name',
-              ),
-              SizedBox(height: 16.0),
-              buildTextField(
-                controller: _emailController,
-                label: 'Email',
-                hintText: 'Enter your email',
-                isReadOnly: true, // Assuming email is non-editable
-              ),
-              SizedBox(height: 16.0),
-              buildTextField(
-                controller: _phoneController,
-                label: 'Phone Number',
-                hintText: 'Enter your phone number',
-                keyboardType: TextInputType.phone,
-              ),
-              SizedBox(height: 16.0),
-              buildTextField(
+                    // Input Fields with Sample Data
+                    buildTextField(
+                      controller: _nameController,
+                      label: 'Name',
+                      hintText: 'Enter your name',
+                    ),
+                    const SizedBox(height: 16.0),
+                    buildTextField(
+                      controller: _emailController,
+                      label: 'Email',
+                      hintText: 'Enter your email',
+                      isReadOnly: true, // Assuming email is non-editable
+                    ),
+                    const SizedBox(height: 16.0),
+                    buildTextField(
+                      controller: _phoneController,
+                      label: 'Phone Number',
+                      hintText: 'Enter your phone number',
+                      keyboardType: TextInputType.phone,
+                    ),
+                    const SizedBox(height: 16.0),
+                    buildTextField(
                       controller: _dobController,
                       label: 'Date of Birth',
                       hintText: 'DD/MM/YYYY',
@@ -199,45 +202,45 @@ class _VendorEditProfileState extends State<VendorEditProfile> {
                         }
                       },
                     ),
-              SizedBox(height: 16.0),
-              buildTextField(
-                controller: _countryController,
-                label: 'Country/Region',
-                hintText: 'Enter your country/region',
-              ),
+                    const SizedBox(height: 16.0),
+                    buildTextField(
+                      controller: _countryController,
+                      label: 'Country/Region',
+                      hintText: 'Enter your country/region',
+                    ),
 
-              SizedBox(height: 30.0),
+                    const SizedBox(height: 30.0),
 
-              // Social Media Section
-                    Text(
+                    // Social Media Section
+                    const Text(
                       'Social Media Links',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     buildTextField(
                       controller: _instagramController,
                       label: 'Instagram',
                       hintText: 'Enter your Instagram profile URL',
                       keyboardType: TextInputType.url,
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     buildTextField(
                       controller: _facebookController,
                       label: 'Facebook',
                       hintText: 'Enter your Facebook profile URL',
                       keyboardType: TextInputType.url,
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     buildTextField(
                       controller: _whatsAppController,
                       label: 'WhatsApp',
                       hintText: 'Enter your WhatsApp number',
                       keyboardType: TextInputType.phone,
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     buildTextField(
                       controller: _twitterController,
                       label: 'X (Twitter)',
@@ -245,30 +248,30 @@ class _VendorEditProfileState extends State<VendorEditProfile> {
                       keyboardType: TextInputType.url,
                     ),
 
-                    SizedBox(height: 30.0),
+                    const SizedBox(height: 30.0),
 
-              // Save Changes Button
-              ElevatedButton(
+                    // Save Changes Button
+                    ElevatedButton(
                       onPressed: () {
                         _saveChanges();
                       },
-                      child: Text(
-                        'Save Changes',
-                        style: TextStyle(fontSize: 16),
-                      ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.pink[200],
                         foregroundColor:
                             Colors.white, // Set text color to white
-                        minimumSize: Size(double.infinity, 50),
+                        minimumSize: const Size(double.infinity, 50),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
+                      child: Text(
+                        'Save Changes',
+                        style: TextStyle(fontSize: 16),
+                      ),
                     ),
-            ],
-          ),
-        ),
+                  ],
+                ),
+              ),
       ),
     );
   }

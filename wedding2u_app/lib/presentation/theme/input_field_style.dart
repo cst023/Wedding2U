@@ -9,18 +9,18 @@ class InputField extends StatelessWidget {
   final bool obscureText;
 
   const InputField({
-    Key? key,
+    super.key,
     required this.icon,
     required this.hintText,
     required this.onChanged,
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10.0),
@@ -29,13 +29,13 @@ class InputField extends StatelessWidget {
       child: Row(
         children: [
           Icon(icon, color: Colors.pinkAccent),
-          SizedBox(width: 10.0),
+          const SizedBox(width: 10.0),
           Expanded(
             child: TextField(
               onChanged: onChanged,
               keyboardType: keyboardType,
               obscureText: obscureText,
-              style: TextStyle(fontSize: 16, color: Colors.black),
+              style: const TextStyle(fontSize: 16, color: Colors.black),
               decoration: InputDecoration(
                 hintText: hintText,
                 border: InputBorder.none,

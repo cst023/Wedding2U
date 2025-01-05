@@ -77,16 +77,16 @@ class _AcceptRejectScreenState extends State<AcceptRejectScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : FutureBuilder<Map<String, dynamic>>(
               future: _weddingPlanFuture,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
                   return Center(child: Text("Error: ${snapshot.error}"));
                 } else if (!snapshot.hasData) {
-                  return Center(child: Text("No wedding plan found."));
+                  return const Center(child: Text("No wedding plan found."));
                 }
 
                 final weddingPlan = snapshot.data!;

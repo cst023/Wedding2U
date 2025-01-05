@@ -6,7 +6,7 @@ import 'package:wedding2u_app/application/sign_up.dart';
 class SignUp extends StatefulWidget {
   final String role;
 
-  SignUp({required this.role});
+  const SignUp({super.key, required this.role});
 
   @override
   _SignUpState createState() => _SignUpState();
@@ -43,19 +43,19 @@ class _SignUpState extends State<SignUp> {
 
         // Show success message
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Account created successfully'),
             backgroundColor: Colors.green,
           ),
         );
 
         // Navigate to the Sign-In page after a short delay
-        await Future.delayed(Duration(seconds: 2));
+        await Future.delayed(const Duration(seconds: 2));
 
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => SignIn(),
+            builder: (context) => const SignIn(),
           ),
         );
       } catch (e) {
@@ -89,40 +89,40 @@ class _SignUpState extends State<SignUp> {
                   children: <Widget>[
                     // Back Button
                     IconButton(
-                      icon: Icon(Icons.arrow_back, color: Colors.black),
+                      icon: const Icon(Icons.arrow_back, color: Colors.black),
                       onPressed: () {
                         Navigator.pushNamed(context, 'SignUpUserRoles');
                       },
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
 
                     // Title
                     Center(
                       child: Text(
                         'Sign Up as ${widget.role}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
                         ),
                       ),
                     ),
-                    SizedBox(height: 50.0),
+                    const SizedBox(height: 50.0),
 
                     // Name input
                     TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Your Name',
                         icon: Icon(Icons.person),
                       ),
                       onChanged: (value) => name = value,
                       validator: validateName,
                     ),
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
 
                     // Phone Number input
                     TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Your Phone Number',
                         icon: Icon(Icons.phone),
                       ),
@@ -130,11 +130,11 @@ class _SignUpState extends State<SignUp> {
                       keyboardType: TextInputType.phone,
                       validator: validatePhone,
                     ),
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
 
                     // Email input
                     TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Your Email',
                         icon: Icon(Icons.email),
                       ),
@@ -142,13 +142,13 @@ class _SignUpState extends State<SignUp> {
                       keyboardType: TextInputType.emailAddress,
                       validator: validateEmail,
                     ),
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
 
                     // Password input
                     TextFormField(
                       decoration: InputDecoration(
                         labelText: 'Password',
-                        icon: Icon(Icons.lock),
+                        icon: const Icon(Icons.lock),
                         suffixIcon: IconButton(
                           icon: Icon(
                             _isPasswordVisible
@@ -167,13 +167,13 @@ class _SignUpState extends State<SignUp> {
                       obscureText: !_isPasswordVisible, // Toggle visibility
                       validator: validatePassword,
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
 
                     // Confirm Password input
                     TextFormField(
                       decoration: InputDecoration(
                         labelText: 'Confirm Password',
-                        icon: Icon(Icons.lock),
+                        icon: const Icon(Icons.lock),
                         suffixIcon: IconButton(
                           icon: Icon(
                             _isConfirmPasswordVisible
@@ -194,7 +194,7 @@ class _SignUpState extends State<SignUp> {
                       validator: (value) =>
                           validateConfirmPassword(value, password),
                     ),
-                    SizedBox(height: 30.0),
+                    const SizedBox(height: 30.0),
 
                     // Sign Up Button
                     Center(
@@ -203,20 +203,20 @@ class _SignUpState extends State<SignUp> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.pinkAccent,
                         ),
-                        child: Text(
+                        child: const Text(
                           "Create an account",
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
                       ),
                     ),
-                    SizedBox(height: 220),
+                    const SizedBox(height: 220),
 
                     // Already have an account? Sign In Link
                     GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(context, 'SignIn');
                       },
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           "Already have an account? Sign In",
                           style: TextStyle(
@@ -238,7 +238,7 @@ class _SignUpState extends State<SignUp> {
           if (_isLoading)
             Container(
               color: Colors.black.withOpacity(0.5),
-              child: Center(
+              child: const Center(
                 child: CircularProgressIndicator(),
               ),
             ),

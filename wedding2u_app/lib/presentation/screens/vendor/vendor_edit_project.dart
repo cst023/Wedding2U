@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class EditProject extends StatefulWidget {
+  const EditProject({super.key});
+
  @override
   _EditProjectState createState() => _EditProjectState();
 }
@@ -14,12 +16,12 @@ class _EditProjectState extends State<EditProject> {
         elevation: 0,
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: Text(
+        title: const Text(
           'Edit project',
           style: TextStyle(
             color: Colors.black,
@@ -37,46 +39,46 @@ class _EditProjectState extends State<EditProject> {
             // Title Input
             Row(
               children: [
-                Text(
+                const Text(
                   'Title:',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Expanded(
                   child: TextField(
                     decoration: InputDecoration(
                       contentPadding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                          const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(6),
                       ),
                       hintText: 'Amir & Aisyah | Hilton',
-                      hintStyle: TextStyle(color: Colors.black),
+                      hintStyle: const TextStyle(color: Colors.black),
                     ),
                   ),
                 ),
               ],
             ),
 
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Description Field
-            Text(
+            const Text(
               'Description',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextField(
               maxLines: 3,
               decoration: InputDecoration(
                 contentPadding:
-                    EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(6),
                 ),
@@ -84,10 +86,10 @@ class _EditProjectState extends State<EditProject> {
                     'The romance and elegance of floral-themed wedding at Hilton Hotel.',
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Gallery Section
-            Row(
+            const Row(
               children: [
                 Text(
                   'Gallery',
@@ -105,13 +107,13 @@ class _EditProjectState extends State<EditProject> {
                 ),
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
             // Gallery Grid
             Expanded(
               child: GridView.builder(
                 itemCount: 6, // 5 images + 1 Add button
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                   crossAxisSpacing: 8,
                   mainAxisSpacing: 8,
@@ -132,7 +134,7 @@ class _EditProjectState extends State<EditProject> {
                         border: Border.all(color: Colors.grey),
                         borderRadius: BorderRadius.circular(6),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Icon(
                           Icons.add,
                           size: 40,
@@ -144,7 +146,7 @@ class _EditProjectState extends State<EditProject> {
                 },
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
             // Done Button
             SizedBox(
@@ -155,12 +157,12 @@ class _EditProjectState extends State<EditProject> {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red.shade300,
-                  padding: EdgeInsets.symmetric(vertical: 14),
+                  padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(6),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   'Done',
                   style: TextStyle(
                     color: Colors.white,

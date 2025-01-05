@@ -4,6 +4,8 @@ import 'package:wedding2u_app/application/user_profile_controller.dart';
 import 'package:wedding2u_app/presentation/screens/vendor/vendor_edit_profile.dart';
 
 class VendorProfilePage extends StatefulWidget {
+  const VendorProfilePage({super.key});
+
   @override
   _VendorProfilePageState createState() => _VendorProfilePageState();
 }
@@ -42,19 +44,19 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Profile'),
+          title: const Text('Profile'),
           backgroundColor: Colors.white,
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pop(context);
             },
           ),
         ),
         body: isLoading
-            ? Center(child: CircularProgressIndicator())
+            ? const Center(child: CircularProgressIndicator())
             : userData == null
-                ? Center(child: Text('Failed to load profile data'))
+                ? const Center(child: Text('Failed to load profile data'))
                 : SafeArea(
           child: Column(
             mainAxisAlignment:
@@ -73,7 +75,7 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
                           Container(
                             height: 200,
                             width: double.infinity,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               image: DecorationImage(
                                 image: AssetImage(
                                     'assets/vendor_role_images/background_photo.jpg'),
@@ -85,7 +87,7 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
                             bottom: -50, // Adjust positioning
                             child: CircleAvatar(
                               radius: 60,
-                              backgroundImage: AssetImage(
+                              backgroundImage: const AssetImage(
                                   'assets/vendor_images/gerry.jpg'),
                               backgroundColor:
                                   Colors.grey[200], // Fallback color
@@ -94,20 +96,20 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
                         ],
                       ),
 
-                      SizedBox(
+                      const SizedBox(
                           height:
                               60), // Space to account for profile picture overlap
 
                       // Name
                       Text(
                                   userData!['name'] ?? '',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
 
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
 
                       // Location
                        Row(
@@ -118,7 +120,7 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
                                       size: 16,
                                       color: Colors.grey[600],
                                     ),
-                                    SizedBox(width: 4),
+                                    const SizedBox(width: 4),
                                     Text(
                                       userData!['country'] ?? 'Unknown',
                                       style: TextStyle(
@@ -129,7 +131,7 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
                                   ],
                                 ),
 
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
 
                       // Social media icons row
                       Row(
@@ -146,7 +148,7 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
                               width: 40,
                             ),
                           ),
-                          SizedBox(width: 20), // Add spacing between images
+                          const SizedBox(width: 20), // Add spacing between images
                           GestureDetector(
                             onTap: () {
                               // TODO: Link to Facebook
@@ -158,7 +160,7 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
                               width: 40,
                             ),
                           ),
-                          SizedBox(width: 20),
+                          const SizedBox(width: 20),
                           GestureDetector(
                             onTap: () {
                               // TODO: Link to WhatsApp
@@ -170,7 +172,7 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
                               width: 40,
                             ),
                           ),
-                          SizedBox(width: 20),
+                          const SizedBox(width: 20),
                           GestureDetector(
                             onTap: () {
                               // TODO: Link to X (Twitter)
@@ -185,7 +187,7 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
                         ],
                       ),
 
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
 
                       // Edit Profile button
                       ElevatedButton(
@@ -195,7 +197,7 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => VendorEditProfile()),
+                                builder: (context) => const VendorEditProfile()),
                           );
                         },
                         style: ElevatedButton.styleFrom(
@@ -204,13 +206,13 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Edit Profile',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
 
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
 
                     ],
                   ),
@@ -226,7 +228,7 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
                     auth.signOut();
                     Navigator.pushNamed(context, 'SignIn');
                   },
-                  child: Text(
+                  child: const Text(
                     'Log out',
                     style: TextStyle(
                       fontSize: 16,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wedding2u_app/presentation/screens/vendor/vendor_chatview.dart';
 
 class ChatList extends StatefulWidget {
+  const ChatList({super.key});
+
   @override
  @override
   _ChatListState createState() => _ChatListState();
@@ -12,17 +14,17 @@ class _ChatListState extends State<ChatList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60.0),
+        preferredSize: const Size.fromHeight(60.0),
         child: AppBar(
           backgroundColor: Colors.white,
           elevation: 1,
           leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.black),
+            icon: const Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () {
               Navigator.pop(context);
             },
           ),
-          title: Text(
+          title: const Text(
             'Chat',
             style: TextStyle(
               color: Colors.black,
@@ -32,7 +34,7 @@ class _ChatListState extends State<ChatList> {
           ),
           centerTitle: false,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(1.0),
+            preferredSize: const Size.fromHeight(1.0),
             child: Container(
               color: Colors.grey.shade300,
               height: 1.0,
@@ -43,11 +45,11 @@ class _ChatListState extends State<ChatList> {
       body: ListView(
         children: [
           ListTile(
-            leading: CircleAvatar(
+            leading: const CircleAvatar(
               backgroundImage:
                   AssetImage('assets/images/profile_image_men.jpg'), // Profile image placeholder
             ),
-            title: Text(
+            title: const Text(
               'Robbie',
               style: TextStyle(
                 fontSize: 16,
@@ -66,13 +68,13 @@ class _ChatListState extends State<ChatList> {
               Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ChatScreen()),
+                                builder: (context) => const ChatScreen()),
                           );
             },
           ),
           Divider(height: 1, color: Colors.grey.shade300),
           ListTile(
-            leading: CircleAvatar(
+            leading: const CircleAvatar(
               backgroundColor: Colors.blue,
               child: Text(
                 'H',
@@ -83,7 +85,7 @@ class _ChatListState extends State<ChatList> {
                 ),
               ),
             ),
-            title: Text(
+            title: const Text(
               'Haikal',
               style: TextStyle(
                 fontSize: 16,

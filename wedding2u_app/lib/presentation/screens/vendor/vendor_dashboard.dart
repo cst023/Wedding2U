@@ -23,9 +23,9 @@ class VendorDashboard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         "Welcome",
                         style: TextStyle(
@@ -51,7 +51,7 @@ class VendorDashboard extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => VendorNotification()),
+                                builder: (context) => const VendorNotification()),
                           );
                         },
                         icon: const Icon(Icons.notifications_none, size: 28),
@@ -60,7 +60,7 @@ class VendorDashboard extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => ChatList()),
+                            MaterialPageRoute(builder: (context) => const ChatList()),
                           );
                         },
                         icon: const Icon(Icons.chat_bubble_outline, size: 28),
@@ -70,12 +70,12 @@ class VendorDashboard extends StatelessWidget {
                               Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => VendorProfilePage()),
+                                builder: (context) => const VendorProfilePage()),
                           );
                             },
                             child: CircleAvatar(
                               radius: 32.0, // Profile picture size
-                              backgroundImage: AssetImage(
+                              backgroundImage: const AssetImage(
                                   'assets/vendor_images/gerry.jpg'),
                               backgroundColor:
                                   Colors.grey[200], // Fallback color
@@ -92,13 +92,13 @@ class VendorDashboard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => VendorPortfolio()),
+                              builder: (context) => const VendorPortfolio()),
                         );
                       },
                       child: Container(
@@ -108,13 +108,13 @@ class VendorDashboard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ManageServiceRequest()),
+                              builder: (context) => const ManageServiceRequest()),
                         );
                       },
                       child: Container(

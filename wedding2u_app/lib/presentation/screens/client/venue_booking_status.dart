@@ -5,6 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class VenueBookingStatus extends StatefulWidget {
+  const VenueBookingStatus({super.key});
+
   @override
   _VenueBookingStatusState createState() => _VenueBookingStatusState();
 }
@@ -50,20 +52,20 @@ class _VenueBookingStatusState extends State<VenueBookingStatus> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Venue Booking Status',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
         elevation: 0.0, 
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1.0),
+          preferredSize: const Size.fromHeight(1.0),
           child: Container(
             color: Colors.grey[300],
             height: 1.0,
@@ -71,12 +73,12 @@ class _VenueBookingStatusState extends State<VenueBookingStatus> {
         ),
       ),
       body: _isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : _bookings.isEmpty
-              ? Center(child: Text('No bookings found'))
+              ? const Center(child: Text('No bookings found'))
               : SafeArea(
                   child: ListView.builder(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     itemCount: _bookings.length,
                     itemBuilder: (context, index) {
                       final booking = _bookings[index];
@@ -103,7 +105,7 @@ Widget _buildBookingCard(Map<String, dynamic> booking) {
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(12.0),
     ),
-    margin: EdgeInsets.only(bottom: 16.0),
+    margin: const EdgeInsets.only(bottom: 16.0),
     child: Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -112,18 +114,18 @@ Widget _buildBookingCard(Map<String, dynamic> booking) {
           // Venue Name
           Text(
             booking['venue_name'] ?? 'Unknown Venue',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20.0,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
 
           // Booking Date
           Row(
             children: [
               Icon(Icons.calendar_today, color: Colors.grey[600], size: 16.0),
-              SizedBox(width: 8.0),
+              const SizedBox(width: 8.0),
               Text(
                 'Booking Date: ${booking['booking_date']}',
                 style: TextStyle(
@@ -133,13 +135,13 @@ Widget _buildBookingCard(Map<String, dynamic> booking) {
               ),
             ],
           ),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
 
           // Booking Status
           Row(
             children: [
               Icon(Icons.info_outline, color: Colors.grey[600], size: 16.0),
-              SizedBox(width: 8.0),
+              const SizedBox(width: 8.0),
               Text(
                 'Status: ${booking['status']}',
                 style: TextStyle(
@@ -150,7 +152,7 @@ Widget _buildBookingCard(Map<String, dynamic> booking) {
               ),
             ],
           ),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
 
           // Request Date
           Text(
@@ -160,7 +162,7 @@ Widget _buildBookingCard(Map<String, dynamic> booking) {
               color: Colors.grey[500],
             ),
           ),
-          SizedBox(height: 16.0),
+          const SizedBox(height: 16.0),
 
           // Buttons
           Row(
@@ -175,7 +177,7 @@ Widget _buildBookingCard(Map<String, dynamic> booking) {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Cancel Booking',
                         style: TextStyle(color: Colors.white),
                       ),
@@ -190,7 +192,7 @@ Widget _buildBookingCard(Map<String, dynamic> booking) {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Go to Wedding Plan',
                         style: TextStyle(color: Colors.white),
                       ),
@@ -208,13 +210,13 @@ void _showCancelConfirmation(Map<String, dynamic> booking) {
   showDialog(
     context: context,
     builder: (context) => AlertDialog(
-      title: Text('Cancel Booking'),
-      content: Text(
+      title: const Text('Cancel Booking'),
+      content: const Text(
           'Are you sure you want to cancel this booking? This action cannot be undone.'),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: Text('No'),
+          child: const Text('No'),
         ),
         ElevatedButton(
           onPressed: () async {
@@ -223,7 +225,7 @@ void _showCancelConfirmation(Map<String, dynamic> booking) {
               // Call the controller method to delete the booking
               await _bookingController.deleteBooking(booking['id']);
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
+                const SnackBar(
                   content: Text('Booking canceled successfully!'),
                   backgroundColor: Colors.green,
                 ),
@@ -239,7 +241,7 @@ void _showCancelConfirmation(Map<String, dynamic> booking) {
             }
           },
           style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-          child: Text('Yes, Cancel'),
+          child: const Text('Yes, Cancel'),
         ),
       ],
     ),

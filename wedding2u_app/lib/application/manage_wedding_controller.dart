@@ -20,7 +20,7 @@ static Widget buildChecklist(
 
       return Card(
         elevation: 2.0,
-        margin: EdgeInsets.symmetric(vertical: 8.0),
+        margin: const EdgeInsets.symmetric(vertical: 8.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),
         ),
@@ -64,7 +64,7 @@ Future<void> addNewTask(
 ) async {
   final result = await showDialog<String?>(
     context: context,
-    builder: (context) => AddTaskDialog(),
+    builder: (context) => const AddTaskDialog(),
   );
 
   if (result == null || result.isEmpty) return;
@@ -89,7 +89,7 @@ Future<void> addNewTask(
     onTaskUpdate(tasks);
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
+      const SnackBar(
         content: Text('Task added successfully!'),
         backgroundColor: Colors.green,
       ),

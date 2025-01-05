@@ -6,7 +6,7 @@ import 'package:wedding2u_app/application/venue_booking_controller.dart';
 class VenueDetails extends StatefulWidget {
   final String venueId; // ID of the venue to fetch details for
 
-  VenueDetails({required this.venueId});
+  const VenueDetails({super.key, required this.venueId});
 
   @override
   _VenueDetailsState createState() => _VenueDetailsState();
@@ -77,7 +77,7 @@ class _VenueDetailsState extends State<VenueDetails> {
       SnackBar(
         content: Text(message),
         backgroundColor: color,
-        duration: Duration(seconds: 2),
+        duration: const Duration(seconds: 2),
       ),
     );
   }
@@ -85,7 +85,7 @@ class _VenueDetailsState extends State<VenueDetails> {
   void _handleBooking() async {
     if (selectedDate == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text("Please select a date before booking."),
           backgroundColor: Colors.red,
         ),
@@ -109,7 +109,7 @@ class _VenueDetailsState extends State<VenueDetails> {
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content:
               Text("Venue booking request sent. Waiting for confirmation."),
           backgroundColor: Colors.green,
@@ -144,20 +144,20 @@ class _VenueDetailsState extends State<VenueDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Venue Details',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
         elevation: 0.0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1.0),
+          preferredSize: const Size.fromHeight(1.0),
           child: Container(
             color: Colors.grey[300],
             height: 1.0,
@@ -165,12 +165,12 @@ class _VenueDetailsState extends State<VenueDetails> {
         ),
       ),
       body: isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : venueData == null
-              ? Center(child: Text('Venue details not available'))
+              ? const Center(child: Text('Venue details not available'))
               : SafeArea(
                   child: SingleChildScrollView(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Card(
                       elevation: 4.0,
                       shape: RoundedRectangleBorder(
@@ -181,7 +181,7 @@ class _VenueDetailsState extends State<VenueDetails> {
                         children: [
                           // Venue Image
                           ClipRRect(
-                            borderRadius: BorderRadius.vertical(
+                            borderRadius: const BorderRadius.vertical(
                                 top: Radius.circular(12.0)),
                             child: Image.asset(
                               'assets/images/wedding_dais.jpg', 
@@ -199,7 +199,7 @@ class _VenueDetailsState extends State<VenueDetails> {
                               children: [
                                 Text(
                                   venueData!['name'] ?? 'Unknown',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 22.0,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -214,8 +214,8 @@ class _VenueDetailsState extends State<VenueDetails> {
                                         color: Colors.grey[700],
                                       ),
                                     ),
-                                    SizedBox(width: 4.0),
-                                    Icon(Icons.star,
+                                    const SizedBox(width: 4.0),
+                                    const Icon(Icons.star,
                                         color: Colors.amber, size: 20.0),
                                   ],
                                 ),
@@ -235,7 +235,7 @@ class _VenueDetailsState extends State<VenueDetails> {
                             ),
                           ),
 
-                          SizedBox(height: 12.0),
+                          const SizedBox(height: 12.0),
 
                           // Venue Details
                           Padding(
@@ -249,7 +249,7 @@ class _VenueDetailsState extends State<VenueDetails> {
                             ),
                           ),
 
-                          SizedBox(height: 12.0),
+                          const SizedBox(height: 12.0),
 
                           Divider(height: 1.0, color: Colors.grey[300]),
 
@@ -260,20 +260,20 @@ class _VenueDetailsState extends State<VenueDetails> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   'Select Booking Date',
                                   style: TextStyle(
                                     fontSize: 18.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                SizedBox(height: 8.0),
+                                const SizedBox(height: 8.0),
                                 GestureDetector(
                                   onTap: () {
                                     _selectDate(context);
                                   },
                                   child: Container(
-                                    padding: EdgeInsets.symmetric(
+                                    padding: const EdgeInsets.symmetric(
                                         horizontal: 16.0, vertical: 12.0),
                                     decoration: BoxDecoration(
                                       border:
@@ -302,7 +302,7 @@ class _VenueDetailsState extends State<VenueDetails> {
                             ),
                           ),
 
-                          SizedBox(height: 12.0),
+                          const SizedBox(height: 12.0),
 
                           // Book Button
                           Padding(
@@ -314,7 +314,7 @@ class _VenueDetailsState extends State<VenueDetails> {
                                   onPressed: isBooked ? null : _handleBooking,
                                   style: ElevatedButton.styleFrom(
                                     padding:
-                                        EdgeInsets.symmetric(vertical: 14.0),
+                                        const EdgeInsets.symmetric(vertical: 14.0),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
@@ -323,7 +323,7 @@ class _VenueDetailsState extends State<VenueDetails> {
                                   ),
                                   child: Text(
                                     isBooked ? 'Booked' : 'Book Venue',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 18.0,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,

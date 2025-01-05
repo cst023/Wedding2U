@@ -4,6 +4,8 @@ import 'package:wedding2u_app/application/user_profile_controller.dart';
 import 'package:wedding2u_app/presentation/screens/admin/admin_profile_page.dart';
 
 class AdminEditProfile extends StatefulWidget {
+  const AdminEditProfile({super.key});
+
   @override
   _AdminEditProfileState createState() => _AdminEditProfileState();
 }
@@ -109,14 +111,14 @@ class _AdminEditProfileState extends State<AdminEditProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Edit Profile',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
         elevation: 1.0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -124,9 +126,10 @@ class _AdminEditProfileState extends State<AdminEditProfile> {
       ),
       body: SafeArea(
         child: _isLoading
-            ? Center(child: CircularProgressIndicator()) // Show loading spinner
+            ? const Center(
+                child: CircularProgressIndicator()) // Show loading spinner
             : SingleChildScrollView(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -137,8 +140,8 @@ class _AdminEditProfileState extends State<AdminEditProfile> {
                           // Profile Picture
                           CircleAvatar(
                             radius: 50,
-                            backgroundImage:
-                                AssetImage('assets/images/profile_avatar.jpg'),
+                            backgroundImage: const AssetImage(
+                                'assets/images/profile_avatar.jpg'),
                             backgroundColor: Colors.grey[300],
                           ),
                           // Camera Icon Overlay
@@ -148,7 +151,7 @@ class _AdminEditProfileState extends State<AdminEditProfile> {
                             child: CircleAvatar(
                               radius: 18,
                               backgroundColor: Colors.pink[300],
-                              child: Icon(
+                              child: const Icon(
                                 Icons.camera_alt,
                                 color: Colors.white,
                                 size: 18,
@@ -158,28 +161,28 @@ class _AdminEditProfileState extends State<AdminEditProfile> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 24.0),
+                    const SizedBox(height: 24.0),
 
                     buildTextField(
                       controller: _nameController,
                       label: 'Name',
                       hintText: 'Enter your name',
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     buildTextField(
                       controller: _emailController,
                       label: 'Email',
                       hintText: 'Enter your email',
                       isReadOnly: true, // Assuming email is non-editable
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     buildTextField(
                       controller: _phoneController,
                       label: 'Phone Number',
                       hintText: 'Enter your phone number',
                       keyboardType: TextInputType.phone,
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     buildTextField(
                       controller: _dobController,
                       label: 'Date of Birth',
@@ -200,45 +203,45 @@ class _AdminEditProfileState extends State<AdminEditProfile> {
                         }
                       },
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     buildTextField(
                       controller: _countryController,
                       label: 'Country/Region',
                       hintText: 'Enter your country/region',
                     ),
 
-                    SizedBox(height: 30.0),
+                    const SizedBox(height: 30.0),
 
                     // Social Media Section
-                    Text(
+                    const Text(
                       'Social Media Links',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     buildTextField(
                       controller: _instagramController,
                       label: 'Instagram',
                       hintText: 'Enter your Instagram profile URL',
                       keyboardType: TextInputType.url,
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     buildTextField(
                       controller: _facebookController,
                       label: 'Facebook',
                       hintText: 'Enter your Facebook profile URL',
                       keyboardType: TextInputType.url,
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     buildTextField(
                       controller: _whatsAppController,
                       label: 'WhatsApp',
                       hintText: 'Enter your WhatsApp number',
                       keyboardType: TextInputType.phone,
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     buildTextField(
                       controller: _twitterController,
                       label: 'X (Twitter)',
@@ -246,25 +249,25 @@ class _AdminEditProfileState extends State<AdminEditProfile> {
                       keyboardType: TextInputType.url,
                     ),
 
-                    SizedBox(height: 30.0),
+                    const SizedBox(height: 30.0),
 
                     // Save Changes Button
                     ElevatedButton(
                       onPressed: () {
                         _saveChanges();
                       },
-                      child: Text(
-                        'Save Changes',
-                        style: TextStyle(fontSize: 16),
-                      ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.pink[200],
                         foregroundColor:
                             Colors.white, // Set text color to white
-                        minimumSize: Size(double.infinity, 50),
+                        minimumSize: const Size(double.infinity, 50),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
+                      ),
+                      child: Text(
+                        'Save Changes',
+                        style: TextStyle(fontSize: 16),
                       ),
                     ),
                   ],

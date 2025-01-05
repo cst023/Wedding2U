@@ -4,6 +4,8 @@ import 'package:wedding2u_app/presentation/screens/guest/accept_reject_screen.da
 import 'package:wedding2u_app/presentation/screens/guest/home_screen.dart';
 
 class ContinueGuest extends StatefulWidget {
+  const ContinueGuest({super.key});
+
   @override
   _ContinueGuestState createState() => _ContinueGuestState();
 }
@@ -121,7 +123,7 @@ void _validateAndProceed() async {
       } else {
         // Show error if validation fails
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text("Invalid phone number or invitation code."),
             backgroundColor: Colors.red,
           ),
@@ -147,7 +149,7 @@ void _validateAndProceed() async {
     return MaterialApp(
       home: Scaffold(
         body: _isLoading
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           :Padding(
@@ -155,7 +157,7 @@ void _validateAndProceed() async {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 40.0),
+              const SizedBox(height: 40.0),
 
               // Logo
               Container(
@@ -166,7 +168,7 @@ void _validateAndProceed() async {
                 ),
               ),
 
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
 
               Expanded(
                 child: ListView(
@@ -175,7 +177,7 @@ void _validateAndProceed() async {
                     // Title
                     Container(
                       alignment: Alignment.center,
-                      child: Text(
+                      child: const Text(
                         'Continue As Guest',
                         style: TextStyle(
                           fontSize: 36,
@@ -184,7 +186,7 @@ void _validateAndProceed() async {
                         ),
                       ),
                     ),
-                    SizedBox(height: 30.0),
+                    const SizedBox(height: 30.0),
 
                     // Form for validation
                     Form(
@@ -193,7 +195,7 @@ void _validateAndProceed() async {
                         children: <Widget>[
                           // Phone Number Field
                           TextFormField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: 'Phone Number',
                               icon: Icon(Icons.phone),
                             ),
@@ -202,11 +204,11 @@ void _validateAndProceed() async {
                             validator: _validatePhoneNumber,
                           ),
 
-                          SizedBox(height: 20.0),
+                          const SizedBox(height: 20.0),
 
                           // Invitation Code Field
                           TextFormField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: 'Invitation Code',
                               icon: Icon(Icons.code),
                             ),
@@ -214,19 +216,19 @@ void _validateAndProceed() async {
                             validator: _validateInvitationCode,
                           ),
 
-                          SizedBox(height: 20.0),
+                          const SizedBox(height: 20.0),
 
                           // Enter Button
                           Center(
-                            child: Container(
+                            child: SizedBox(
                               width: 150,
                               child: ElevatedButton(
                                 onPressed: _validateAndProceed,
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.pinkAccent,
-                                  padding: EdgeInsets.symmetric(vertical: 12),
+                                  padding: const EdgeInsets.symmetric(vertical: 12),
                                 ),
-                                child: Text(
+                                child: const Text(
                                   "Enter",
                                   style: TextStyle(
                                     fontSize: 20,
@@ -243,14 +245,14 @@ void _validateAndProceed() async {
                 ),
               ),
 
-              SizedBox(height: 70),
+              const SizedBox(height: 70),
 
               // Already have an account? Sign In Link
               GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(context, 'SignIn');
                 },
-                child: Center(
+                child: const Center(
                   child: Text(
                     "Already have an account? Sign In",
                     style: TextStyle(
@@ -263,7 +265,7 @@ void _validateAndProceed() async {
                 ),
               ),
 
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
             ],
           ),
         ),

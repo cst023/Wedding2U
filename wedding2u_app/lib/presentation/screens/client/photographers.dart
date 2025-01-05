@@ -17,7 +17,7 @@ class PhotographersPage extends StatelessWidget {
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -36,26 +36,26 @@ class PhotographersPage extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const GerryPortfolioPage()), // Navigate to Gerry's portfolio
               );
             },
-            child: PhotographerCard(
+            child: const PhotographerCard(
               imagePath: 'assets/vendor_images/gerry.jpg',
               name: 'Gerry Photography',
               role: 'Professional Photographer',
               location: 'Sarawak, Malaysia',
            ),),
           
-          PhotographerCard(
+          const PhotographerCard(
             imagePath: 'assets/vendor_images/js_camera.jpg',
             name: 'J’s Camera',
             role: 'Professional Photographer',
             location: 'Kuala Lumpur, Malaysia',
           ),
-          PhotographerCard(
+          const PhotographerCard(
             imagePath: 'assets/vendor_images/capture_studio.jpg',
             name: 'Capture Studio',
             role: 'Professional Photographer',
             location: 'Sarawak, Malaysia',
           ),
-          PhotographerCard(
+          const PhotographerCard(
             imagePath: 'assets/vendor_images/forever_moments.jpg',
             name: 'Forever Moments',
             role: 'Professional Photographer',

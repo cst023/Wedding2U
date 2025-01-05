@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 
 class ManageServiceCompleted extends StatefulWidget {
+  const ManageServiceCompleted({super.key});
+
   @override
   _ManageServiceCompletedState createState() =>
       _ManageServiceCompletedState();
@@ -30,10 +32,10 @@ class _ManageServiceCompletedState extends State<ManageServiceCompleted>
         backgroundColor: Colors.white,
         elevation: 1,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {},
         ),
-        title: Text(
+        title: const Text(
           'Manage service requests',
           style: TextStyle(
             color: Colors.black,
@@ -47,7 +49,7 @@ class _ManageServiceCompletedState extends State<ManageServiceCompleted>
           indicatorWeight: 2.5,
           labelColor: Colors.black,
           unselectedLabelColor: Colors.grey,
-          labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+          labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
           tabs: const [
             Tab(text: 'Pending approval'),
             Tab(text: 'Accepted'),
@@ -59,9 +61,9 @@ class _ManageServiceCompletedState extends State<ManageServiceCompleted>
       body: TabBarView(
         controller: _tabController,
         children: [
-          Center(child: Text('No pending service requests')),
-          Center(child: Text('No accepted service requests')),
-          Center(child: Text('No declined service requests')),
+          const Center(child: Text('No pending service requests')),
+          const Center(child: Text('No accepted service requests')),
+          const Center(child: Text('No declined service requests')),
           _completedTab(),
         ],
       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatefulWidget {
+  const ChatScreen({super.key});
+
   @override
  @override
   _ChatScreenState createState() => _ChatScreenState();
@@ -15,12 +17,12 @@ class _ChatScreenState extends State<ChatScreen> {
         backgroundColor: Colors.white,
         elevation: 1,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: Text(
+        title: const Text(
           'Chat',
           style: TextStyle(
             color: Colors.black,
@@ -34,17 +36,17 @@ class _ChatScreenState extends State<ChatScreen> {
         children: [
           Expanded(
             child: ListView(
-              padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
+              padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
               children: [
                 // Incoming Message
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       backgroundImage: AssetImage('assets/images/profile_image_men.jpg'),
                       radius: 20,
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -56,28 +58,28 @@ class _ChatScreenState extends State<ChatScreen> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         Container(
-                          padding: EdgeInsets.all(12),
+                          padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade200,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Text(
+                          child: const Text(
                             'May I see some of your photographs',
                             style: TextStyle(fontSize: 14),
                           ),
                         ),
                       ],
                     ),
-                    Spacer(),
-                    Text(
+                    const Spacer(),
+                    const Text(
                       '16.04',
                       style: TextStyle(fontSize: 12, color: Colors.grey),
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 // Outgoing Message
                 Align(
@@ -86,24 +88,24 @@ class _ChatScreenState extends State<ChatScreen> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(right: 10),
-                        padding: EdgeInsets.all(12),
+                        margin: const EdgeInsets.only(right: 10),
+                        padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
                           color: Colors.red.shade200,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Hello, these are examples of my photographs I\'ve taken. '
                           'I hope it\'ll be enough for you to endorse me as your photographer during your wedding.',
                           style: TextStyle(fontSize: 14, color: Colors.white),
                         ),
                       ),
-                      SizedBox(height: 5),
-                      Text(
+                      const SizedBox(height: 5),
+                      const Text(
                         '16.04',
                         style: TextStyle(fontSize: 12, color: Colors.grey),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
 
                       // Image Grid
                       Wrap(
@@ -113,7 +115,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           _buildImage('assets/vendor_images/wedding1.jpg'),
                           _buildImage('assets/vendor_images/wedding2.jpg'),
                           _buildImage('assets/vendor_images/wedding3.jpg'),
-                          CircleAvatar(
+                          const CircleAvatar(
                             radius: 15,
                             backgroundImage: AssetImage('assets/images/profile_image_men.jpg'),
                             child: Align(
@@ -154,7 +156,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       children: [
                         // Emoji Icon
                         IconButton(
-                          icon: Icon(Icons.emoji_emotions_outlined,
+                          icon: const Icon(Icons.emoji_emotions_outlined,
                               color: Colors.black45),
                           onPressed: () {},
                         ),
@@ -162,14 +164,14 @@ class _ChatScreenState extends State<ChatScreen> {
                         // Add Photo Icon
                         IconButton(
                           icon:
-                              Icon(Icons.photo_outlined, color: Colors.black45),
+                              const Icon(Icons.photo_outlined, color: Colors.black45),
                           onPressed: () {
                             // Handle photo upload logic here
                           },
                         ),
 
                         // Text Field
-                        Expanded(
+                        const Expanded(
                           child: TextField(
                             decoration: InputDecoration(
                               hintText: 'Write a message...',
@@ -184,10 +186,10 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                 ),
 
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
 
                 // Microphone Icon
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 25,
                   backgroundColor: Colors.redAccent,
                   child: Icon(Icons.mic, color: Colors.white),

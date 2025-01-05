@@ -3,6 +3,8 @@ import 'package:wedding2u_app/presentation/screens/vendor/vendor_add_new_project
 import 'package:wedding2u_app/presentation/screens/vendor/vendor_edit_project.dart';
 
 class EditPortfolio extends StatefulWidget {
+  const EditPortfolio({super.key});
+
   @override
   @override
   _EditPortfolioState createState() => _EditPortfolioState();
@@ -17,7 +19,7 @@ class _EditPortfolioState extends State<EditPortfolio> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -195,7 +197,7 @@ class _EditPortfolioState extends State<EditPortfolio> {
           print('Tapped on project: $title');
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => EditProject()),
+            MaterialPageRoute(builder: (context) => const EditProject()),
           );
         },
         child: Column(
@@ -233,7 +235,7 @@ class _EditPortfolioState extends State<EditPortfolio> {
         print('Tapped on Add Project box');
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => VendorAddNewProject()),
+          MaterialPageRoute(builder: (context) => const VendorAddNewProject()),
         );
       },
       child: Container(

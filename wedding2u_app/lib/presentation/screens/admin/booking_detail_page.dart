@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class BookingDetailPage extends StatefulWidget {
   final Map<String, String> bookingData;
 
-  BookingDetailPage({required this.bookingData});
+  const BookingDetailPage({super.key, required this.bookingData});
 
   @override
   _BookingDetailPageState createState() => _BookingDetailPageState();
@@ -16,7 +16,7 @@ class _BookingDetailPageState extends State<BookingDetailPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Booking Details'),
+        title: const Text('Booking Details'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -33,28 +33,28 @@ class _BookingDetailPageState extends State<BookingDetailPage> {
                 // Client's Name and Request Date
                 Text(
                   'Client: ${booking["clientName"] ?? "Unknown"}',
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
                 Text(
                   'Request Date: ${booking["requestDate"] ?? "Unknown"}',
                   style: TextStyle(fontSize: 16.0, color: Colors.grey[600]),
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
 
                 // Booking Date
                 Text(
                   'Booking Date: ${booking["bookingDate"] ?? "Unknown"}',
-                  style: TextStyle(fontSize: 16.0),
+                  style: const TextStyle(fontSize: 16.0),
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
 
                 // Venue Name
                 Text(
                   'Venue: ${booking["venueName"] ?? "Unknown"}',
-                  style: TextStyle(fontSize: 16.0),
+                  style: const TextStyle(fontSize: 16.0),
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
 
                 // Booking Status
                 Text(
@@ -69,7 +69,7 @@ class _BookingDetailPageState extends State<BookingDetailPage> {
                   ),
                 ),
 
-                Spacer(),
+                const Spacer(),
 
                 // Action Buttons
                 Row(
@@ -83,7 +83,7 @@ class _BookingDetailPageState extends State<BookingDetailPage> {
                         onConfirm: () {
                           Navigator.pop(context); // Close dialog
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
+                            const SnackBar(
                               content: Text('Booking declined successfully!'),
                               backgroundColor: Colors.red,
                             ),
@@ -92,12 +92,12 @@ class _BookingDetailPageState extends State<BookingDetailPage> {
                       ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           vertical: 12.0,
                           horizontal: 24.0,
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Decline',
                         style: TextStyle(color: Colors.white),
                       ),
@@ -111,7 +111,7 @@ class _BookingDetailPageState extends State<BookingDetailPage> {
                         onConfirm: () {
                           Navigator.pop(context); // Close dialog
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
+                            const SnackBar(
                               content: Text('Booking approved successfully!'),
                               backgroundColor: Colors.green,
                             ),
@@ -120,12 +120,12 @@ class _BookingDetailPageState extends State<BookingDetailPage> {
                       ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           vertical: 12.0,
                           horizontal: 24.0,
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Approve',
                         style: TextStyle(color: Colors.white),
                       ),
@@ -152,7 +152,7 @@ class _BookingDetailPageState extends State<BookingDetailPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel'),
+            child: const Text('Cancel'),
           ),
           ElevatedButton(
             onPressed: onConfirm,

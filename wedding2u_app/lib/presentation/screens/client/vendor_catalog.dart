@@ -3,6 +3,8 @@ import 'package:wedding2u_app/presentation/screens/client/photographers.dart';
 
 
 class VendorCatalog extends StatefulWidget {
+  const VendorCatalog({super.key});
+
   //const VendorCatalog({super.key});
 
   @override
@@ -18,7 +20,7 @@ class _VendorCatalogState extends State<VendorCatalog> {
         title: const Text('Vendors'),
         centerTitle: true,
         leading:  IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -38,20 +40,20 @@ class _VendorCatalogState extends State<VendorCatalog> {
                   MaterialPageRoute(builder: (context) => const PhotographersPage()),
                 );
               },
-              child: VendorCard(
+              child: const VendorCard(
                 imagePath: 'assets/vendor_images/photographers.jpg',
                 icon: Icons.camera_alt_outlined,
                 label: 'Photographers',
               ),
             ),
             // Make-Up Artist Section
-            VendorCard(
+            const VendorCard(
               imagePath: 'assets/vendor_images/makeup.jpg',
               icon: Icons.brush_outlined,
               label: 'Make-Up Artist',
             ),
             // Caterer Section
-            VendorCard(
+            const VendorCard(
               imagePath: 'assets/vendor_images/catering.jpg',
               icon: Icons.restaurant_outlined,
               label: 'Caterer',

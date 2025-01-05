@@ -29,7 +29,7 @@ class GerryPortfolioPage extends StatelessWidget {
                 Container(
                   height: 200,
                   width: double.infinity,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/vendor_images/gerry_banner.jpg'),
                       fit: BoxFit.cover,
@@ -40,16 +40,16 @@ class GerryPortfolioPage extends StatelessWidget {
                   bottom: -50, // Adjust positioning
                   child: CircleAvatar(
                     radius: 60,
-                    backgroundImage: AssetImage('assets/vendor_images/gerry.jpg'),
+                    backgroundImage: const AssetImage('assets/vendor_images/gerry.jpg'),
                     backgroundColor: Colors.grey[200], // Fallback color
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 60),
-            Center(
+            const Center(
               child: Column(
-                children: const [
+                children: [
                   Text(
                     'Gerry Photography',
                     style: TextStyle(
@@ -239,9 +239,9 @@ class SocialMediaIcons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
+      children: [
         Icon(Icons.camera_alt_outlined, size: 30),
         SizedBox(width: 16),
         Icon(Icons.facebook_outlined, size: 30),

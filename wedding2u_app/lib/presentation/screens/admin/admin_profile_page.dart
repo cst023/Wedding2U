@@ -6,6 +6,8 @@ import 'package:wedding2u_app/presentation/screens/admin/admin_dashboard2.dart';
 import 'package:wedding2u_app/presentation/screens/admin/admin_edit_profile.dart';
 
 class AdminProfilePage extends StatefulWidget {
+  const AdminProfilePage({super.key});
+
   @override
   _AdminProfilePageState createState() => _AdminProfilePageState();
 }
@@ -44,20 +46,20 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Profile'),
+          title: const Text('Profile'),
           backgroundColor: Colors.white,
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => AdminDashboard2()));
+                  MaterialPageRoute(builder: (context) => const AdminDashboard2()));
             },
           ),
         ),
         body: isLoading
-            ? Center(child: CircularProgressIndicator())
+            ? const Center(child: CircularProgressIndicator())
             : userData == null
-                ? Center(child: Text('Failed to load profile data'))
+                ? const Center(child: Text('Failed to load profile data'))
                 : SafeArea(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,7 +77,7 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                                     Container(
                                       height: 200,
                                       width: double.infinity,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         image: DecorationImage(
                                           image: AssetImage(
                                               'assets/images/profile_cover.jpg'),
@@ -87,24 +89,24 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                                       bottom: -50,
                                       child: CircleAvatar(
                                         radius: 60,
-                                        backgroundImage: AssetImage(
+                                        backgroundImage: const AssetImage(
                                             'assets/images/profile_avatar.jpg'),
                                         backgroundColor: Colors.grey[200],
                                       ),
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 60),
+                                const SizedBox(height: 60),
 
                                 // Name
                                 Text(
                                   userData!['name'] ?? '',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                SizedBox(height: 8),
+                                const SizedBox(height: 8),
 
                                 // Location
                                 Row(
@@ -115,7 +117,7 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                                       size: 16,
                                       color: Colors.grey[600],
                                     ),
-                                    SizedBox(width: 4),
+                                    const SizedBox(width: 4),
                                     Text(
                                       userData!['country'] ?? 'Unknown',
                                       style: TextStyle(
@@ -126,7 +128,7 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                                   ],
                                 ),
 
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
 
                                 // Social media icons row
                                 Row(
@@ -144,7 +146,7 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                                         width: 40,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                         width:
                                             20), // Add spacing between images
                                     GestureDetector(
@@ -158,7 +160,7 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                                         width: 40,
                                       ),
                                     ),
-                                    SizedBox(width: 20),
+                                    const SizedBox(width: 20),
                                     GestureDetector(
                                       onTap: () {
                                         // TODO: Link to WhatsApp
@@ -170,7 +172,7 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                                         width: 40,
                                       ),
                                     ),
-                                    SizedBox(width: 20),
+                                    const SizedBox(width: 20),
                                     GestureDetector(
                                       onTap: () {
                                         // TODO: Link to X (Twitter)
@@ -185,7 +187,7 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                                   ],
                                 ),
 
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
 
                                 // Edit Profile button
                                 ElevatedButton(
@@ -194,7 +196,7 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            AdminEditProfile(),
+                                            const AdminEditProfile(),
                                       ),
                                     );
                                   },
@@ -204,12 +206,12 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                   ),
-                                  child: Text(
+                                  child: const Text(
                                     'Edit Profile',
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                               ],
                             ),
                           ),
@@ -223,7 +225,7 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                               auth.signOut();
                               Navigator.pushNamed(context, 'SignIn');
                             },
-                            child: Text(
+                            child: const Text(
                               'Log out',
                               style: TextStyle(
                                 fontSize: 16,

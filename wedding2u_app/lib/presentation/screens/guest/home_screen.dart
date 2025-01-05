@@ -9,7 +9,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class HomeScreen extends StatefulWidget {
   final String invitationCode;
 
-   HomeScreen({super.key, required this.invitationCode});
+   const HomeScreen({super.key, required this.invitationCode});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();

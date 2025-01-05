@@ -4,6 +4,8 @@ import 'package:wedding2u_app/utils/input_validation.dart';
 import 'package:wedding2u_app/application/sign_in.dart';
 
 class SignIn extends StatefulWidget {
+  const SignIn({super.key});
+
   @override
   _SignInState createState() => _SignInState();
 }
@@ -16,7 +18,7 @@ class _SignInState extends State<SignIn> {
   String password = "";
   bool _isPasswordVisible = false;
   bool _isLoading = false; // To control the loading spinner
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   void _submitLoginForm() async {
     if (_formKey.currentState?.validate() ?? false) {
@@ -35,13 +37,13 @@ class _SignInState extends State<SignIn> {
         Map<String, dynamic> userData = await _signInService.fetchUserData(uid);
 
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Signed in successfully'),
             backgroundColor: Colors.green,
           ),
         );
 
-        await Future.delayed(Duration(seconds: 1));
+        await Future.delayed(const Duration(seconds: 1));
 
         _controller.clear();
 
@@ -81,7 +83,7 @@ class _SignInState extends State<SignIn> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 40.0),
+                const SizedBox(height: 40.0),
 
                 // Image at the top
                 Container(
@@ -91,7 +93,7 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
 
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
 
                 Expanded(
                   child: ListView(
@@ -100,7 +102,7 @@ class _SignInState extends State<SignIn> {
                       // Title
                       Container(
                         alignment: Alignment.center,
-                        child: Text(
+                        child: const Text(
                           'Sign In',
                           style: TextStyle(
                             fontSize: 36,
@@ -110,7 +112,7 @@ class _SignInState extends State<SignIn> {
                         ),
                       ),
 
-                      SizedBox(height: 30.0),
+                      const SizedBox(height: 30.0),
 
                       // Form for validation
                       Form(
@@ -119,7 +121,7 @@ class _SignInState extends State<SignIn> {
                           children: <Widget>[
                             // Email Address
                             TextFormField(
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 labelText: 'Your Email',
                                 icon: Icon(Icons.email),
                               ),
@@ -128,13 +130,13 @@ class _SignInState extends State<SignIn> {
                               validator: validateEmail, // Required
                             ),
 
-                            SizedBox(height: 20.0),
+                            const SizedBox(height: 20.0),
 
                             // Password
                             TextFormField(
                               decoration: InputDecoration(
                                 labelText: 'Password',
-                                icon: Icon(Icons.lock),
+                                icon: const Icon(Icons.lock),
                                 suffixIcon: IconButton(
                                   icon: Icon(
                                     _isPasswordVisible
@@ -154,7 +156,7 @@ class _SignInState extends State<SignIn> {
                               obscureText: !_isPasswordVisible, // Toggle visibility
                             ),
 
-                            SizedBox(height: 30.0),
+                            const SizedBox(height: 30.0),
 
                             // Forgot Password Link
                             Align(
@@ -164,11 +166,11 @@ class _SignInState extends State<SignIn> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => ForgotPassword(),
+                                      builder: (context) => const ForgotPassword(),
                                     ),
                                   );
                                 },
-                                child: Text(
+                                child: const Text(
                                   "Forgot Password?",
                                   style: TextStyle(
                                     fontSize: 16,
@@ -178,19 +180,19 @@ class _SignInState extends State<SignIn> {
                               ),
                             ),
 
-                            SizedBox(height: 50.0),
+                            const SizedBox(height: 50.0),
 
                             // Sign In Button
                             Center(
-                              child: Container(
+                              child: SizedBox(
                                 width: 150,
                                 child: ElevatedButton(
                                   onPressed: _submitLoginForm,
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.pinkAccent,
-                                    padding: EdgeInsets.symmetric(vertical: 12),
+                                    padding: const EdgeInsets.symmetric(vertical: 12),
                                   ),
-                                  child: Text(
+                                  child: const Text(
                                     "Sign In",
                                     style: TextStyle(
                                       fontSize: 20,
@@ -201,7 +203,7 @@ class _SignInState extends State<SignIn> {
                               ),
                             ),
 
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                           ],
                         ),
                       ),
@@ -209,7 +211,7 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
 
-                SizedBox(height: 70),
+                const SizedBox(height: 70),
 
                 // Sign Up Link
                 Center(
@@ -217,7 +219,7 @@ class _SignInState extends State<SignIn> {
                     onTap: () {
                       Navigator.pushNamed(context, 'SignUpUserRoles');
                     },
-                    child: Text(
+                    child: const Text(
                       "Don't have an account? Sign Up",
                       style: TextStyle(
                         fontSize: 16,
@@ -229,21 +231,21 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
 
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
 
                 // "Continue as Guest" button
-                Container(
+                SizedBox(
                   width: 200,
                   child: OutlinedButton(
                     onPressed: () {
                       Navigator.pushNamed(context, 'ContinueGuest');
                     },
                     style: OutlinedButton.styleFrom(
-                      side: BorderSide(
+                      side: const BorderSide(
                           color: Colors.black, width: 1.5), // Black border
-                      padding: EdgeInsets.symmetric(vertical: 12),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Continue as Guest',
                       style: TextStyle(
                         fontSize: 16,
@@ -260,7 +262,7 @@ class _SignInState extends State<SignIn> {
           if (_isLoading)
             Container(
               color: Colors.black.withOpacity(0.5),
-              child: Center(
+              child: const Center(
                 child: CircularProgressIndicator(),
               ),
             ),

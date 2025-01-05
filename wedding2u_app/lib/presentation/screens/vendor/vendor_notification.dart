@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class VendorNotification extends StatefulWidget {
+  const VendorNotification({super.key});
+
   @override
   _VendorNotificationState createState() => _VendorNotificationState();
 }
@@ -10,17 +12,17 @@ class _VendorNotificationState extends State<VendorNotification> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60.0),
+        preferredSize: const Size.fromHeight(60.0),
         child: AppBar(
           backgroundColor: Colors.white,
           elevation: 1,
           leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.black),
+            icon: const Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () {
               Navigator.pop(context);
             },
           ),
-          title: Text(
+          title: const Text(
             'Notification',
             style: TextStyle(
               color: Colors.black,
@@ -30,7 +32,7 @@ class _VendorNotificationState extends State<VendorNotification> {
           ),
           centerTitle: false,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(1.0),
+            preferredSize: const Size.fromHeight(1.0),
             child: Container(
               color: Colors.grey.shade300,
               height: 1.0,
@@ -41,7 +43,7 @@ class _VendorNotificationState extends State<VendorNotification> {
       body: ListView(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(color: Colors.grey.shade300),
@@ -50,7 +52,7 @@ class _VendorNotificationState extends State<VendorNotification> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'You received a new service request!',
                   style: TextStyle(
                     fontSize: 16,
@@ -58,7 +60,7 @@ class _VendorNotificationState extends State<VendorNotification> {
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Row(
                   children: [
                     Text(
@@ -68,7 +70,7 @@ class _VendorNotificationState extends State<VendorNotification> {
                         color: Colors.grey.shade600,
                       ),
                     ),
-                    SizedBox(width: 8),
+                    const SizedBox(width: 8),
                     Text(
                       '24 mins ago',
                       style: TextStyle(

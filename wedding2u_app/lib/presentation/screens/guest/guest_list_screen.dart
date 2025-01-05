@@ -4,7 +4,7 @@ import 'package:wedding2u_app/application/guest_list_controller.dart';
 class GuestListScreen extends StatefulWidget {
   final String invitationCode;
 
-  GuestListScreen({super.key, required this.invitationCode});
+  const GuestListScreen({super.key, required this.invitationCode});
 
   @override
   _GuestListScreenState createState() => _GuestListScreenState();

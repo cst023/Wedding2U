@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class VendorAddNewProject extends StatefulWidget {
+  const VendorAddNewProject({super.key});
+
   @override
  @override
   _VendorAddNewProjectState createState() => _VendorAddNewProjectState();
@@ -14,12 +16,12 @@ class _VendorAddNewProjectState extends State<VendorAddNewProject> {
         backgroundColor: Colors.white,
         elevation: 1,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: Text(
+        title: const Text(
           'Add new project',
           style: TextStyle(
               color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold),
@@ -34,11 +36,11 @@ class _VendorAddNewProjectState extends State<VendorAddNewProject> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'Title:',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Expanded(
                   child: TextField(
                     decoration: InputDecoration(
@@ -47,18 +49,18 @@ class _VendorAddNewProjectState extends State<VendorAddNewProject> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       contentPadding:
-                          EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                          const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'Description',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             TextField(
               maxLines: 4,
               decoration: InputDecoration(
@@ -67,11 +69,11 @@ class _VendorAddNewProjectState extends State<VendorAddNewProject> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 contentPadding:
-                    EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
               ),
             ),
-            SizedBox(height: 20),
-            Row(
+            const SizedBox(height: 20),
+            const Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
@@ -89,7 +91,7 @@ class _VendorAddNewProjectState extends State<VendorAddNewProject> {
                 ),
               ],
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Container(
               width: 100,
               height: 100,
@@ -97,7 +99,7 @@ class _VendorAddNewProjectState extends State<VendorAddNewProject> {
                 color: Colors.grey.shade300,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Center(
+              child: const Center(
                 child: Icon(
                   Icons.add,
                   size: 30,
@@ -105,7 +107,7 @@ class _VendorAddNewProjectState extends State<VendorAddNewProject> {
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Center(
               child: SizedBox(
                 width: double.infinity,
@@ -120,7 +122,7 @@ class _VendorAddNewProjectState extends State<VendorAddNewProject> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Done',
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),

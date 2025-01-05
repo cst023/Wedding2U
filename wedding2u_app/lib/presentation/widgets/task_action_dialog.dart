@@ -10,7 +10,7 @@ class TaskActionResult {
 class TaskActionDialog extends StatefulWidget {
   final String initialTaskName;
 
-  TaskActionDialog({required this.initialTaskName});
+  const TaskActionDialog({super.key, required this.initialTaskName});
 
   @override
   _TaskActionDialogState createState() => _TaskActionDialogState();
@@ -28,10 +28,10 @@ class _TaskActionDialogState extends State<TaskActionDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Edit Task'),
+      title: const Text('Edit Task'),
       content: TextField(
         controller: _taskNameController,
-        decoration: InputDecoration(labelText: 'Task Name'),
+        decoration: const InputDecoration(labelText: 'Task Name'),
       ),
       actions: [
         TextButton(
@@ -41,7 +41,7 @@ class _TaskActionDialogState extends State<TaskActionDialog> {
               TaskActionResult(isDelete: true),
             );
           },
-          child: Text('Delete', style: TextStyle(color: Colors.red)),
+          child: const Text('Delete', style: TextStyle(color: Colors.red)),
         ),
         TextButton(
           onPressed: () {
@@ -53,7 +53,7 @@ class _TaskActionDialogState extends State<TaskActionDialog> {
               ),
             );
           },
-          child: Text('Save Changes'),
+          child: const Text('Save Changes'),
         ),
       ],
     );

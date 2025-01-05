@@ -3,6 +3,8 @@ import 'package:wedding2u_app/presentation/screens/general/sign_up.dart';
 
 
 class SignUpUserRoles extends StatefulWidget {
+  const SignUpUserRoles({super.key});
+
 
  @override
   _SignUpUserRolesState createState() => _SignUpUserRolesState();
@@ -27,7 +29,7 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
                     height: 100,
                     fit: BoxFit.cover,
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     'SINCE 2010',
                     style: TextStyle(
@@ -40,10 +42,10 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
               ),
             ),
 
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
 
             // Sign Up Title
-            Text(
+            const Text(
               'Sign Up as',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -51,7 +53,7 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
               ),
             ),
 
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
 
            // Sign In Options
             Padding(
@@ -67,7 +69,7 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SignUp(role: "Client"),
+                              builder: (context) => const SignUp(role: "Client"),
                             ),
                           );
                         },
@@ -88,7 +90,7 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SignUp(role: "Vendor"),
+                              builder: (context) => const SignUp(role: "Vendor"),
                             ),
                           );
                         },
@@ -105,7 +107,7 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
                     ],
                   ),
 
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
 
                   // Second row of clickable options
                   GestureDetector(
@@ -113,7 +115,7 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SignUp(role: "Admin"),
+                              builder: (context) => const SignUp(role: "Admin"),
                             ),
                           );
                         },
@@ -131,7 +133,7 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
               ),
             ),
 
-            Spacer(),
+            const Spacer(),
 
             // Sign In Link
             Center(
@@ -139,7 +141,7 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
                 onTap: () {
                   Navigator.pushNamed(context, 'SignIn');
                 },
-                child: Text(
+                child: const Text(
                   "Already have an account? Sign In",
                   style: TextStyle(
                     fontSize: 16,
@@ -151,21 +153,21 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
               ),
             ),
 
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
 
             // "Continue as Guest" button
-            Container(
+            SizedBox(
               width: 200,
               child: OutlinedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, 'ContinueGuest');
                 },
                 style: OutlinedButton.styleFrom(
-                  side: BorderSide(
+                  side: const BorderSide(
                       color: Colors.black, width: 1.5), // Black border
-                  padding: EdgeInsets.symmetric(vertical: 12),
+                  padding: const EdgeInsets.symmetric(vertical: 12),
                 ),
-                child: Text(
+                child: const Text(
                   'Continue as Guest',
                   style: TextStyle(
                     fontSize: 16,
@@ -175,7 +177,7 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
               ),
             ),
 
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
           ],
         ),
       ),

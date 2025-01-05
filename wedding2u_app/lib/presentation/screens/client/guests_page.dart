@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:wedding2u_app/application/guest_list_controller.dart';
 
 class GuestsPage extends StatefulWidget {
+  const GuestsPage({super.key});
+
   @override
   _GuestsPageState createState() => _GuestsPageState();
 }
@@ -82,17 +84,17 @@ class _GuestsPageState extends State<GuestsPage>
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("Add Guest"),
+          title: const Text("Add Guest"),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
                 controller: nameController,
-                decoration: InputDecoration(labelText: "Guest Name"),
+                decoration: const InputDecoration(labelText: "Guest Name"),
               ),
               TextField(
                 controller: phoneController,
-                decoration: InputDecoration(labelText: "Phone Number"),
+                decoration: const InputDecoration(labelText: "Phone Number"),
                 keyboardType: TextInputType.phone,
               ),
             ],
@@ -100,7 +102,7 @@ class _GuestsPageState extends State<GuestsPage>
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
             ),
             ElevatedButton(
               onPressed: () async {
@@ -122,7 +124,7 @@ class _GuestsPageState extends State<GuestsPage>
                     );
 
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                         content: Text("Guest added successfully!"),
                         backgroundColor: Colors.green,
                       ),
@@ -144,14 +146,14 @@ class _GuestsPageState extends State<GuestsPage>
                   }
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       content: Text("Please enter all required fields."),
                       backgroundColor: Colors.red,
                     ),
                   );
                 }
               },
-              child: Text("Add"),
+              child: const Text("Add"),
             ),
           ],
         );
@@ -170,17 +172,17 @@ class _GuestsPageState extends State<GuestsPage>
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("Edit Guest"),
+          title: const Text("Edit Guest"),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
                 controller: nameController,
-                decoration: InputDecoration(labelText: "Guest Name"),
+                decoration: const InputDecoration(labelText: "Guest Name"),
               ),
               TextField(
                 controller: phoneController,
-                decoration: InputDecoration(labelText: "Phone Number"),
+                decoration: const InputDecoration(labelText: "Phone Number"),
                 keyboardType: TextInputType.phone,
               ),
             ],
@@ -188,7 +190,7 @@ class _GuestsPageState extends State<GuestsPage>
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
             ),
             ElevatedButton(
               onPressed: () async {
@@ -211,7 +213,7 @@ class _GuestsPageState extends State<GuestsPage>
                     );
 
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                         content: Text("Guest updated successfully!"),
                         backgroundColor: Colors.green,
                       ),
@@ -233,14 +235,14 @@ class _GuestsPageState extends State<GuestsPage>
                   }
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       content: Text("Please enter all required fields."),
                       backgroundColor: Colors.red,
                     ),
                   );
                 }
               },
-              child: Text("Save"),
+              child: const Text("Save"),
             ),
           ],
         );
@@ -260,7 +262,7 @@ class _GuestsPageState extends State<GuestsPage>
       await controller.deleteGuest(clientId: clientId, guestId: guestId);
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text("Guest deleted successfully!"),
           backgroundColor: Colors.green,
         ),
@@ -302,30 +304,30 @@ class _GuestsPageState extends State<GuestsPage>
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("Invitation Code"),
+            title: const Text("Invitation Code"),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   invitationCode,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
                     Clipboard.setData(ClipboardData(text: invitationCode));
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("Code copied to clipboard!")),
+                      const SnackBar(content: Text("Code copied to clipboard!")),
                     );
                   },
-                  child: Text("Copy Code"),
+                  child: const Text("Copy Code"),
                 ),
               ],
             ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text("Close"),
+                child: const Text("Close"),
               ),
             ],
           );
@@ -349,14 +351,14 @@ class _GuestsPageState extends State<GuestsPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Guests"),
+        title: const Text("Guests"),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(48.0),
+          preferredSize: const Size.fromHeight(48.0),
           child: TabBar(
             controller: _tabController,
             //isScrollable: true,
             indicatorPadding: EdgeInsets.zero,
-            labelPadding: EdgeInsets.symmetric(horizontal: 5.0),
+            labelPadding: const EdgeInsets.symmetric(horizontal: 5.0),
             tabs: [
               Tab(text: "All (${guestCounts["All"]})"),
               Tab(text: "Confirmed (${guestCounts["Confirmed"]})"),
@@ -367,7 +369,7 @@ class _GuestsPageState extends State<GuestsPage>
         ),
       ),
       body: _isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : TabBarView(
               controller: _tabController,
               children: [
@@ -384,7 +386,7 @@ class _GuestsPageState extends State<GuestsPage>
           children: [
             ElevatedButton(
               onPressed: _addGuest,
-              child: Row(
+              child: const Row(
                 children: [
                   Icon(Icons.add),
                   SizedBox(width: 8),
@@ -394,7 +396,7 @@ class _GuestsPageState extends State<GuestsPage>
             ),
             ElevatedButton(
               onPressed: _showInvitationCode,
-              child: Row(
+              child: const Row(
                 children: [
                   Icon(Icons.share),
                   SizedBox(width: 8),
@@ -453,23 +455,23 @@ class _GuestsPageState extends State<GuestsPage>
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("Edit Guest"),
+          title: const Text("Edit Guest"),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
                 controller: nameController,
-                decoration: InputDecoration(labelText: "Guest Name"),
+                decoration: const InputDecoration(labelText: "Guest Name"),
               ),
               TextField(
                 controller: phoneController,
-                decoration: InputDecoration(labelText: "Phone Number"),
+                decoration: const InputDecoration(labelText: "Phone Number"),
                 keyboardType: TextInputType.phone,
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               ElevatedButton.icon(
-                icon: Icon(Icons.delete, color: Colors.red),
-                label: Text(
+                icon: const Icon(Icons.delete, color: Colors.red),
+                label: const Text(
                   "Delete Guest",
                   style: TextStyle(color: Colors.red),
                 ),
@@ -487,7 +489,7 @@ class _GuestsPageState extends State<GuestsPage>
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
             ),
             ElevatedButton(
               onPressed: () async {
@@ -506,7 +508,7 @@ class _GuestsPageState extends State<GuestsPage>
                     );
 
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                         content: Text("Guest updated successfully!"),
                         backgroundColor: Colors.green,
                       ),
@@ -524,14 +526,14 @@ class _GuestsPageState extends State<GuestsPage>
                   }
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       content: Text("Please enter all required fields."),
                       backgroundColor: Colors.red,
                     ),
                   );
                 }
               },
-              child: Text("Save"),
+              child: const Text("Save"),
             ),
           ],
         );

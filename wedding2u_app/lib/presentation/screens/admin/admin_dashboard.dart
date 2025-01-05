@@ -4,6 +4,8 @@ import 'package:wedding2u_app/presentation/screens/admin/posts_page.dart';
 import 'package:wedding2u_app/presentation/screens/admin/venue_catalog.dart';
 
 class AdminDashboard extends StatefulWidget {
+  const AdminDashboard({super.key});
+
   @override
   _AdminDashboardState createState() => _AdminDashboardState();
 }
@@ -25,11 +27,11 @@ class _AdminDashboardState extends State<AdminDashboard> {
                     color: Colors.pink[100],
                     borderRadius: BorderRadius.circular(0),
                   ),
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Row(
                     children: [
                       // Text Widgets
-                      Expanded(
+                      const Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -69,7 +71,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 20.0),
+                      const SizedBox(height: 20.0),
 
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -78,7 +80,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                           Expanded(
                             child: TextField(
                               decoration: InputDecoration(
-                                prefixIcon: Icon(Icons.search),
+                                prefixIcon: const Icon(Icons.search),
                                 hintText: 'Search...',
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20.0),
@@ -87,7 +89,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                             ),
                           ),
 
-                          SizedBox(width: 16.0),
+                          const SizedBox(width: 16.0),
 
                           // Clickable image for the profile picture
                           GestureDetector(
@@ -96,13 +98,13 @@ class _AdminDashboardState extends State<AdminDashboard> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => AdminProfilePage(),
+                                  builder: (context) => const AdminProfilePage(),
                                 ),
                               );
                             },
                             child: CircleAvatar(
                               radius: 32.0, // Profile picture size
-                              backgroundImage: AssetImage(
+                              backgroundImage: const AssetImage(
                                   'assets/images/profile_image_men.jpg'),
                               backgroundColor:
                                   Colors.grey[200], // Fallback color
@@ -111,7 +113,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                         ],
                       ),
 
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       // Scrollable Row of Clickable Images with Borders
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -124,7 +126,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => VenueCatalog()),
+                                      builder: (context) => const VenueCatalog()),
                                 );
                               },
                               child: Container(
@@ -144,7 +146,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 16), // Space between images
+                            const SizedBox(width: 16), // Space between images
 
                             GestureDetector(
                               onTap: () {
@@ -153,7 +155,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => PostPage()),
+                                      builder: (context) => const PostPage()),
                                 );
                               },
                               child: Container(
@@ -173,7 +175,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 16), // Space between images
+                            const SizedBox(width: 16), // Space between images
 
                             GestureDetector(
                               onTap: () {
@@ -202,16 +204,16 @@ class _AdminDashboardState extends State<AdminDashboard> {
                         ),
                       ),
 
-                      SizedBox(height: 20.0),
+                      const SizedBox(height: 20.0),
 
-                      Text('Manage My Wedding',
+                      const Text('Manage My Wedding',
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                           )),
 
-                      SizedBox(height: 20.0),
+                      const SizedBox(height: 20.0),
 
                       // Rectangular Clickable Image
                       GestureDetector(
@@ -230,7 +232,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.0),
                             color: Colors.pink[50],
-                            image: DecorationImage(
+                            image: const DecorationImage(
                               image:
                                   AssetImage('assets/images/wedding_dais.jpg'),
                               fit: BoxFit.cover,
@@ -239,16 +241,16 @@ class _AdminDashboardState extends State<AdminDashboard> {
                         ),
                       ),
 
-                      SizedBox(height: 20.0),
+                      const SizedBox(height: 20.0),
 
-                      Text('Customer Reviews',
+                      const Text('Customer Reviews',
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                           )),
 
-                      SizedBox(height: 20.0),
+                      const SizedBox(height: 20.0),
 
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -260,7 +262,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => PostPage()),
+                                      builder: (context) => const PostPage()),
                                 );
                               },
                               child: Container(
@@ -280,7 +282,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 20), // Space between images
+                            const SizedBox(width: 20), // Space between images
 
                             GestureDetector(
                               onTap: () {
@@ -288,7 +290,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => PostPage()),
+                                      builder: (context) => const PostPage()),
                                 );
                               },
                               child: Container(
@@ -311,7 +313,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 20)
+                      const SizedBox(height: 20)
                     ],
                   ),
                 ),

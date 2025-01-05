@@ -4,6 +4,8 @@ import 'package:wedding2u_app/application/user_profile_controller.dart';
 
 
 class ClientProfilePage extends StatefulWidget {
+  const ClientProfilePage({super.key});
+
   @override
   _ClientProfilePageState createState() => _ClientProfilePageState();
 }
@@ -42,19 +44,19 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Profile'),
+          title: const Text('Profile'),
           backgroundColor: Colors.white,
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pushNamed(context, 'ClientMainPage', arguments: userData);
             },
           ),
         ),
         body: isLoading
-            ? Center(child: CircularProgressIndicator())
+            ? const Center(child: CircularProgressIndicator())
             : userData == null
-                ? Center(child: Text('Failed to load profile data'))
+                ? const Center(child: Text('Failed to load profile data'))
                 : SafeArea(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -72,7 +74,7 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                                     Container(
                                       height: 200,
                                       width: double.infinity,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         image: DecorationImage(
                                           image: AssetImage(
                                               'assets/images/profile_cover.jpg'),
@@ -84,24 +86,24 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                                       bottom: -50,
                                       child: CircleAvatar(
                                         radius: 60,
-                                        backgroundImage: AssetImage(
+                                        backgroundImage: const AssetImage(
                                             'assets/images/profile_avatar.jpg'),
                                         backgroundColor: Colors.grey[200],
                                       ),
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 60),
+                                const SizedBox(height: 60),
 
                                 // Name
                                 Text(
                                   userData!['name'] ?? '',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                SizedBox(height: 8),
+                                const SizedBox(height: 8),
 
                                 // Location
                                 Row(
@@ -112,7 +114,7 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                                       size: 16,
                                       color: Colors.grey[600],
                                     ),
-                                    SizedBox(width: 4),
+                                    const SizedBox(width: 4),
                                     Text(
                                       userData!['country'] ?? 'Unknown',
                                       style: TextStyle(
@@ -123,7 +125,7 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                                   ],
                                 ),
 
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
 
                                 // Social media icons row
                                 Row(
@@ -141,7 +143,7 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                                         width: 40,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                         width:
                                             20), // Add spacing between images
                                     GestureDetector(
@@ -155,7 +157,7 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                                         width: 40,
                                       ),
                                     ),
-                                    SizedBox(width: 20),
+                                    const SizedBox(width: 20),
                                     GestureDetector(
                                       onTap: () {
                                         // TODO: Link to WhatsApp
@@ -167,7 +169,7 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                                         width: 40,
                                       ),
                                     ),
-                                    SizedBox(width: 20),
+                                    const SizedBox(width: 20),
                                     GestureDetector(
                                       onTap: () {
                                         // TODO: Link to X (Twitter)
@@ -182,7 +184,7 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                                   ],
                                 ), 
 
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
 
                                 // Edit Profile button
                                 ElevatedButton(
@@ -196,12 +198,12 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                   ),
-                                  child: Text(
+                                  child: const Text(
                                     'Edit Profile',
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
 
                                 Divider(
                                   color: Colors.grey[300],
@@ -214,7 +216,7 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                                   onTap: () {
                                     Navigator.pushNamed(context, 'VenueBookingStatus');
                                   },
-                                  child: ListTile(
+                                  child: const ListTile(
                                     leading: Icon(Icons.event),
                                     title: Text('View Booking Status', style: TextStyle(fontSize: 18)),
                                     trailing: Icon(Icons.arrow_forward_ios),
@@ -234,7 +236,7 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                               auth.signOut();
                               Navigator.pushNamed(context, 'SignIn');
                             },
-                            child: Text(
+                            child: const Text(
                               'Log out',
                               style: TextStyle(
                                 fontSize: 16,

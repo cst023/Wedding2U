@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ManageServicePending extends StatefulWidget {
+  const ManageServicePending({super.key});
+
   @override
   State<ManageServicePending> createState() =>
       _ManageServicePendingState();
@@ -28,7 +30,7 @@ class _ManageServicePendingState extends State<ManageServicePending>
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
-        title: Text(
+        title: const Text(
           'Manage service requests',
           style: TextStyle(
             color: Colors.black,
@@ -38,7 +40,7 @@ class _ManageServicePendingState extends State<ManageServicePending>
         ),
         centerTitle: false,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {},
         ),
         bottom: TabBar(
@@ -47,12 +49,12 @@ class _ManageServicePendingState extends State<ManageServicePending>
           indicatorWeight: 2.5,
           labelColor: Colors.black,
           unselectedLabelColor: Colors.grey,
-          labelStyle: TextStyle(
+          labelStyle: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 13.5,
             height: 1.5,
           ),
-          unselectedLabelStyle: TextStyle(
+          unselectedLabelStyle: const TextStyle(
             fontWeight: FontWeight.normal,
             fontSize: 12.5,
             height: 1.5,
@@ -89,9 +91,9 @@ class _ManageServicePendingState extends State<ManageServicePending>
         controller: _tabController,
         children: [
           _pendingApprovalTab(),
-          Center(child: Text('No accepted service requests')),
-          Center(child: Text('No declined service requests')),
-          Center(child: Text('No completed service requests')),
+          const Center(child: Text('No accepted service requests')),
+          const Center(child: Text('No declined service requests')),
+          const Center(child: Text('No completed service requests')),
         ],
       ),
     );
@@ -100,7 +102,7 @@ class _ManageServicePendingState extends State<ManageServicePending>
   // Pending Approval Tab
   Widget _pendingApprovalTab() {
     return ListView(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       children: [
         Card(
           shape: RoundedRectangleBorder(
@@ -108,11 +110,11 @@ class _ManageServicePendingState extends State<ManageServicePending>
           ),
           elevation: 2,
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -138,30 +140,30 @@ class _ManageServicePendingState extends State<ManageServicePending>
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   'Request Subject: I am looking for a photographer for my wedding.',
                   style: TextStyle(fontSize: 14, color: Colors.black),
                 ),
-                SizedBox(height: 5),
-                Text(
+                const SizedBox(height: 5),
+                const Text(
                   'Booking date: 22-12-2024',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 10),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   'Date of request: 5-12-2024',
                   style: TextStyle(fontSize: 12, color: Colors.grey),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     _actionButton('Decline', isPrimary: false),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     _actionButton('Accept', isPrimary: true),
                   ],
                 ),

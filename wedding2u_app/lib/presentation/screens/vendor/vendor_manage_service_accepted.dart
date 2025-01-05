@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 
 class ManageServiceAccepted extends StatefulWidget {
+  const ManageServiceAccepted({super.key});
+
   @override
   _ManageServiceAcceptedState createState() =>
       _ManageServiceAcceptedState();
@@ -29,7 +31,7 @@ class _ManageServiceAcceptedState extends State<ManageServiceAccepted>
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
-        title: Text(
+        title: const Text(
           'Manage service requests',
           style: TextStyle(
             color: Colors.black,
@@ -39,7 +41,7 @@ class _ManageServiceAcceptedState extends State<ManageServiceAccepted>
         ),
         centerTitle: false,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {},
         ),
         bottom: TabBar(
@@ -48,12 +50,12 @@ class _ManageServiceAcceptedState extends State<ManageServiceAccepted>
           indicatorWeight: 2.5,
           labelColor: Colors.black,
           unselectedLabelColor: Colors.grey,
-          labelStyle: TextStyle(
+          labelStyle: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 13.5,
             height: 1.5,
           ),
-          unselectedLabelStyle: TextStyle(
+          unselectedLabelStyle: const TextStyle(
             fontWeight: FontWeight.normal,
             fontSize: 12.5,
             height: 1.5,
@@ -69,10 +71,10 @@ class _ManageServiceAcceptedState extends State<ManageServiceAccepted>
       body: TabBarView(
         controller: _tabController,
         children: [
-          Center(child: Text('No pending approvals')),
+          const Center(child: Text('No pending approvals')),
           _acceptedTab(),
-          Center(child: Text('No declined service requests')),
-          Center(child: Text('No completed service requests')),
+          const Center(child: Text('No declined service requests')),
+          const Center(child: Text('No completed service requests')),
         ],
       ),
     );
@@ -81,14 +83,14 @@ class _ManageServiceAcceptedState extends State<ManageServiceAccepted>
   // Accepted Tab
   Widget _acceptedTab() {
     return ListView(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       children: [
         Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
           elevation: 2,
-          child: Padding(
+          child: const Padding(
             padding: EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

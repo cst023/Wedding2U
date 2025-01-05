@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wedding2u_app/presentation/screens/vendor/vendor_edit_portfolio.dart';
 
 class VendorPortfolio extends StatefulWidget {
+  const VendorPortfolio({super.key});
+
   @override
   _VendorPortfolioState createState() => _VendorPortfolioState();
 }
@@ -16,7 +18,7 @@ class _VendorPortfolioState extends State<VendorPortfolio> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -53,7 +55,7 @@ class _VendorPortfolioState extends State<VendorPortfolio> {
                 Positioned(
                   bottom: -50,
                   left: MediaQuery.of(context).size.width / 2 - 50,
-                  child: CircleAvatar(
+                  child: const CircleAvatar(
                     radius: 50,
                     backgroundColor: Colors.white,
                     child: CircleAvatar(
@@ -125,7 +127,7 @@ class _VendorPortfolioState extends State<VendorPortfolio> {
                   Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => EditPortfolio()),
+                                builder: (context) => const EditPortfolio()),
                           );
                 },
                 style: ElevatedButton.styleFrom(
@@ -201,9 +203,9 @@ class _VendorPortfolioState extends State<VendorPortfolio> {
               ),
             ),
             const SizedBox(height: 10),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
+              children: [
                 ProjectCard(
                   imagePath: 'assets/vendor_images/project1.jpg', 
                   title: 'Amir & Aisyah | Hilton',

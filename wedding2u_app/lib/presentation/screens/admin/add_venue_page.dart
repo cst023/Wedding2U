@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wedding2u_app/data/firestore_service.dart';
 
 class AddVenueDetailsScreen extends StatefulWidget {
+  const AddVenueDetailsScreen({super.key});
+
   @override
   _AddVenueDetailsScreenState createState() => _AddVenueDetailsScreenState();
 }
@@ -28,7 +30,7 @@ class _AddVenueDetailsScreenState extends State<AddVenueDetailsScreen> {
         );
 
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Venue added successfully!'),
             backgroundColor: Colors.green,
           ),
@@ -54,14 +56,14 @@ class _AddVenueDetailsScreenState extends State<AddVenueDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Add Venue',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
         elevation: 1.0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -72,13 +74,13 @@ class _AddVenueDetailsScreenState extends State<AddVenueDetailsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Enter Venue Details', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
+              const Text('Enter Venue Details', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
               const SizedBox(height: 16.0),
-              Text('Venue Name:', style: TextStyle(fontSize: 16.0)),
-              SizedBox(height: 8.0),
+              const Text('Venue Name:', style: TextStyle(fontSize: 16.0)),
+              const SizedBox(height: 8.0),
               TextFormField(
                 controller: _venueNameController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Venue Name',
                   border: OutlineInputBorder(),
                 ),
@@ -91,12 +93,12 @@ class _AddVenueDetailsScreenState extends State<AddVenueDetailsScreen> {
               ),
               const SizedBox(height: 16.0),
 
-              Text('Venue Description:', style: TextStyle(fontSize: 16.0)),
-              SizedBox(height: 8.0),
+              const Text('Venue Description:', style: TextStyle(fontSize: 16.0)),
+              const SizedBox(height: 8.0),
               TextFormField(
                 controller: _venueDescriptionController,
                 maxLines: 3,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Venue Description',
                   border: OutlineInputBorder(),
                 ),
@@ -109,12 +111,12 @@ class _AddVenueDetailsScreenState extends State<AddVenueDetailsScreen> {
               ),
               const SizedBox(height: 16.0),
 
-              Text('Package Description:', style: TextStyle(fontSize: 16.0)),
-              SizedBox(height: 8.0),
+              const Text('Package Description:', style: TextStyle(fontSize: 16.0)),
+              const SizedBox(height: 8.0),
               TextFormField(
                 controller: _packageDescriptionController,
                 maxLines: 3,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Package Description',
                   border: OutlineInputBorder(),
                 ),
@@ -127,7 +129,7 @@ class _AddVenueDetailsScreenState extends State<AddVenueDetailsScreen> {
               ),
               const SizedBox(height: 16.0),
 
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -137,8 +139,8 @@ class _AddVenueDetailsScreenState extends State<AddVenueDetailsScreen> {
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                   ),
                   child: _isSaving
-                      ? CircularProgressIndicator(color: Colors.white)
-                      : Text(
+                      ? const CircularProgressIndicator(color: Colors.white)
+                      : const Text(
                           'Save',
                           style: TextStyle(fontSize: 16.0, color: Colors.white),
                         ),

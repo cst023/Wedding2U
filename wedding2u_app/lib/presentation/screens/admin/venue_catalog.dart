@@ -5,6 +5,8 @@ import 'package:wedding2u_app/presentation/screens/admin/venue_detail_page.dart'
 import 'add_venue_page.dart'; // Add venue page
 
 class VenueCatalog extends StatefulWidget {
+  const VenueCatalog({super.key});
+
   @override
   _VenueCatalogState createState() => _VenueCatalogState();
 }
@@ -40,23 +42,23 @@ class _VenueCatalogState extends State<VenueCatalog> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Venues',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
         elevation: 0.0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => AdminDashboard2(),
+              builder: (context) => const AdminDashboard2(),
             ),
           ),
         ),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1.0),
+          preferredSize: const Size.fromHeight(1.0),
           child: Container(
             color: Colors.grey[300],
             height: 1.0,
@@ -64,11 +66,11 @@ class _VenueCatalogState extends State<VenueCatalog> {
         ),
       ),
       body: isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : venues.isEmpty
-              ? Center(child: Text('No venues available'))
+              ? const Center(child: Text('No venues available'))
               : ListView.builder(
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
                   itemCount: venues.length,
                   itemBuilder: (context, index) {
                     final venue = venues[index];
@@ -97,12 +99,12 @@ class _VenueCatalogState extends State<VenueCatalog> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => AddVenueDetailsScreen(),
+              builder: (context) => const AddVenueDetailsScreen(),
             ),
           ).then((_) => _fetchVenueData()); // Refresh data after adding a new venue
         },
-        child: Icon(Icons.add),
         backgroundColor: Colors.white,
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -128,7 +130,7 @@ class _VenueCatalogState extends State<VenueCatalog> {
         children: [
           // Venue Image
           ClipRRect(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(12.0)),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
             child: Image.asset(
               imagePath,
               height: 150,
@@ -149,7 +151,7 @@ class _VenueCatalogState extends State<VenueCatalog> {
                     // Venue Name
                     Text(
                       venueName,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -166,7 +168,7 @@ class _VenueCatalogState extends State<VenueCatalog> {
                             color: Colors.grey[700],
                           ),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.star,
                           color: Colors.amber,
                           size: 20.0,
@@ -176,7 +178,7 @@ class _VenueCatalogState extends State<VenueCatalog> {
                   ],
                 ),
 
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
 
                 // Venue Description
                 Text(

@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 
 class BookingListPage extends StatefulWidget {
+  const BookingListPage({super.key});
+
   @override
   _BookingListPageState createState() => _BookingListPageState();
 }
@@ -86,11 +88,11 @@ class _BookingListPageState extends State<BookingListPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Manage Venue Bookings"),
+        title: const Text("Manage Venue Bookings"),
         bottom: TabBar(
           controller: _tabController,
           indicatorPadding: EdgeInsets.zero,
-          labelPadding: EdgeInsets.symmetric(horizontal: 5.0),
+          labelPadding: const EdgeInsets.symmetric(horizontal: 5.0),
           tabs: [
             Tab(text: "All (${bookingCounts["All"]})"),
             Tab(text: "Pending (${bookingCounts["Pending"]})"),
@@ -108,7 +110,7 @@ class _BookingListPageState extends State<BookingListPage>
               onChanged: _filterBookings,
               decoration: InputDecoration(
                 hintText: "Search by client name or venue...",
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
@@ -119,7 +121,7 @@ class _BookingListPageState extends State<BookingListPage>
           // Booking List
           Expanded(
             child: _isLoading
-                ? Center(child: CircularProgressIndicator())
+                ? const Center(child: CircularProgressIndicator())
                 : TabBarView(
                     controller: _tabController,
                     children: [
@@ -151,7 +153,7 @@ class _BookingListPageState extends State<BookingListPage>
       itemBuilder: (context, index) {
         final booking = currentList[index];
         return Card(
-          margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+          margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
           child: ListTile(
             title: Text(booking["clientName"] ?? ""),
             subtitle: Column(
@@ -183,23 +185,23 @@ class _BookingListPageState extends State<BookingListPage>
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("Booking Details"),
+          title: const Text("Booking Details"),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("${booking["clientName"]}",
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                       color: Colors.deepPurpleAccent)),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               Text("Request Date: ${booking["requestDate"]}"),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               Text("Booking Date: ${booking["bookingDate"]}"),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               Text("Venue: ${booking["venueName"]}"),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               Text("Status: ${booking["status"]}"),
             ],
           ),
@@ -223,7 +225,7 @@ class _BookingListPageState extends State<BookingListPage>
                         });
                         Navigator.pop(context); // Close dialog
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
+                          const SnackBar(
                             content: Text('Booking declined successfully!'),
                             backgroundColor: Colors.red,
                           ),
@@ -240,7 +242,7 @@ class _BookingListPageState extends State<BookingListPage>
                     },
                   ),
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                  child: Text("Decline", style: TextStyle(color: Colors.white)),
+                  child: const Text("Decline", style: TextStyle(color: Colors.white)),
                 ),
                 ElevatedButton(
                   onPressed: () => _showConfirmationDialog(
@@ -258,7 +260,7 @@ class _BookingListPageState extends State<BookingListPage>
                         });
                         Navigator.pop(context); // Close dialog
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
+                          const SnackBar(
                             content: Text('Booking approved successfully!'),
                             backgroundColor: Colors.green,
                           ),
@@ -276,7 +278,7 @@ class _BookingListPageState extends State<BookingListPage>
                   ),
                   style:
                       ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                  child: Text("Approve", style: TextStyle(color: Colors.white)),
+                  child: const Text("Approve", style: TextStyle(color: Colors.white)),
                 ),
               ],
             ),
@@ -309,7 +311,7 @@ class _BookingListPageState extends State<BookingListPage>
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel'),
+            child: const Text('Cancel'),
           ),
           ElevatedButton(
             onPressed: onConfirm,

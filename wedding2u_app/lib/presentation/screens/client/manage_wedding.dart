@@ -4,6 +4,8 @@ import 'package:wedding2u_app/application/manage_wedding_controller.dart';
 import 'package:wedding2u_app/presentation/screens/client/countdown.dart';
 
 class ManageWedding extends StatefulWidget {
+  const ManageWedding({super.key});
+
   @override
   _ManageWeddingState createState() => _ManageWeddingState();
 }
@@ -53,41 +55,41 @@ class _ManageWeddingState extends State<ManageWedding> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Manage My Wedding', style: TextStyle(color: Colors.black)),
+        title: const Text('Manage My Wedding', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         elevation: 1.0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
       ),
       body: _isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _bookingData != null
                       ? _buildVenueCard(context)
-                      : Center(child: Text('No active bookings found')),
-                  SizedBox(height: 24.0),
+                      : const Center(child: Text('No active bookings found')),
+                  const SizedBox(height: 24.0),
                   _buildCountdown(),
-                  SizedBox(height: 24.0),
+                  const SizedBox(height: 24.0),
                   _buildWeddingTentativeCard(context),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
                   _buildGuestListCard(context),
-                  SizedBox(height: 24.0),
-                  Text(
+                  const SizedBox(height: 24.0),
+                  const Text(
                     'Checklist:',
                     style:
                         TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
                   _tasks.isEmpty
-                      ? Center(child: Text('No tasks found'))
+                      ? const Center(child: Text('No tasks found'))
                       : ManageWeddingController.buildChecklist(
                           _tasks,
                           (taskId) {
@@ -113,9 +115,9 @@ class _ManageWeddingState extends State<ManageWedding> {
                             );
                           },
                         ),
-                  SizedBox(height: 14.0),
+                  const SizedBox(height: 14.0),
                   Center(child: _buildAddTaskButton()),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
                 ],
               ),
             ),
@@ -135,11 +137,11 @@ class _ManageWeddingState extends State<ManageWedding> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Wedding Venue:',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
             ),
-            SizedBox(height: 12.0),
+            const SizedBox(height: 12.0),
             ClipRRect(
               borderRadius: BorderRadius.circular(12.0),
               child: Image.asset(
@@ -149,9 +151,9 @@ class _ManageWeddingState extends State<ManageWedding> {
                 fit: BoxFit.cover,
               ),
             ),
-            SizedBox(height: 12.0),
+            const SizedBox(height: 12.0),
             Text(venueName),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -160,7 +162,7 @@ class _ManageWeddingState extends State<ManageWedding> {
                 GestureDetector(
                   onTap: () =>
                       Navigator.pushNamed(context, 'VenueBookingStatus'),
-                  child: Text('Booking Details',
+                  child: const Text('Booking Details',
                       style: TextStyle(color: Colors.pink)),
                 ),
               ],
@@ -196,12 +198,12 @@ class _ManageWeddingState extends State<ManageWedding> {
         borderRadius: BorderRadius.circular(8.0),
         child: Container(
           width: double.infinity,
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           decoration: BoxDecoration(
             color: Colors.pink[50],
             borderRadius: BorderRadius.circular(8.0),
           ),
-          child: Text(
+          child: const Text(
             'Set Wedding Date',
             style: TextStyle(
               fontSize: 16.0,
@@ -224,7 +226,7 @@ class _ManageWeddingState extends State<ManageWedding> {
       onTap: () async {
         await Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => CountdownPage()),
+          MaterialPageRoute(builder: (context) => const CountdownPage()),
         );
         _fetchData(); // Refresh data when returning from CountdownPage
       },
@@ -233,14 +235,14 @@ class _ManageWeddingState extends State<ManageWedding> {
         borderRadius: BorderRadius.circular(8.0),
         child: Container(
           width: double.infinity,
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           decoration: BoxDecoration(
             color: Colors.pink[100],
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: Column(
             children: [
-              Text(
+              const Text(
                 'Wedding Countdown',
                 style: TextStyle(
                   fontSize: 18.0,
@@ -248,19 +250,19 @@ class _ManageWeddingState extends State<ManageWedding> {
                   color: Colors.white,
                 ),
               ),
-              SizedBox(height: 4.0),
+              const SizedBox(height: 4.0),
               Text(
                 '${_weddingDate!.day}/${_weddingDate!.month}/${_weddingDate!.year}',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.white70,
                 ),
               ),
-              SizedBox(height: 4.0),
+              const SizedBox(height: 4.0),
               Text(
                 '$days Days, $hours Hours, $minutes Minutes',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16.0,
                   color: Colors.white,
                 ),
@@ -290,11 +292,11 @@ class _ManageWeddingState extends State<ManageWedding> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Wedding Tentative',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
               ),
-              SizedBox(height: 12.0),
+              const SizedBox(height: 12.0),
               Text(
                 'Plan and manage your wedding schedule.',
                 style: TextStyle(fontSize: 16.0, color: Colors.grey[700]),
@@ -322,11 +324,11 @@ class _ManageWeddingState extends State<ManageWedding> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Guest List',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
               ),
-              SizedBox(height: 12.0),
+              const SizedBox(height: 12.0),
               Text(
                 'Manage your wedding guest list and RSVPs.',
                 style: TextStyle(fontSize: 16.0, color: Colors.grey[700]),
@@ -351,8 +353,8 @@ class _ManageWeddingState extends State<ManageWedding> {
           },
         );
       },
-      icon: Icon(Icons.add, color: Colors.pink),
-      label: Text('Add More Task', style: TextStyle(color: Colors.pink)),
+      icon: const Icon(Icons.add, color: Colors.pink),
+      label: const Text('Add More Task', style: TextStyle(color: Colors.pink)),
     );
   }
 }

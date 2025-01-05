@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 
 class ManageServiceRequest extends StatefulWidget {
+  const ManageServiceRequest({super.key});
+
   @override
   _ManageServiceRequestState createState() => _ManageServiceRequestState();
 }
@@ -29,12 +31,12 @@ class _ManageServiceRequestState extends State<ManageServiceRequest>
         backgroundColor: Colors.white,
         elevation: 1,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: Text(
+        title: const Text(
           'Manage service requests',
           style: TextStyle(
             color: Colors.black,
@@ -47,9 +49,9 @@ class _ManageServiceRequestState extends State<ManageServiceRequest>
           indicatorColor: Colors.redAccent,
           labelColor: Colors.black,
           unselectedLabelColor: Colors.grey.shade600,
-          labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-          unselectedLabelStyle: TextStyle(fontSize: 12),
-          tabs: [
+          labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+          unselectedLabelStyle: const TextStyle(fontSize: 12),
+          tabs: const [
             Tab(
               child: Text(
                 'Pending approval',
@@ -80,8 +82,8 @@ class _ManageServiceRequestState extends State<ManageServiceRequest>
       body: TabBarView(
         controller: _tabController,
         children: [
-          Center(child: Text('No pending approvals')), // Pending approval tab
-          Center(child: Text('No accepted service requests')), // Accepted tab
+          const Center(child: Text('No pending approvals')), // Pending approval tab
+          const Center(child: Text('No accepted service requests')), // Accepted tab
           Padding(
             padding: const EdgeInsets.only(top: 20.0),
             child: Align(
@@ -92,7 +94,7 @@ class _ManageServiceRequestState extends State<ManageServiceRequest>
               ),
             ),
           ), // Declined tab
-          Center(child: Text('No completed service requests')), // Completed tab
+          const Center(child: Text('No completed service requests')), // Completed tab
         ],
       ),
     );

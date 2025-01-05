@@ -4,6 +4,8 @@ import 'package:wedding2u_app/presentation/widgets/post_card.dart';
 import 'package:wedding2u_app/application/models/post.dart';
 
 class WeddingPosts extends StatefulWidget {
+  const WeddingPosts({super.key});
+
   @override
   _WeddingPostsState createState() => _WeddingPostsState();
 }
@@ -35,7 +37,7 @@ class _WeddingPostsState extends State<WeddingPosts> {
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },

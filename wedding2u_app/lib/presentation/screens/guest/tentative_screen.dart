@@ -4,7 +4,7 @@ import 'package:wedding2u_app/application/guest_list_controller.dart';
 class TentativeScreen extends StatefulWidget {
   final String invitationCode;
 
-  TentativeScreen({super.key, required this.invitationCode});
+  const TentativeScreen({super.key, required this.invitationCode});
 
   @override
   _TentativeScreenState createState() => _TentativeScreenState();
@@ -81,7 +81,7 @@ class _TentativeScreenState extends State<TentativeScreen> {
                               Container(
                                 width: 20,
                                 height: 20,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Colors.deepPurple,
                                   shape: BoxShape.circle,
                                 ),

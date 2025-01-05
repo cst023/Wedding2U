@@ -22,9 +22,9 @@ class AdminDashboard2 extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         "Welcome",
                         style: TextStyle(
@@ -48,13 +48,13 @@ class AdminDashboard2 extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => AdminProfilePage()),
+                            builder: (context) => const AdminProfilePage()),
                       );
                     },
                     child: CircleAvatar(
                       radius: 32.0, // Profile picture size
                       backgroundImage:
-                          AssetImage('assets/images/profile_avatar.jpg'),
+                          const AssetImage('assets/images/profile_avatar.jpg'),
                       backgroundColor: Colors.grey[200], // Fallback color
                     ),
                   )
@@ -66,13 +66,13 @@ class AdminDashboard2 extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Column(
               children: [
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 GestureDetector(
                 onTap: () {
                   // Navigation to manage venue catalog
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => VenueCatalog()),
+                  MaterialPageRoute(builder: (context) => const VenueCatalog()),
                   );
                 },
                 child: Container(
@@ -85,13 +85,13 @@ class AdminDashboard2 extends StatelessWidget {
                     color: Colors.grey.withOpacity(0.5),
                     spreadRadius: 2,
                     blurRadius: 5,
-                    offset: Offset(0, 3),
+                    offset: const Offset(0, 3),
                     ),
                   ],
                   ),
-                  child: Row(
+                  child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     Text(
                     "Manage Venue Catalog",
                     style: TextStyle(
@@ -110,7 +110,7 @@ class AdminDashboard2 extends StatelessWidget {
                   // Navigation to manage venue bookings
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => BookingListPage()),
+                  MaterialPageRoute(builder: (context) => const BookingListPage()),
                   );
                 },
                 child: Container(
@@ -123,13 +123,13 @@ class AdminDashboard2 extends StatelessWidget {
                     color: Colors.grey.withOpacity(0.5),
                     spreadRadius: 2,
                     blurRadius: 5,
-                    offset: Offset(0, 3),
+                    offset: const Offset(0, 3),
                     ),
                   ],
                   ),
-                  child: Row(
+                  child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     Text(
                     "Manage Venue Bookings",
                     style: TextStyle(
@@ -148,7 +148,7 @@ class AdminDashboard2 extends StatelessWidget {
                   // Navigation to moderate review posts
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => PostPage()),
+                  MaterialPageRoute(builder: (context) => const PostPage()),
                   );
                 },
                 child: Container(
@@ -161,13 +161,13 @@ class AdminDashboard2 extends StatelessWidget {
                     color: Colors.grey.withOpacity(0.5),
                     spreadRadius: 2,
                     blurRadius: 5,
-                    offset: Offset(0, 3),
+                    offset: const Offset(0, 3),
                     ),
                   ],
                   ),
-                  child: Row(
+                  child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     Text(
                     "Moderate Review Posts",
                     style: TextStyle(

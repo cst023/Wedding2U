@@ -6,6 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:device_calendar/device_calendar.dart';
 
 class CountdownPage extends StatefulWidget {
+  const CountdownPage({super.key});
+
   @override
   _CountdownPageState createState() => _CountdownPageState();
 }
@@ -72,7 +74,7 @@ Future<void> _addEventToCalendar() async {
     }
 
     final calendarsResult = await _deviceCalendarPlugin.retrieveCalendars();
-    if (!(calendarsResult?.isSuccess ?? false) || calendarsResult?.data == null) {
+    if (!(calendarsResult.isSuccess ?? false) || calendarsResult.data == null) {
       throw Exception('Failed to retrieve calendars.');
     }
 
@@ -90,7 +92,7 @@ Future<void> _addEventToCalendar() async {
           : '${_coupleNameController.text} Wedding',
       location: _locationController.text,
       start: TZDateTime.from(_weddingDate!, local),
-      end: TZDateTime.from(_weddingDate!.add(Duration(hours: 4)), local),
+      end: TZDateTime.from(_weddingDate!.add(const Duration(hours: 4)), local),
       description: 'Wedding ceremony countdown',
     );
 
@@ -141,7 +143,7 @@ Future<void> _addEventToCalendar() async {
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Changes saved successfully!'),
           backgroundColor: Colors.green,
         ),
@@ -168,14 +170,14 @@ Future<void> _addEventToCalendar() async {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Countdown',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -193,13 +195,13 @@ Future<void> _addEventToCalendar() async {
             ),
             label: Text(
               _isEditing ? 'Cancel' : 'Edit',
-              style: TextStyle(color: Colors.pinkAccent),
+              style: const TextStyle(color: Colors.pinkAccent),
             ),
           ),
         ],
       ),
       body: _isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -215,13 +217,13 @@ Future<void> _addEventToCalendar() async {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
 
                   // Couple Name Section
                   _isEditing
                       ? TextField(
                           controller: _coupleNameController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'Couple Name',
                             hintText: 'Enter Couple Name (e.g. Javier & Syahira)',
                             border: OutlineInputBorder(),
@@ -231,18 +233,18 @@ Future<void> _addEventToCalendar() async {
                           _coupleNameController.text.isEmpty
                               ? ''
                               : _coupleNameController.text,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Cursive',
                           ),
                         ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
                   // Location Section
                   _isEditing
                       ? TextField(
                           controller: _locationController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'Location',
                             hintText: 'Enter Wedding Venue',
                             border: OutlineInputBorder(),
@@ -258,7 +260,7 @@ Future<void> _addEventToCalendar() async {
                             color: Colors.grey[700],
                           ),
                         ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
                   // Wedding Date Section
                   _isEditing
                       ? GestureDetector(
@@ -281,7 +283,7 @@ Future<void> _addEventToCalendar() async {
                           child: TextField(
                             controller: _weddingDateController,
                             enabled: false, 
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: 'Wedding Date',
                               hintText: 'Select Wedding Date',
                               border: OutlineInputBorder(),
@@ -298,7 +300,7 @@ Future<void> _addEventToCalendar() async {
                             color: Colors.grey[700],
                           ),
                         ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
 
                   // Countdown Section
                   if (_weddingDate != null)
@@ -311,7 +313,7 @@ Future<void> _addEventToCalendar() async {
                             label: 'Minutes', value: '${_minutesLeft()}'),
                       ],
                     ),
-                  Spacer(),
+                  const Spacer(),
 
                   // Button Section
                   if (_isEditing)
@@ -325,7 +327,7 @@ Future<void> _addEventToCalendar() async {
                           ),
                         ),
                         onPressed: _saveChanges,
-                        child: Text(
+                        child: const Text(
                           'Save Changes',
                           style: TextStyle(color: Colors.white),
                         ),
@@ -390,7 +392,7 @@ class CountdownItem extends StatelessWidget {
   final String label;
   final String value;
 
-  const CountdownItem({
+  const CountdownItem({super.key, 
     required this.label,
     required this.value,
   });
@@ -401,12 +403,12 @@ class CountdownItem extends StatelessWidget {
       children: [
         Text(
           value,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 24.0,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 4.0),
+        const SizedBox(height: 4.0),
         Text(
           label,
           style: TextStyle(

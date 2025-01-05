@@ -4,6 +4,8 @@ import 'package:wedding2u_app/data/firebase_auth_service.dart';
 import 'package:wedding2u_app/utils/input_validation.dart';
 
 class ForgotPassword extends StatefulWidget {
+  const ForgotPassword({super.key});
+
   @override
   _ForgotPasswordState createState() => _ForgotPasswordState();
 }
@@ -13,14 +15,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   final ForgotPasswordLogic _forgotPasswordLogic =
       ForgotPasswordLogic(FirebaseAuthService());
   String email = "";
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   void _resetPassword() async {
     if (_formKey.currentState?.validate() ?? false) {
       try {
         await _forgotPasswordLogic.resetPassword(email);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text("Password reset email sent! Check your inbox."),
             backgroundColor: Colors.green,
           ),
@@ -44,12 +46,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       appBar: AppBar(
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pushNamed(context, 'SignIn');
           },
         ),
-        title: Text(
+        title: const Text(
           'Forgot Password',
           style: TextStyle(
             color: Colors.black,
@@ -65,20 +67,20 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                SizedBox(height: 50.0),
+                const SizedBox(height: 50.0),
 
-                Center(
+                const Center(
                   child: Text(
                     'Enter your email to reset password',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                   ),
                 ),
 
-                SizedBox(height: 30.0),
+                const SizedBox(height: 30.0),
 
                 // Email input
                 TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Your Email',
                     icon: Icon(Icons.email),
                   ),
@@ -88,7 +90,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   controller: _controller,
                 ),
 
-                SizedBox(height: 50.0),
+                const SizedBox(height: 50.0),
 
                 // Reset Password Button
                 Center(
@@ -101,7 +103,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       ),
                     ),
                     onPressed: _resetPassword,
-                    child: Text('Reset Password'),
+                    child: const Text('Reset Password'),
                   ),
                 ),
               ],

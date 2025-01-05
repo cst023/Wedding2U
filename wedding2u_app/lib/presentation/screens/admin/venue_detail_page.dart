@@ -5,7 +5,7 @@ import 'package:wedding2u_app/presentation/screens/admin/venue_catalog.dart';
 class VenueDetailPage extends StatefulWidget {
   final String venueId; // ID of the venue to fetch details for
 
-  VenueDetailPage({required this.venueId});
+  const VenueDetailPage({super.key, required this.venueId});
 
   @override
   _VenueDetailPageState createState() => _VenueDetailPageState();
@@ -54,7 +54,7 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
         venueDescController.text.isEmpty ||
         packageDescController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('All fields are required!'),
           backgroundColor: Colors.red,
         ),
@@ -66,7 +66,7 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
         venueDescController.text == venueData!['venue_desc'] &&
         packageDescController.text == venueData!['service_included']) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('No changes to save.'),
         ),
       );
@@ -96,7 +96,7 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Venue details updated successfully!'),
           backgroundColor: Colors.green,
         ),
@@ -104,7 +104,7 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
     } catch (e) {
       print('Error updating venue: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Error updating venue details.'),
           backgroundColor: Colors.red,
         ),
@@ -116,23 +116,23 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Venue Details',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
         elevation: 0.0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => VenueCatalog(),
+              builder: (context) => const VenueCatalog(),
             ),
           ),
         ),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(1.0),
+          preferredSize: const Size.fromHeight(1.0),
           child: Container(
             color: Colors.grey[300],
             height: 1.0,
@@ -140,12 +140,12 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
         ),
       ),
       body: isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : venueData == null
-              ? Center(child: Text('Venue details not available'))
+              ? const Center(child: Text('Venue details not available'))
               : SafeArea(
                   child: SingleChildScrollView(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Card(
                       elevation: 4.0,
                       shape: RoundedRectangleBorder(
@@ -158,7 +158,7 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                           children: [
                             // Venue Image
                             ClipRRect(
-                              borderRadius: BorderRadius.vertical(
+                              borderRadius: const BorderRadius.vertical(
                                   top: Radius.circular(12.0)),
                               child: Image.asset(
                                 'assets/images/wedding_dais.jpg',
@@ -176,52 +176,52 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       // Name
-                                      Text(
+                                      const Text(
                                         'Venue Name',
                                         style: TextStyle(fontSize: 16.0),
                                       ),
-                                      SizedBox(height: 8.0),
+                                      const SizedBox(height: 8.0),
                                       TextField(
                                         controller: nameController,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           border: OutlineInputBorder(),
                                           labelText: 'Enter Venue Name',
                                         ),
                                       ),
-                                      SizedBox(height: 16.0),
+                                      const SizedBox(height: 16.0),
 
                                       // Venue Description
-                                      Text(
+                                      const Text(
                                         'Venue Description',
                                         style: TextStyle(fontSize: 16.0),
                                       ),
-                                      SizedBox(height: 8.0),
+                                      const SizedBox(height: 8.0),
                                       TextField(
                                         controller: venueDescController,
                                         maxLines: 3,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           border: OutlineInputBorder(),
                                           labelText: 'Enter Venue Description',
                                         ),
                                       ),
-                                      SizedBox(height: 16.0),
+                                      const SizedBox(height: 16.0),
 
                                       // Package Description
-                                      Text(
+                                      const Text(
                                         'Package Description',
                                         style: TextStyle(fontSize: 16.0),
                                       ),
-                                      SizedBox(height: 8.0),
+                                      const SizedBox(height: 8.0),
                                       TextField(
                                         controller: packageDescController,
                                         maxLines: 3,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           border: OutlineInputBorder(),
                                           labelText:
                                               'Enter Package Description',
                                         ),
                                       ),
-                                      SizedBox(height: 26.0),
+                                      const SizedBox(height: 26.0),
 
                                       // Buttons
                                       Row(
@@ -235,15 +235,15 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                                 context: context,
                                                 builder: (context) =>
                                                     AlertDialog(
-                                                  title: Text('Delete Venue'),
-                                                  content: Text(
+                                                  title: const Text('Delete Venue'),
+                                                  content: const Text(
                                                       'Are you sure you want to delete this venue?'),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               context, false),
-                                                      child: Text('Cancel'),
+                                                      child: const Text('Cancel'),
                                                     ),
                                                     ElevatedButton(
                                                       onPressed: () =>
@@ -253,7 +253,7 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                                           .styleFrom(
                                                               backgroundColor:
                                                                   Colors.red),
-                                                      child: Text('Delete'),
+                                                      child: const Text('Delete'),
                                                     ),
                                                   ],
                                                 ),
@@ -266,7 +266,7 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                                           widget.venueId);
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(
-                                                    SnackBar(
+                                                    const SnackBar(
                                                       content: Text(
                                                           'Venue deleted successfully!'),
                                                       backgroundColor:
@@ -277,7 +277,7 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) =>
-                                                          VenueCatalog(),
+                                                          const VenueCatalog(),
                                                     ),
                                                   ); // Go back after deletion
                                                 } catch (e) {
@@ -285,7 +285,7 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                                       'Error deleting venue: $e');
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(
-                                                    SnackBar(
+                                                    const SnackBar(
                                                       content: Text(
                                                           'Error deleting venue.'),
                                                       backgroundColor:
@@ -297,11 +297,11 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                             },
                                             style: ElevatedButton.styleFrom(
                                               backgroundColor: Colors.red,
-                                              padding: EdgeInsets.symmetric(
+                                              padding: const EdgeInsets.symmetric(
                                                   vertical: 12.0,
                                                   horizontal: 24.0),
                                             ),
-                                            child: Text(
+                                            child: const Text(
                                               'Delete Venue',
                                               style: TextStyle(
                                                   color: Colors.white),
@@ -311,11 +311,11 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                             onPressed: _saveChanges,
                                             style: ElevatedButton.styleFrom(
                                               backgroundColor: Colors.green,
-                                              padding: EdgeInsets.symmetric(
+                                              padding: const EdgeInsets.symmetric(
                                                   vertical: 12.0,
                                                   horizontal: 24.0),
                                             ),
-                                            child: Text(
+                                            child: const Text(
                                               'Save Changes',
                                               style: TextStyle(
                                                   color: Colors.white),
@@ -323,7 +323,7 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                           ),
                                         ],
                                       ),
-                                      SizedBox(height: 16),
+                                      const SizedBox(height: 16),
                                       ElevatedButton(
                                         onPressed: () {
                                           setState(() {
@@ -341,10 +341,10 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                         },
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor: Colors.grey[500],
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                               vertical: 12.0, horizontal: 24.0),
                                         ),
-                                        child: Text(
+                                        child: const Text(
                                           'Cancel' ,
                                           style: TextStyle(color: Colors.white),
                                         ),
@@ -358,12 +358,12 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                       // Name
                                       Text(
                                         venueData!['name'] ?? 'Unknown',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 22.0,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                      SizedBox(height: 8.0),
+                                      const SizedBox(height: 8.0),
 
                                       // Venue Description
                                       Text(
@@ -374,7 +374,7 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                           color: Colors.grey[700],
                                         ),
                                       ),
-                                      SizedBox(height: 8.0),
+                                      const SizedBox(height: 8.0),
 
                                       // Package Description
                                       Text(
@@ -400,10 +400,10 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.pink[400],
-                                    padding: EdgeInsets.symmetric(
+                                    padding: const EdgeInsets.symmetric(
                                         vertical: 12.0, horizontal: 24.0),
                                   ),
-                                  child: Text(
+                                  child: const Text(
                                     'Edit Venue Details',
                                     style: TextStyle(color: Colors.white),
                                   ),

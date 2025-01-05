@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 
 class CustomerProfile extends StatefulWidget {
+  const CustomerProfile({super.key});
+
   @override
  @override
   _CustomerProfileState createState() => _CustomerProfileState();
@@ -16,10 +18,10 @@ class _CustomerProfileState extends State<CustomerProfile> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () {},
         ),
-        title: Text(
+        title: const Text(
           'Profile',
           style: TextStyle(
             color: Colors.black,
@@ -39,7 +41,7 @@ class _CustomerProfileState extends State<CustomerProfile> {
                 height: 180,
                 decoration: BoxDecoration(
                   color: Colors.grey.shade200,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(50),
                     bottomRight: Radius.circular(50),
                   ),
@@ -48,7 +50,7 @@ class _CustomerProfileState extends State<CustomerProfile> {
               Positioned(
                 bottom: -60,
                 left: MediaQuery.of(context).size.width / 2 - 60,
-                child: CircleAvatar(
+                child: const CircleAvatar(
                   radius: 60,
                   backgroundColor: Colors.white,
                   child: CircleAvatar(
@@ -60,8 +62,8 @@ class _CustomerProfileState extends State<CustomerProfile> {
               ),
             ],
           ),
-          SizedBox(height: 70),
-          Text(
+          const SizedBox(height: 70),
+          const Text(
             'Robbie Samir',
             style: TextStyle(
               fontSize: 22,
@@ -69,16 +71,16 @@ class _CustomerProfileState extends State<CustomerProfile> {
               color: Colors.black,
             ),
           ),
-          SizedBox(height: 5),
-          Text(
+          const SizedBox(height: 5),
+          const Text(
             'Interior designer',
             style: TextStyle(
               fontSize: 16,
               color: Colors.black54,
             ),
           ),
-          SizedBox(height: 5),
-          Row(
+          const SizedBox(height: 5),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(Icons.location_on, size: 16, color: Colors.black54),
@@ -92,32 +94,32 @@ class _CustomerProfileState extends State<CustomerProfile> {
               ),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
-                icon: Icon(Icons.photo_camera, size: 40),
+                icon: const Icon(Icons.photo_camera, size: 40),
                 onPressed: () {},
               ),
-              SizedBox(width: 15),
+              const SizedBox(width: 15),
               IconButton(
-                icon: Icon(Icons.facebook, size: 40),
+                icon: const Icon(Icons.facebook, size: 40),
                 onPressed: () {},
               ),
-              SizedBox(width: 15),
+              const SizedBox(width: 15),
               IconButton(
-                icon: Icon(Icons.chat, size: 40),
+                icon: const Icon(Icons.chat, size: 40),
                 onPressed: () {},
               ),
-              SizedBox(width: 15),
+              const SizedBox(width: 15),
               IconButton(
-                icon: Icon(Icons.alternate_email, size: 40),
+                icon: const Icon(Icons.alternate_email, size: 40),
                 onPressed: () {},
               ),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           SizedBox(
             width: 200,
             height: 45,
@@ -129,7 +131,7 @@ class _CustomerProfileState extends State<CustomerProfile> {
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              child: Text(
+              child: const Text(
                 'Contact',
                 style: TextStyle(fontSize: 18, color: Colors.white),
               ),

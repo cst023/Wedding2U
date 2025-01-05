@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:wedding2u_app/application/manage_wedding_controller.dart';
 
 class TentativePage extends StatefulWidget {
+  const TentativePage({super.key});
+
   @override
   _TentativePageState createState() => _TentativePageState();
 }
@@ -270,20 +272,20 @@ class _TentativePageState extends State<TentativePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tentative', style: TextStyle(color: Colors.black)),
+        title: const Text('Tentative', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         elevation: 1.0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
       ),
       body: _isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : events.isEmpty
-              ? Center(child: Text('No events added.'))
+              ? const Center(child: Text('No events added.'))
               : Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: ListView.builder(
@@ -297,7 +299,7 @@ class _TentativePageState extends State<TentativePage> {
                               Container(
                                 width: 20,
                                 height: 20,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Colors.deepPurple,
                                   shape: BoxShape.circle,
                                 ),
@@ -313,7 +315,7 @@ class _TentativePageState extends State<TentativePage> {
                           const SizedBox(width: 10),
                           Expanded(
                             child: Card(
-                              margin: EdgeInsets.symmetric(vertical: 8.0),
+                              margin: const EdgeInsets.symmetric(vertical: 8.0),
                               child: ListTile(
                                 title: Text(event['name'] ?? ''),
                                 subtitle: Column(
@@ -328,14 +330,14 @@ class _TentativePageState extends State<TentativePage> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     IconButton(
-                                      icon: Icon(Icons.edit),
+                                      icon: const Icon(Icons.edit),
                                       onPressed: () => _addOrEditEvent(
                                         event: event,
                                         index: index,
                                       ),
                                     ),
                                     IconButton(
-                                      icon: Icon(Icons.delete),
+                                      icon: const Icon(Icons.delete),
                                       onPressed: () async {
                                         final clientId = FirebaseAuth
                                             .instance.currentUser!.uid;
@@ -388,7 +390,7 @@ class _TentativePageState extends State<TentativePage> {
                 ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _addOrEditEvent(),
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
