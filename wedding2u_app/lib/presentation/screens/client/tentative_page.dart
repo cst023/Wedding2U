@@ -121,65 +121,77 @@ class _TentativePageState extends State<TentativePage> {
   }
 
   void _showEventDialog({
-    required TextEditingController eventNameController,
-    required TextEditingController descriptionController,
-    required TimeOfDay? selectedTime,
-    required VoidCallback onSave,
-    required ValueChanged<TimeOfDay> onTimeSelected,
-  }) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text('Add or Edit Event'),
-          content: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextField(
-                  controller: eventNameController,
-                  decoration: const InputDecoration(labelText: 'Event Name'),
+  required TextEditingController eventNameController,
+  required TextEditingController descriptionController,
+  required TimeOfDay? selectedTime,
+  required VoidCallback onSave,
+  required ValueChanged<TimeOfDay> onTimeSelected,
+}) {
+  final TextEditingController timeController = TextEditingController(
+    text: selectedTime != null ? _formatTime(selectedTime) : '',
+  );
+
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('Add or Edit Event'),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Event Name Field
+              TextField(
+                controller: eventNameController,
+                decoration: const InputDecoration(labelText: 'Event Name'),
+              ),
+              const SizedBox(height: 10),
+
+              // Time Input Field
+              TextField(
+                controller: timeController,
+                decoration: const InputDecoration(
+                  labelText: 'Time (HH:mm)',
+                  suffixIcon: Icon(Icons.access_time),
                 ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () async {
-                    final pickedTime = await showTimePicker(
-                      context: context,
-                      initialTime: selectedTime ?? TimeOfDay.now(),
-                    );
-                    if (pickedTime != null) {
-                      onTimeSelected(pickedTime);
-                    }
-                  },
-                  child: Text(
-                    selectedTime != null
-                        ? 'Time: ${selectedTime.format(context)}'
-                        : 'Select Time',
-                  ),
-                ),
-                const SizedBox(height: 10),
-                TextField(
-                  controller: descriptionController,
-                  decoration: const InputDecoration(
-                      labelText: 'Description (optional)'),
-                ),
-              ],
-            ),
+                readOnly: true, // Disable manual typing to avoid format issues
+                onTap: () async {
+                  final pickedTime = await showTimePicker(
+                    context: context,
+                    initialTime: selectedTime ?? TimeOfDay.now(),
+                  );
+                  if (pickedTime != null) {
+                    onTimeSelected(pickedTime);
+                    timeController.text = _formatTime(pickedTime);
+                  }
+                },
+              ),
+              const SizedBox(height: 10),
+
+              // Description Field
+              TextField(
+                controller: descriptionController,
+                decoration:
+                    const InputDecoration(labelText: 'Description (optional)'),
+              ),
+            ],
           ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Cancel'),
-            ),
-            ElevatedButton(
-              onPressed: onSave,
-              child: const Text('Save'),
-            ),
-          ],
-        );
-      },
-    );
-  }
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
+            onPressed: onSave,
+            child: const Text('Save'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
 
   bool _validateEventInputs({
     required TextEditingController eventNameController,
@@ -198,54 +210,56 @@ class _TentativePageState extends State<TentativePage> {
   }
 
   Future<void> _addEventToFirestore(Map<String, String> newEvent) async {
-    try {
-      final clientId = FirebaseAuth.instance.currentUser!.uid;
-      await ManageWeddingController().addEvent(
-        clientId: clientId,
-        eventName: newEvent['name']!,
-        startTime: newEvent['time']!,
-        description: newEvent['description'],
-      );
+  try {
+    final clientId = FirebaseAuth.instance.currentUser!.uid;
+    final eventId = await ManageWeddingController().addEvent(
+      clientId: clientId,
+      eventName: newEvent['name']!,
+      startTime: newEvent['time']!,
+      description: newEvent['description'],
+    );
 
-      setState(() {
-        events.add(newEvent);
-        _sortEvents();
-      });
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error adding event: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
+    setState(() {
+      events.add({...newEvent, 'id': eventId});  // Add eventId to the local map
+      _sortEvents();
+    });
+  } catch (e) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Error adding event: $e'),
+        backgroundColor: Colors.red,
+      ),
+    );
   }
+}
+
 
   Future<void> _updateEventInFirestore(
-      int index, String eventId, Map<String, String> updatedEvent) async {
-    try {
-      final clientId = FirebaseAuth.instance.currentUser!.uid;
-      await ManageWeddingController().updateEvent(
-        clientId: clientId,
-        eventId: eventId,
-        eventName: updatedEvent['name']!,
-        startTime: updatedEvent['time']!,
-        description: updatedEvent['description'],
-      );
+    int index, String eventId, Map<String, String> updatedEvent) async {
+  try {
+    final clientId = FirebaseAuth.instance.currentUser!.uid;
+    await ManageWeddingController().updateEvent(
+      clientId: clientId,
+      eventId: eventId,
+      eventName: updatedEvent['name']!,
+      startTime: updatedEvent['time']!,
+      description: updatedEvent['description'],
+    );
 
-      setState(() {
-        events[index] = updatedEvent;
-        _sortEvents();
-      });
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error updating event: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
+    setState(() {
+      events[index] = {...updatedEvent, 'id': eventId};  // Preserve the eventId
+      _sortEvents();
+    });
+  } catch (e) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Error updating event: $e'),
+        backgroundColor: Colors.red,
+      ),
+    );
   }
+}
+
 
   void _sortEvents() {
     events.sort((a, b) {

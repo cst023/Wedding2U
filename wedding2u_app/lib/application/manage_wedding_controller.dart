@@ -284,19 +284,20 @@ Future<void> updateTaskStatus({
   );
 }
 
-Future<void> addEvent({
+Future<String> addEvent({
   required String clientId,
   required String eventName,
   required String startTime,
   String? description,
 }) async {
   try {
-    await _firestoreService.addEventToTentative(
+    final eventId = await _firestoreService.addEventToTentative(
       clientId: clientId,
       eventName: eventName,
       startTime: startTime,
       description: description,
     );
+    return eventId;  // Return the event ID
   } catch (e) {
     throw Exception('Error adding event: $e');
   }

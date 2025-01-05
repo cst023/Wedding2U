@@ -387,23 +387,24 @@ Future<void> deleteTaskFromChecklist({
   }
 }
 
-Future<void> addEventToTentative({
+Future<String> addEventToTentative({
   required String clientId,
   required String eventName,
   required String startTime,
   String? description,
 }) async {
   try {
-    final tentativeRef = _firestore
+    final docRef = _firestore
         .collection('weddingPlans')
         .doc(clientId)
         .collection('tentative');
 
-    await tentativeRef.add({
+    await docRef.add({
       'event_name': eventName,
       'start_time': startTime,
       'description': description ?? '',
     });
+    return docRef.id;
   } catch (e) {
     throw Exception('Error adding event to tentative: $e');
   }
