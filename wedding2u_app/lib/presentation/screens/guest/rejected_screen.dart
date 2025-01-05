@@ -36,7 +36,7 @@ class RejectedScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => ContinueGuest()),
+                  MaterialPageRoute(builder: (context) => const ContinueGuest()),
                 );
               },
               child: const Text(
