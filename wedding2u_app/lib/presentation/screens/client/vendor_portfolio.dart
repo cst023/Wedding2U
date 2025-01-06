@@ -85,7 +85,7 @@ class _VendorPortfolioPageState extends State<VendorPortfolioPage> {
                 Container(
                   height: 200,
                   width: double.infinity,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/vendor_images/gerry_banner.jpg'),
                       fit: BoxFit.cover,

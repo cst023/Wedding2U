@@ -260,7 +260,7 @@ class _ClientEditProfileState extends State<ClientEditProfile> {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Save Changes',
                         style: TextStyle(fontSize: 16),
                       ),

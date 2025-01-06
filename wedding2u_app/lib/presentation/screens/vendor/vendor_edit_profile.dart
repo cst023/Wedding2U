@@ -83,7 +83,7 @@ class _VendorEditProfileState extends State<VendorEditProfile> {
       await _profileController.updateUserData(uid, updatedData);
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => VendorProfilePage()),
+        MaterialPageRoute(builder: (context) => const VendorProfilePage()),
       );
     } catch (e) {
       // Handle errors
@@ -264,7 +264,7 @@ class _VendorEditProfileState extends State<VendorEditProfile> {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Save Changes',
                         style: TextStyle(fontSize: 16),
                       ),

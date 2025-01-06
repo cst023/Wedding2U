@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:wedding2u_app/application/user_profile_controller.dart';
-import 'package:wedding2u_app/presentation/screens/admin/admin_dashboard.dart';
 import 'package:wedding2u_app/presentation/screens/admin/admin_dashboard2.dart';
 import 'package:wedding2u_app/presentation/screens/admin/admin_edit_profile.dart';
 

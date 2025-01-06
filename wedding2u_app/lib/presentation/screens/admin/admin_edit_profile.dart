@@ -84,7 +84,7 @@ class _AdminEditProfileState extends State<AdminEditProfile> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => AdminProfilePage(),
+          builder: (context) => const AdminProfilePage(),
         ),
       );
     } catch (e) {
@@ -265,7 +265,7 @@ class _AdminEditProfileState extends State<AdminEditProfile> {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Save Changes',
                         style: TextStyle(fontSize: 16),
                       ),
