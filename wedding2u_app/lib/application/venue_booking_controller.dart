@@ -3,6 +3,14 @@ import 'package:wedding2u_app/data/firestore_service.dart';
 class VenueBookingController {
   final FirestoreService _firestoreService = FirestoreService();
 
+  Future<Map<String, dynamic>?> fetchVenueDetails(String venueId) async {
+    try {
+      return await _firestoreService.fetchVenueById(venueId);
+    } catch (e) {
+      throw Exception('Error fetching venue details: $e');
+    }
+  }
+
   Future<void> createBooking({
     required String bookingDate,
     required String clientId,

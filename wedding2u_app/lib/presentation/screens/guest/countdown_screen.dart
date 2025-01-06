@@ -55,7 +55,7 @@ class _CountdownScreenState extends State<CountdownScreen> {
       }
 
       final calendarsResult = await _deviceCalendarPlugin.retrieveCalendars();
-      if (!(calendarsResult.isSuccess ?? false) || calendarsResult.data == null) {
+      if (!(calendarsResult.isSuccess) || calendarsResult.data == null) {
         throw Exception('Failed to retrieve calendars.');
       }
 

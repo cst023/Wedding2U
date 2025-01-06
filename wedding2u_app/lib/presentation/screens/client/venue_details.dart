@@ -29,28 +29,21 @@ class _VenueDetailsState extends State<VenueDetails> {
     _checkExistingBooking();
   }
 
-  //TODO: use fetch method in firestore_service.dart to get venue details
   Future<void> _fetchVenueDetails() async {
+    setState(() {
+      isLoading = true;
+    });
     try {
-      DocumentSnapshot snapshot =
-          await _firestore.collection('venues').doc(widget.venueId).get();
-
-      if (snapshot.exists) {
-        setState(() {
-          venueData = snapshot.data() as Map<String, dynamic>;
-          isLoading = false;
-        });
-      } else {
-        setState(() {
-          isLoading = false;
-        });
+      venueData = await _bookingController.fetchVenueDetails(widget.venueId);
+      if (venueData == null) {
         throw Exception('Venue not found');
       }
     } catch (e) {
+      _showMessage('Error fetching venue details: $e', Colors.red);
+    } finally {
       setState(() {
         isLoading = false;
       });
-      print('Error fetching venue details: $e');
     }
   }
 
