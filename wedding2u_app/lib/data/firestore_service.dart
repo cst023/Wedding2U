@@ -677,5 +677,23 @@ Future<List<Map<String, dynamic>>> fetchVendorsByRole(String role) async {
     }
   }
 
+  // Fetch vendor data
+  Future<Map<String, dynamic>> fetchVendorData(String vendorId) async {
+    final vendorDoc = await _firestore.collection('vendors').doc(vendorId).get();
+    if (!vendorDoc.exists) throw Exception('Vendor not found');
+    return vendorDoc.data()!;
+  }
+
+  // Fetch gallery images
+  Future<List<String>> fetchGalleryImages(String vendorId) async {
+    final gallerySnapshot = await _firestore
+        .collection('vendors')
+        .doc(vendorId)
+        .collection('gallery')
+        .get();
+
+    return gallerySnapshot.docs.map((doc) => doc['imageUrl'] as String).toList();
+  }
+
 
 }
