@@ -49,7 +49,7 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pushNamed(context, 'VendorDashboard');
             },
           ),
         ),
@@ -58,50 +58,50 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
             : userData == null
                 ? const Center(child: Text('Failed to load profile data'))
                 : SafeArea(
-          child: Column(
-            mainAxisAlignment:
-                MainAxisAlignment.spaceBetween, // Space between elements
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      // Profile cover image
-                      Stack(
-                        alignment: Alignment.center,
-                        clipBehavior: Clip.none,
-                        children: [
-                          Container(
-                            height: 200,
-                            width: double.infinity,
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/vendor_role_images/background_photo.jpg'),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            bottom: -50, // Adjust positioning
-                            child: CircleAvatar(
-                              radius: 60,
-                              backgroundImage: const AssetImage(
-                                  'assets/vendor_images/gerry.jpg'),
-                              backgroundColor:
-                                  Colors.grey[200], // Fallback color
-                            ),
-                          ),
-                        ],
-                      ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment
+                          .spaceBetween, // Space between elements
+                      children: [
+                        Expanded(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                // Profile cover image
+                                Stack(
+                                  alignment: Alignment.center,
+                                  clipBehavior: Clip.none,
+                                  children: [
+                                    Container(
+                                      height: 200,
+                                      width: double.infinity,
+                                      decoration: const BoxDecoration(
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/vendor_role_images/background_photo.jpg'),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned(
+                                      bottom: -50, // Adjust positioning
+                                      child: CircleAvatar(
+                                        radius: 60,
+                                        backgroundImage: const AssetImage(
+                                            'assets/vendor_images/gerry.jpg'),
+                                        backgroundColor:
+                                            Colors.grey[200], // Fallback color
+                                      ),
+                                    ),
+                                  ],
+                                ),
 
-                      const SizedBox(
-                          height:
-                              60), // Space to account for profile picture overlap
+                                const SizedBox(
+                                    height:
+                                        60), // Space to account for profile picture overlap
 
-                      // Name
-                      Text(
+                                // Name
+                                Text(
                                   userData!['name'] ?? '',
                                   style: const TextStyle(
                                     fontSize: 22,
@@ -109,10 +109,10 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
                                   ),
                                 ),
 
-                      const SizedBox(height: 8),
+                                const SizedBox(height: 8),
 
-                      // Location
-                       Row(
+                                // Location
+                                Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Icon(
@@ -131,115 +131,116 @@ class _VendorProfilePageState extends State<VendorProfilePage> {
                                   ],
                                 ),
 
-                      const SizedBox(height: 20),
+                                const SizedBox(height: 20),
 
-                      // Social media icons row
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              // TODO: Link to Instagram
-                              print('Instagram clicked');
-                            },
-                            child: Image.asset(
-                              'assets/images/ig_icon.jpg', // Replace with your IG image path
-                              height: 40,
-                              width: 40,
-                            ),
-                          ),
-                          const SizedBox(width: 20), // Add spacing between images
-                          GestureDetector(
-                            onTap: () {
-                              // TODO: Link to Facebook
-                              print('Facebook clicked');
-                            },
-                            child: Image.asset(
-                              'assets/images/fb_icon.jpg', // Replace with your Facebook image path
-                              height: 40,
-                              width: 40,
-                            ),
-                          ),
-                          const SizedBox(width: 20),
-                          GestureDetector(
-                            onTap: () {
-                              // TODO: Link to WhatsApp
-                              print('WhatsApp clicked');
-                            },
-                            child: Image.asset(
-                              'assets/images/whatsapp_icon.jpg', // Replace with your WhatsApp image path
-                              height: 40,
-                              width: 40,
-                            ),
-                          ),
-                          const SizedBox(width: 20),
-                          GestureDetector(
-                            onTap: () {
-                              // TODO: Link to X (Twitter)
-                              print('X clicked');
-                            },
-                            child: Image.asset(
-                              'assets/images/x_icon.jpg', // Replace with your Twitter image path
-                              height: 40,
-                              width: 40,
-                            ),
-                          ),
-                        ],
-                      ),
+                                // Social media icons row
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        // TODO: Link to Instagram
+                                        print('Instagram clicked');
+                                      },
+                                      child: Image.asset(
+                                        'assets/images/ig_icon.jpg', // Replace with your IG image path
+                                        height: 40,
+                                        width: 40,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                        width:
+                                            20), // Add spacing between images
+                                    GestureDetector(
+                                      onTap: () {
+                                        // TODO: Link to Facebook
+                                        print('Facebook clicked');
+                                      },
+                                      child: Image.asset(
+                                        'assets/images/fb_icon.jpg', // Replace with your Facebook image path
+                                        height: 40,
+                                        width: 40,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 20),
+                                    GestureDetector(
+                                      onTap: () {
+                                        // TODO: Link to WhatsApp
+                                        print('WhatsApp clicked');
+                                      },
+                                      child: Image.asset(
+                                        'assets/images/whatsapp_icon.jpg', // Replace with your WhatsApp image path
+                                        height: 40,
+                                        width: 40,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 20),
+                                    GestureDetector(
+                                      onTap: () {
+                                        // TODO: Link to X (Twitter)
+                                        print('X clicked');
+                                      },
+                                      child: Image.asset(
+                                        'assets/images/x_icon.jpg', // Replace with your Twitter image path
+                                        height: 40,
+                                        width: 40,
+                                      ),
+                                    ),
+                                  ],
+                                ),
 
-                      const SizedBox(height: 20),
+                                const SizedBox(height: 20),
 
-                      // Edit Profile button
-                      ElevatedButton(
-                        onPressed: () {
-                          
-                          print('Edit Profile Button Pressed');
-                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const VendorEditProfile()),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.pink[200],
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+                                // Edit Profile button
+                                ElevatedButton(
+                                  onPressed: () {
+                                    print('Edit Profile Button Pressed');
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const VendorEditProfile()),
+                                    );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.pink[200],
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                  child: const Text(
+                                    'Edit Profile',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+
+                                const SizedBox(height: 20),
+                              ],
+                            ),
                           ),
                         ),
-                        child: const Text(
-                          'Edit Profile',
-                          style: TextStyle(color: Colors.white),
+
+                        // Log out text at the bottom
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 16.0),
+                          child: TextButton(
+                            onPressed: () {
+                              // TODO: Handle log out action
+                              auth.signOut();
+                              Navigator.pushNamed(context, 'SignIn');
+                            },
+                            child: const Text(
+                              'Log out',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.red,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-
-                      const SizedBox(height: 20),
-
-                    ],
-                  ),
-                ),
-              ),
-
-              // Log out text at the bottom
-              Padding(
-                padding: const EdgeInsets.only(bottom: 16.0),
-                child: TextButton(
-                  onPressed: () {
-                    // TODO: Handle log out action
-                    auth.signOut();
-                    Navigator.pushNamed(context, 'SignIn');
-                  },
-                  child: const Text(
-                    'Log out',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.red,
+                      ],
                     ),
                   ),
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }
