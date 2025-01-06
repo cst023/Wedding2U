@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:wedding2u_app/application/vendor_catalog_controller.dart';
 
-class PhotographersPage extends StatefulWidget {
-  const PhotographersPage({super.key});
+class MakeupArtistsPage extends StatefulWidget {
+  const MakeupArtistsPage({super.key});
 
   @override
-  _PhotographersPageState createState() => _PhotographersPageState();
+  _MakeupArtistsPageState createState() => _MakeupArtistsPageState();
 }
 
-class _PhotographersPageState extends State<PhotographersPage> {
+class _MakeupArtistsPageState extends State<MakeupArtistsPage> {
   final VendorController _vendorController = VendorController();
   bool _isLoading = true;
   List<Map<String, dynamic>> _vendors = [];
@@ -16,18 +16,18 @@ class _PhotographersPageState extends State<PhotographersPage> {
   @override
   void initState() {
     super.initState();
-    _fetchPhotographers();
+    _fetchMakeupArtists();
   }
 
-  Future<void> _fetchPhotographers() async {
+  Future<void> _fetchMakeupArtists() async {
     setState(() {
       _isLoading = true;
     });
 
     try {
-      final photographers = await _vendorController.getVendorsByRole('Photographer');
+      final makeupArtists = await _vendorController.getVendorsByRole('Makeup Artist');
       setState(() {
-        _vendors = photographers;
+        _vendors = makeupArtists;
         _isLoading = false;
       });
     } catch (e) {
@@ -36,7 +36,7 @@ class _PhotographersPageState extends State<PhotographersPage> {
       });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Error fetching photographers: $e'),
+          content: Text('Error fetching makeup artists: $e'),
           backgroundColor: Colors.red,
         ),
       );
@@ -47,14 +47,14 @@ class _PhotographersPageState extends State<PhotographersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Photographers'),
+        title: const Text('Makeup Artists'),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _vendors.isEmpty
-              ? const Center(child: Text('No photographers found.'))
+              ? const Center(child: Text('No makeup artists found.'))
               : ListView.builder(
                   itemCount: _vendors.length,
                   itemBuilder: (context, index) {
@@ -112,7 +112,7 @@ class VendorCard extends StatelessWidget {
                 },
                 errorBuilder: (context, error, stackTrace) {
                   return Image.asset(
-                    'assets/vendor_images/placeholder_photographer.jpg', // Fallback image if network fails
+                    'assets/vendor_images/placeholder_makeup_artist.jpg', // Fallback image if network fails
                     fit: BoxFit.cover,
                   );
                 },
@@ -152,4 +152,3 @@ class VendorCard extends StatelessWidget {
     );
   }
 }
-

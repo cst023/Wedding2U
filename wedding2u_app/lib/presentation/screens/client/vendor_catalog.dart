@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wedding2u_app/presentation/screens/client/photographers.dart';
+import 'package:wedding2u_app/presentation/screens/client/makeupartists.dart';
+import 'package:wedding2u_app/presentation/screens/client/caterers.dart';
 
 class VendorCatalog extends StatefulWidget {
   const VendorCatalog({super.key});
@@ -49,7 +51,7 @@ class _VendorCatalogState extends State<VendorCatalog> {
               onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const PhotographersPage()),
+                MaterialPageRoute(builder: (context) => const MakeupArtistsPage()),
               );
               },
               child: const VendorCard(
@@ -63,7 +65,7 @@ class _VendorCatalogState extends State<VendorCatalog> {
               onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const PhotographersPage()),
+                MaterialPageRoute(builder: (context) => const CaterersPage()),
               );
               },
               child: const VendorCard(
