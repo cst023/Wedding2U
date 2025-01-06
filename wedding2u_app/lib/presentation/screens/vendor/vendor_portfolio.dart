@@ -9,6 +9,11 @@ class VendorPortfolio extends StatefulWidget {
 }
 
 class _VendorPortfolioState extends State<VendorPortfolio> {
+  final List<String> galleryImages = [
+    'assets/vendor_images/wedding1.jpg',
+    'assets/vendor_images/wedding2.jpg',
+    'assets/vendor_images/wedding3.jpg',
+  ]; // Placeholder image paths
 
   @override
   Widget build(BuildContext context) {
@@ -41,17 +46,15 @@ class _VendorPortfolioState extends State<VendorPortfolio> {
             Stack(
               clipBehavior: Clip.none,
               children: [
-                // Background Image
                 Container(
                   height: 110,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/vendor_role_images/background_photo.jpg'), 
+                      image: AssetImage('assets/vendor_role_images/background_photo.jpg'),
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
-                // Circular Profile Image
                 Positioned(
                   bottom: -50,
                   left: MediaQuery.of(context).size.width / 2 - 50,
@@ -59,8 +62,8 @@ class _VendorPortfolioState extends State<VendorPortfolio> {
                     radius: 50,
                     backgroundColor: Colors.white,
                     child: CircleAvatar(
-                      radius: 52,
-                      backgroundImage: AssetImage('assets/vendor_images/gerry.jpg'), 
+                      radius: 48,
+                      backgroundImage: AssetImage('assets/vendor_images/gerry.jpg'),
                     ),
                   ),
                 ),
@@ -125,10 +128,9 @@ class _VendorPortfolioState extends State<VendorPortfolio> {
               child: ElevatedButton.icon(
                 onPressed: () {
                   Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const EditPortfolio()),
-                          );
+                    context,
+                    MaterialPageRoute(builder: (context) => const EditPortfolio()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.grey.shade200,
@@ -141,8 +143,8 @@ class _VendorPortfolioState extends State<VendorPortfolio> {
                 label: const Text('Edit Portfolio'),
               ),
             ),
-            const SizedBox(height: 10),
-            // Gallery Section
+            const SizedBox(height: 20),
+            // Gallery Section Header
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
@@ -153,16 +155,25 @@ class _VendorPortfolioState extends State<VendorPortfolio> {
                 ),
               ),
             ),
-            const SizedBox(height: 5),
-            Container(
-              height: 120,
-              margin: const EdgeInsets.symmetric(horizontal: 16),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                image: const DecorationImage(
-                  image: AssetImage('assets/vendor_images/wedding1.jpg'), 
-                  fit: BoxFit.cover,
-                ),
+            const SizedBox(height: 10),
+            // Image Carousel
+            SizedBox(
+              height: 200,
+              child: PageView.builder(
+                controller: PageController(viewportFraction: 0.85),
+                itemCount: galleryImages.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      image: DecorationImage(
+                        image: AssetImage(galleryImages[index]),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
             const SizedBox(height: 20),
@@ -191,32 +202,6 @@ class _VendorPortfolioState extends State<VendorPortfolio> {
               ),
             ),
             const SizedBox(height: 20),
-            // Projects Section
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                'Projects',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ProjectCard(
-                  imagePath: 'assets/vendor_images/project1.jpg', 
-                  title: 'Amir & Aisyah | Hilton',
-                ),
-                ProjectCard(
-                  imagePath: 'assets/vendor_images/project2.jpg', 
-                  title: 'Iswan & Nurin | Cove55',
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
           ],
         ),
       ),
@@ -224,45 +209,4 @@ class _VendorPortfolioState extends State<VendorPortfolio> {
   }
 }
 
-class ProjectCard extends StatelessWidget {
-  final String imagePath;
-  final String title;
 
-  const ProjectCard({
-    super.key,
-    required this.imagePath,
-    required this.title,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          width: 150,
-          height: 100,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            image: DecorationImage(
-              image: AssetImage(imagePath),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        const SizedBox(height: 4),
-        SizedBox(
-          width: 150,
-          child: Text(
-            title,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 12,
-            ),
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-      ],
-    );
-  }
-}
