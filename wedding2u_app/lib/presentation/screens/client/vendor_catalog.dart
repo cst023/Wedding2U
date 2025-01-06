@@ -1,11 +1,8 @@
-import 'package:flutter/material.dart'; 
-import 'package:wedding2u_app/presentation/screens/client/photographers.dart'; 
-
+import 'package:flutter/material.dart';
+import 'package:wedding2u_app/presentation/screens/client/photographers.dart';
 
 class VendorCatalog extends StatefulWidget {
   const VendorCatalog({super.key});
-
-  //const VendorCatalog({super.key});
 
   @override
   _VendorCatalogState createState() => _VendorCatalogState();
@@ -15,11 +12,11 @@ class _VendorCatalogState extends State<VendorCatalog> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white, // White background
       appBar: AppBar(
         title: const Text('Vendors'),
         centerTitle: true,
-        leading:  IconButton(
+        leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
@@ -29,7 +26,8 @@ class _VendorCatalogState extends State<VendorCatalog> {
         foregroundColor: Colors.black,
         elevation: 1,
       ),
-      body: SingleChildScrollView(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
         child: Column(
           children: [
             // Photographer Section
@@ -47,16 +45,32 @@ class _VendorCatalogState extends State<VendorCatalog> {
               ),
             ),
             // Make-Up Artist Section
-            const VendorCard(
+            GestureDetector(
+              onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PhotographersPage()),
+              );
+              },
+              child: const VendorCard(
               imagePath: 'assets/vendor_images/makeup.jpg',
               icon: Icons.brush_outlined,
               label: 'Make-Up Artist',
+              ),
             ),
             // Caterer Section
-            const VendorCard(
+            GestureDetector(
+              onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PhotographersPage()),
+              );
+              },
+              child: const VendorCard(
               imagePath: 'assets/vendor_images/catering.jpg',
               icon: Icons.restaurant_outlined,
               label: 'Caterer',
+              ),
             ),
           ],
         ),
@@ -64,7 +78,6 @@ class _VendorCatalogState extends State<VendorCatalog> {
     );
   }
 }
-
 
 // Vendor Card Component
 class VendorCard extends StatelessWidget {
@@ -83,14 +96,15 @@ class VendorCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      height: 200,
+      width: double.infinity, // Full width
+      height: 210, // Fixed height for consistent size
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         image: DecorationImage(
           image: AssetImage(imagePath),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
-            Colors.black.withOpacity(0.5),
+            Colors.grey.withOpacity(0.2),
             BlendMode.darken,
           ),
         ),
@@ -119,4 +133,6 @@ class VendorCard extends StatelessWidget {
     );
   }
 }
+
+
 

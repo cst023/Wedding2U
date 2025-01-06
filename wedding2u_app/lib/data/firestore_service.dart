@@ -656,5 +656,26 @@ Future<Map<String, dynamic>?> fetchGuestByPhone({
   }
 }
 
+Future<List<Map<String, dynamic>>> fetchVendorsByRole(String role) async {
+    try {
+      final querySnapshot = await _firestore
+          .collection('vendors')
+          .where('role', isEqualTo: role)
+          .get();
+
+      return querySnapshot.docs.map((doc) {
+        return {
+          'id': doc.id,
+          'name': doc['name'],
+          'role': doc['role'],
+          'location': doc['location'],
+          'imageUrl': doc['imageUrl'],
+        };
+      }).toList();
+    } catch (e) {
+      throw Exception('Error fetching vendors: $e');
+    }
+  }
+
 
 }

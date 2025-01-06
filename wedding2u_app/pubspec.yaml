@@ -115,6 +115,7 @@ flutter:
       - assets/vendor_images/wedding1.jpg
       - assets/vendor_images/wedding2.jpg
       - assets/vendor_images/wedding3.jpg
+      - assets/vendor_images/placeholder_photographer.jpg
       - assets/guest_images/wedding.jpg
       - assets/vendor_role_images/manage_portfolio.jpg
       - assets/vendor_role_images/manage_service.jpg

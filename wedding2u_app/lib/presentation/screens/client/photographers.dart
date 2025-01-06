@@ -1,65 +1,152 @@
+// photographers.dart (Presentation Layer)
 import 'package:flutter/material.dart';
-import 'package:wedding2u_app/presentation/screens/client/gerryportfolio.dart';
+import 'package:wedding2u_app/application/vendor_catalog_controller.dart';
 
-class PhotographersPage extends StatelessWidget {
+class PhotographersPage extends StatefulWidget {
   const PhotographersPage({super.key});
+
+  @override
+  _PhotographersPageState createState() => _PhotographersPageState();
+}
+
+class _PhotographersPageState extends State<PhotographersPage> {
+  final VendorController _vendorController = VendorController();
+  bool _isLoading = true;
+  List<Map<String, dynamic>> _vendors = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchPhotographers();
+  }
+
+  Future<void> _fetchPhotographers() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final photographers = await _vendorController.getVendorsByRole('Photographer');
+      setState(() {
+        _vendors = photographers;
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error fetching photographers: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Photographers',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
-          ),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        title: const Text('Photographers'),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
-        elevation: 1,
       ),
-      body: ListView(
-        children:  [
+      body: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : _vendors.isEmpty
+              ? const Center(child: Text('No photographers found.'))
+              : ListView.builder(
+                  itemCount: _vendors.length,
+                  itemBuilder: (context, index) {
+                    final vendor = _vendors[index];
+                    return VendorCard(
+                      name: vendor['name'],
+                      role: vendor['role'],
+                      location: vendor['location'],
+                      imageUrl: vendor['imageUrl'],
+                    );
+                  },
+                ),
+    );
+  }
+}
 
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const GerryPortfolioPage()), // Navigate to Gerry's portfolio
-              );
-            },
-            child: const PhotographerCard(
-              imagePath: 'assets/vendor_images/gerry.jpg',
-              name: 'Gerry Photography',
-              role: 'Professional Photographer',
-              location: 'Sarawak, Malaysia',
-           ),),
-          
-          const PhotographerCard(
-            imagePath: 'assets/vendor_images/js_camera.jpg',
-            name: 'J’s Camera',
-            role: 'Professional Photographer',
-            location: 'Kuala Lumpur, Malaysia',
+class VendorCard extends StatelessWidget {
+  final String name;
+  final String role;
+  final String location;
+  final String imageUrl;
+
+  const VendorCard({
+    super.key,
+    required this.name,
+    required this.role,
+    required this.location,
+    required this.imageUrl,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Network Image
+          Container(
+            width: 100,
+            height: 100,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return const Center(
+                    child: CircularProgressIndicator(), // Placeholder during loading
+                  );
+                },
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(
+                    'assets/vendor_images/placeholder_photographer.jpg', // Fallback image if network fails
+                    fit: BoxFit.cover,
+                  );
+                },
+              ),
+            ),
           ),
-          const PhotographerCard(
-            imagePath: 'assets/vendor_images/capture_studio.jpg',
-            name: 'Capture Studio',
-            role: 'Professional Photographer',
-            location: 'Sarawak, Malaysia',
-          ),
-          const PhotographerCard(
-            imagePath: 'assets/vendor_images/forever_moments.jpg',
-            name: 'Forever Moments',
-            role: 'Professional Photographer',
-            location: 'Sabah, Malaysia',
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  name,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  role,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'Location: $location',
+                  style: const TextStyle(fontSize: 14),
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -67,77 +154,3 @@ class PhotographersPage extends StatelessWidget {
   }
 }
 
-class PhotographerCard extends StatelessWidget {
-  final String imagePath;
-  final String name;
-  final String role;
-  final String location;
-
-  const PhotographerCard({
-    super.key,
-    required this.imagePath,
-    required this.name,
-    required this.role,
-    required this.location,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      elevation: 1,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: ListTile(
-        contentPadding: const EdgeInsets.all(12),
-        leading: ClipRRect(
-          borderRadius: BorderRadius.circular(8),
-          child: Image.asset(
-            imagePath,
-            width: 60,
-            height: 60,
-            fit: BoxFit.cover,
-          ),
-        ),
-        title: Text(
-          name,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
-        ),
-        subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              role,
-              style: const TextStyle(
-                color: Colors.black54,
-                fontSize: 14,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Row(
-              children: [
-                const Icon(
-                  Icons.location_on_outlined,
-                  size: 16,
-                  color: Colors.black54,
-                ),
-                const SizedBox(width: 4),
-                Text(
-                  location,
-                  style: const TextStyle(
-                    color: Colors.black54,
-                    fontSize: 12,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
