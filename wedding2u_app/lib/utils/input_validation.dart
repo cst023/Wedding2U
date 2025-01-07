@@ -22,7 +22,7 @@ String? validatePassword(String? value) {
     final passwordRegex = RegExp(
         r'^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$');
     if (!passwordRegex.hasMatch(value)) {
-      return 'Password must contain at least one letter, one number, and one special character';
+      return 'Password must contain at least one letter, one number, \nand one special character';
     }
   }
   return null;
