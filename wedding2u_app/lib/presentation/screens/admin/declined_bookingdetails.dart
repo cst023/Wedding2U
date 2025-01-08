@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class DeclinedBookingDetailsScreen extends StatelessWidget {
   const DeclinedBookingDetailsScreen({super.key});
- 
+
   @override
   Widget build(BuildContext context) {
     // Temporary data declaration
@@ -11,6 +11,7 @@ class DeclinedBookingDetailsScreen extends StatelessWidget {
     String date = 'Booked for 19th October  2024';
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Booking'),
         leading: IconButton(
@@ -24,7 +25,8 @@ class DeclinedBookingDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBookingDetails(BuildContext context, String imagePath, String name, String date) {
+  Widget _buildBookingDetails(
+      BuildContext context, String imagePath, String name, String date) {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -101,10 +103,8 @@ class DeclinedBookingDetailsScreen extends StatelessWidget {
           _buildPackageItem('Dome-style serving, Malay food'),
           _buildPackageItem(
               'Wedding ceremony styling, such as, modern standard arch/backdrop, red-carpet, car decoration, and more'),
-          _buildPackageItem(
-              'Table number and venue layout will be provided'),
-          _buildPackageItem(
-              'Complimentary parking lot for family and friends'),
+          _buildPackageItem('Table number and venue layout will be provided'),
+          _buildPackageItem('Complimentary parking lot for family and friends'),
           _buildPackageItem(
               'Wedding Ceremony planning and coordination by the personal Wedding Planner'),
           const SizedBox(height: 8),

@@ -137,6 +137,7 @@ class _VenueDetailsState extends State<VenueDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           'Venue Details',
@@ -166,6 +167,8 @@ class _VenueDetailsState extends State<VenueDetails> {
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.all(16.0),
                     child: Card(
+                      color: Colors
+                          .white, // Set the card background color to white
                       elevation: 4.0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.0),

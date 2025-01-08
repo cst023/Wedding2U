@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ConfirmedBookingDetailsScreen extends StatelessWidget {
   const ConfirmedBookingDetailsScreen({super.key});
 
-  @override 
+  @override
   Widget build(BuildContext context) {
     // Declare the data here
     String imagePath = 'assets/images/profile_blank.png'; // Example image path
@@ -11,6 +11,7 @@ class ConfirmedBookingDetailsScreen extends StatelessWidget {
     String date = 'Booked for 18th October 2024'; // Example date
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Booking'),
         leading: IconButton(
@@ -24,7 +25,8 @@ class ConfirmedBookingDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBookingDetails(BuildContext context, bool isConfirmed, String imagePath, String name, String date) {
+  Widget _buildBookingDetails(BuildContext context, bool isConfirmed,
+      String imagePath, String name, String date) {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -76,7 +78,8 @@ class ConfirmedBookingDetailsScreen extends StatelessWidget {
             children: [
               Text(
                 name,
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const Row(
                 children: [
@@ -102,10 +105,8 @@ class ConfirmedBookingDetailsScreen extends StatelessWidget {
           _buildPackageItem('Dome-style serving, Malay food'),
           _buildPackageItem(
               'Wedding ceremony styling, such as, modern standard arch/backdrop, red-carpet, car decoration, and more'),
-          _buildPackageItem(
-              'Table number and venue layout will be provided'),
-          _buildPackageItem(
-              'Complimentary parking lot for family and friends'),
+          _buildPackageItem('Table number and venue layout will be provided'),
+          _buildPackageItem('Complimentary parking lot for family and friends'),
           _buildPackageItem(
               'Wedding Ceremony planning and coordination by the personal Wedding Planner'),
           const SizedBox(height: 8),

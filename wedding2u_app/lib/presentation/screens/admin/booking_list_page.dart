@@ -86,6 +86,7 @@ class _BookingListPageState extends State<BookingListPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Manage Venue Bookings"),
         bottom: TabBar(

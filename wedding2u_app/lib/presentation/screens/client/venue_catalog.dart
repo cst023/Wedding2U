@@ -39,15 +39,17 @@ class _VenueCatalogState extends State<VenueCatalog> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF5F5F5), // Add the background color here
       appBar: AppBar(
         title: const Text(
           'Venues',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: const Color(0xFFf7706d),
         elevation: 0.0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back,
+              color: Color.fromARGB(255, 255, 255, 255)),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -103,6 +105,7 @@ class _VenueCatalogState extends State<VenueCatalog> {
       onTap: onTap,
       child: Card(
         elevation: 4.0,
+        color: Colors.white, // Set the card background color to white
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
@@ -111,7 +114,8 @@ class _VenueCatalogState extends State<VenueCatalog> {
           children: [
             // Venue Image
             ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(12.0)),
               child: Image.asset(
                 imagePath,
                 height: 150,

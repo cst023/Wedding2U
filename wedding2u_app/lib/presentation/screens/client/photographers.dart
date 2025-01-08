@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:wedding2u_app/application/vendor_page_controller.dart';
 import 'package:wedding2u_app/presentation/screens/client/vendor_portfolio.dart';
 
-
 class PhotographersPage extends StatefulWidget {
   const PhotographersPage({super.key});
 
@@ -27,7 +26,8 @@ class _PhotographersPageState extends State<PhotographersPage> {
     });
 
     try {
-      final photographers = await _vendorController.getVendorsByRole('Photographer');
+      final photographers =
+          await _vendorController.getVendorsByRole('Photographer');
       setState(() {
         _vendors = photographers;
         _isLoading = false;
@@ -48,6 +48,7 @@ class _PhotographersPageState extends State<PhotographersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Photographers'),
         backgroundColor: Colors.white,
@@ -70,7 +71,9 @@ class _PhotographersPageState extends State<PhotographersPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => VendorPortfolioPage(vendorId: vendor['id']), // Navigate without arguments
+                            builder: (context) => VendorPortfolioPage(
+                                vendorId:
+                                    vendor['id']), // Navigate without arguments
                           ),
                         );
                       },
@@ -102,6 +105,7 @@ class VendorCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Card(
+        color: Colors.white, // Set the card background color to white
         margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,7 +125,8 @@ class VendorCard extends StatelessWidget {
                   loadingBuilder: (context, child, loadingProgress) {
                     if (loadingProgress == null) return child;
                     return const Center(
-                      child: CircularProgressIndicator(), // Placeholder during loading
+                      child:
+                          CircularProgressIndicator(), // Placeholder during loading
                     );
                   },
                   errorBuilder: (context, error, stackTrace) {
@@ -167,4 +172,3 @@ class VendorCard extends StatelessWidget {
     );
   }
 }
-

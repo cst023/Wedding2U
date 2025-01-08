@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:wedding2u_app/presentation/screens/general/sign_up.dart';
 
-
 class SignUpUserRoles extends StatefulWidget {
   const SignUpUserRoles({super.key});
 
-
- @override
+  @override
   _SignUpUserRolesState createState() => _SignUpUserRolesState();
 }
 
@@ -14,6 +12,7 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       //backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
@@ -25,7 +24,7 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
               child: Column(
                 children: [
                   Image.asset(
-                    'assets/images/wedding2u_logo.png', 
+                    'assets/images/wedding2u_logo.png',
                     height: 100,
                     fit: BoxFit.cover,
                   ),
@@ -55,7 +54,7 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
 
             const SizedBox(height: 24),
 
-           // Sign In Options
+            // Sign In Options
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32.0),
               child: Column(
@@ -69,14 +68,15 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const SignUp(role: "Client"),
+                              builder: (context) =>
+                                  const SignUp(role: "Client"),
                             ),
                           );
                         },
                         child: Column(
                           children: [
                             Image.asset(
-                              'assets/images/client_icon.jpg', 
+                              'assets/images/client_icon.jpg',
                               height: 140,
                               width: 140,
                             ),
@@ -90,14 +90,15 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const SignUp(role: "Vendor"),
+                              builder: (context) =>
+                                  const SignUp(role: "Vendor"),
                             ),
                           );
                         },
                         child: Column(
                           children: [
                             Image.asset(
-                              'assets/images/vendor_icon.jpg', 
+                              'assets/images/vendor_icon.jpg',
                               height: 140,
                               width: 140,
                             ),
@@ -111,24 +112,24 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
 
                   // Second row of clickable options
                   GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SignUp(role: "Admin"),
-                            ),
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/admin_icon.jpg', 
-                              height: 140,
-                              width: 140,
-                            ),
-                          ],
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignUp(role: "Admin"),
                         ),
-                      ),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          'assets/images/admin_icon.jpg',
+                          height: 140,
+                          width: 140,
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -183,5 +184,4 @@ class _SignUpUserRolesState extends State<SignUpUserRoles> {
       ),
     );
   }
-
 }

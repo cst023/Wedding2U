@@ -6,6 +6,7 @@ class PostPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Posts', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
@@ -21,16 +22,15 @@ class PostPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              
               const SizedBox(height: 18),
               _buildPostCard(
-                imagePath: 'assets/post_images/javier1.jpg', 
+                imagePath: 'assets/post_images/javier1.jpg',
                 title: "Javier Miguel's Wedding",
                 reviewText: "No reviews yet",
               ),
               const SizedBox(height: 16),
               _buildPostCard(
-                imagePath: 'assets/post_images/azeleen1.jpg', 
+                imagePath: 'assets/post_images/azeleen1.jpg',
                 title: "Azeleen Jane's Wedding",
                 reviewText: "No reviews yet",
               ),
@@ -42,7 +42,8 @@ class PostPage extends StatelessWidget {
     );
   }
 
-  Widget _buildPostCard({ //TODO: View post details
+  Widget _buildPostCard({
+    //TODO: View post details
     required String imagePath,
     required String title,
     required String reviewText,
@@ -69,7 +70,8 @@ class PostPage extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.w500),
                 ),
                 const Icon(Icons.delete), // Add delete Icon
               ],
@@ -81,7 +83,7 @@ class PostPage extends StatelessWidget {
                 const SizedBox(width: 4),
                 Text(
                   reviewText,
-                  style: const TextStyle(color: Colors.grey), 
+                  style: const TextStyle(color: Colors.grey),
                 ),
               ],
             ),

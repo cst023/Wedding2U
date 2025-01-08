@@ -73,6 +73,7 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(widget.title,
             style: const TextStyle(fontWeight: FontWeight.bold)),

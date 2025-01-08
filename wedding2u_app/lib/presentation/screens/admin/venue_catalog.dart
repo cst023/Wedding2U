@@ -41,6 +41,7 @@ class _VenueCatalogState extends State<VenueCatalog> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           'Venues',
@@ -90,7 +91,6 @@ class _VenueCatalogState extends State<VenueCatalog> {
                           ),
                         );
                       },
-                     
                     );
                   },
                 ),
@@ -101,15 +101,14 @@ class _VenueCatalogState extends State<VenueCatalog> {
             MaterialPageRoute(
               builder: (context) => const AddVenueDetailsScreen(),
             ),
-          ).then((_) => _fetchVenueData()); // Refresh data after adding a new venue
+          ).then((_) =>
+              _fetchVenueData()); // Refresh data after adding a new venue
         },
         backgroundColor: Colors.white,
         child: const Icon(Icons.add),
       ),
     );
   }
-
-
 
   Widget buildVenueCard({
     required BuildContext context,
@@ -118,83 +117,82 @@ class _VenueCatalogState extends State<VenueCatalog> {
     required String venueDetails,
     required String rating,
     required VoidCallback onTap,
-  }) { return GestureDetector( 
-    onTap: onTap,
-    child: Card(
-      elevation: 4.0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Venue Image
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
-            child: Image.asset(
-              imagePath,
-              height: 150,
-              width: double.infinity,
-              fit: BoxFit.cover,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+        color: Colors.white, // Set the card background color to white
+        elevation: 4.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Venue Image
+            ClipRRect(
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(12.0)),
+              child: Image.asset(
+                imagePath,
+                height: 150,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
 
-          // Venue Details
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Venue Name
-                    Text(
-                      venueName,
-                      style: const TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
+            // Venue Details
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Venue Name
+                      Text(
+                        venueName,
+                        style: const TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
 
-                    // Rating with Star Icon
-                    Row(
-                      children: [
-                        Text(
-                          rating, // e.g., '4.5/5'
-                          style: TextStyle(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.grey[700],
+                      // Rating with Star Icon
+                      Row(
+                        children: [
+                          Text(
+                            rating, // e.g., '4.5/5'
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey[700],
+                            ),
                           ),
-                        ),
-                        const Icon(
-                          Icons.star,
-                          color: Colors.amber,
-                          size: 20.0,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                          const Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                            size: 20.0,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
 
-                const SizedBox(height: 8.0),
+                  const SizedBox(height: 8.0),
 
-                // Venue Description
-                Text(
-                  venueDetails,
-                  style: TextStyle(fontSize: 14.0, color: Colors.grey[600]),
-                ),
-
-                
-              ],
+                  // Venue Description
+                  Text(
+                    venueDetails,
+                    style: TextStyle(fontSize: 14.0, color: Colors.grey[600]),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
-    ),
-  );
+    );
   }
 }
-
-

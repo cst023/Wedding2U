@@ -15,12 +15,14 @@ class _BookingDetailPageState extends State<BookingDetailPage> {
     final booking = widget.bookingData;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Booking Details'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Card(
+          color: Colors.white, // Set the card background color to white
           elevation: 4.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.0),
@@ -33,7 +35,8 @@ class _BookingDetailPageState extends State<BookingDetailPage> {
                 // Client's Name and Request Date
                 Text(
                   'Client: ${booking["clientName"] ?? "Unknown"}',
-                  style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8.0),
                 Text(
@@ -157,8 +160,7 @@ class _BookingDetailPageState extends State<BookingDetailPage> {
           ElevatedButton(
             onPressed: onConfirm,
             style: ElevatedButton.styleFrom(
-              backgroundColor:
-                  action == "Approve" ? Colors.green : Colors.red,
+              backgroundColor: action == "Approve" ? Colors.green : Colors.red,
             ),
             child: Text(action),
           ),

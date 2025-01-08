@@ -115,6 +115,7 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           'Venue Details',
@@ -147,6 +148,8 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.all(16.0),
                     child: Card(
+                      color: Colors
+                          .white, // Set the card background color to white
                       elevation: 4.0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.0),
@@ -235,7 +238,8 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                                 context: context,
                                                 builder: (context) =>
                                                     AlertDialog(
-                                                  title: const Text('Delete Venue'),
+                                                  title: const Text(
+                                                      'Delete Venue'),
                                                   content: const Text(
                                                       'Are you sure you want to delete this venue?'),
                                                   actions: [
@@ -243,7 +247,8 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               context, false),
-                                                      child: const Text('Cancel'),
+                                                      child:
+                                                          const Text('Cancel'),
                                                     ),
                                                     ElevatedButton(
                                                       onPressed: () =>
@@ -253,7 +258,8 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                                           .styleFrom(
                                                               backgroundColor:
                                                                   Colors.red),
-                                                      child: const Text('Delete'),
+                                                      child:
+                                                          const Text('Delete'),
                                                     ),
                                                   ],
                                                 ),
@@ -297,9 +303,10 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                             },
                                             style: ElevatedButton.styleFrom(
                                               backgroundColor: Colors.red,
-                                              padding: const EdgeInsets.symmetric(
-                                                  vertical: 12.0,
-                                                  horizontal: 24.0),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 12.0,
+                                                      horizontal: 24.0),
                                             ),
                                             child: const Text(
                                               'Delete Venue',
@@ -311,9 +318,10 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                             onPressed: _saveChanges,
                                             style: ElevatedButton.styleFrom(
                                               backgroundColor: Colors.green,
-                                              padding: const EdgeInsets.symmetric(
-                                                  vertical: 12.0,
-                                                  horizontal: 24.0),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 12.0,
+                                                      horizontal: 24.0),
                                             ),
                                             child: const Text(
                                               'Save Changes',
@@ -345,7 +353,7 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                                               vertical: 12.0, horizontal: 24.0),
                                         ),
                                         child: const Text(
-                                          'Cancel' ,
+                                          'Cancel',
                                           style: TextStyle(color: Colors.white),
                                         ),
                                       ),

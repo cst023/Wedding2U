@@ -60,6 +60,7 @@ class _TentativeScreenState extends State<TentativeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Tentative'),
       ),
@@ -98,6 +99,8 @@ class _TentativeScreenState extends State<TentativeScreen> {
                           // Event Card Section
                           Expanded(
                             child: Card(
+                              color: Colors
+                                  .white, // Set the card background color to white
                               margin: const EdgeInsets.symmetric(vertical: 8.0),
                               child: ListTile(
                                 title: Text(event['name'] ?? ''),

@@ -47,6 +47,7 @@ class _CaterersPageState extends State<CaterersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Caterers'),
         backgroundColor: Colors.white,
@@ -69,7 +70,9 @@ class _CaterersPageState extends State<CaterersPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => VendorPortfolioPage(vendorId: vendor['id']), // Navigate without arguments
+                            builder: (context) => VendorPortfolioPage(
+                                vendorId:
+                                    vendor['id']), // Navigate without arguments
                           ),
                         );
                       },
@@ -101,6 +104,7 @@ class VendorCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Card(
+        color: Colors.white, // Set the card background color to white
         margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,7 +124,8 @@ class VendorCard extends StatelessWidget {
                   loadingBuilder: (context, child, loadingProgress) {
                     if (loadingProgress == null) return child;
                     return const Center(
-                      child: CircularProgressIndicator(), // Placeholder during loading
+                      child:
+                          CircularProgressIndicator(), // Placeholder during loading
                     );
                   },
                   errorBuilder: (context, error, stackTrace) {

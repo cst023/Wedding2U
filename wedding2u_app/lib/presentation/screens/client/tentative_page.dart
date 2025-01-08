@@ -121,77 +121,77 @@ class _TentativePageState extends State<TentativePage> {
   }
 
   void _showEventDialog({
-  required TextEditingController eventNameController,
-  required TextEditingController descriptionController,
-  required TimeOfDay? selectedTime,
-  required VoidCallback onSave,
-  required ValueChanged<TimeOfDay> onTimeSelected,
-}) {
-  final TextEditingController timeController = TextEditingController(
-    text: selectedTime != null ? _formatTime(selectedTime) : '',
-  );
+    required TextEditingController eventNameController,
+    required TextEditingController descriptionController,
+    required TimeOfDay? selectedTime,
+    required VoidCallback onSave,
+    required ValueChanged<TimeOfDay> onTimeSelected,
+  }) {
+    final TextEditingController timeController = TextEditingController(
+      text: selectedTime != null ? _formatTime(selectedTime) : '',
+    );
 
-  showDialog(
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-        title: const Text('Add or Edit Event'),
-        content: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // Event Name Field
-              TextField(
-                controller: eventNameController,
-                decoration: const InputDecoration(labelText: 'Event Name'),
-              ),
-              const SizedBox(height: 10),
-
-              // Time Input Field
-              TextField(
-                controller: timeController,
-                decoration: const InputDecoration(
-                  labelText: 'Time (HH:mm)',
-                  suffixIcon: Icon(Icons.access_time),
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Add or Edit Event'),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Event Name Field
+                TextField(
+                  controller: eventNameController,
+                  decoration: const InputDecoration(labelText: 'Event Name'),
                 ),
-                readOnly: true, // Disable manual typing to avoid format issues
-                onTap: () async {
-                  final pickedTime = await showTimePicker(
-                    context: context,
-                    initialTime: selectedTime ?? TimeOfDay.now(),
-                  );
-                  if (pickedTime != null) {
-                    onTimeSelected(pickedTime);
-                    timeController.text = _formatTime(pickedTime);
-                  }
-                },
-              ),
-              const SizedBox(height: 10),
+                const SizedBox(height: 10),
 
-              // Description Field
-              TextField(
-                controller: descriptionController,
-                decoration:
-                    const InputDecoration(labelText: 'Description (optional)'),
-              ),
-            ],
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-          ElevatedButton(
-            onPressed: onSave,
-            child: const Text('Save'),
-          ),
-        ],
-      );
-    },
-  );
-}
+                // Time Input Field
+                TextField(
+                  controller: timeController,
+                  decoration: const InputDecoration(
+                    labelText: 'Time (HH:mm)',
+                    suffixIcon: Icon(Icons.access_time),
+                  ),
+                  readOnly:
+                      true, // Disable manual typing to avoid format issues
+                  onTap: () async {
+                    final pickedTime = await showTimePicker(
+                      context: context,
+                      initialTime: selectedTime ?? TimeOfDay.now(),
+                    );
+                    if (pickedTime != null) {
+                      onTimeSelected(pickedTime);
+                      timeController.text = _formatTime(pickedTime);
+                    }
+                  },
+                ),
+                const SizedBox(height: 10),
 
+                // Description Field
+                TextField(
+                  controller: descriptionController,
+                  decoration: const InputDecoration(
+                      labelText: 'Description (optional)'),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: onSave,
+              child: const Text('Save'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   bool _validateEventInputs({
     required TextEditingController eventNameController,
@@ -210,56 +210,58 @@ class _TentativePageState extends State<TentativePage> {
   }
 
   Future<void> _addEventToFirestore(Map<String, String> newEvent) async {
-  try {
-    final clientId = FirebaseAuth.instance.currentUser!.uid;
-    final eventId = await ManageWeddingController().addEvent(
-      clientId: clientId,
-      eventName: newEvent['name']!,
-      startTime: newEvent['time']!,
-      description: newEvent['description'],
-    );
+    try {
+      final clientId = FirebaseAuth.instance.currentUser!.uid;
+      final eventId = await ManageWeddingController().addEvent(
+        clientId: clientId,
+        eventName: newEvent['name']!,
+        startTime: newEvent['time']!,
+        description: newEvent['description'],
+      );
 
-    setState(() {
-      events.add({...newEvent, 'id': eventId});  // Add eventId to the local map
-      _sortEvents();
-    });
-  } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Error adding event: $e'),
-        backgroundColor: Colors.red,
-      ),
-    );
+      setState(() {
+        events
+            .add({...newEvent, 'id': eventId}); // Add eventId to the local map
+        _sortEvents();
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error adding event: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
-}
-
 
   Future<void> _updateEventInFirestore(
-    int index, String eventId, Map<String, String> updatedEvent) async {
-  try {
-    final clientId = FirebaseAuth.instance.currentUser!.uid;
-    await ManageWeddingController().updateEvent(
-      clientId: clientId,
-      eventId: eventId,
-      eventName: updatedEvent['name']!,
-      startTime: updatedEvent['time']!,
-      description: updatedEvent['description'],
-    );
+      int index, String eventId, Map<String, String> updatedEvent) async {
+    try {
+      final clientId = FirebaseAuth.instance.currentUser!.uid;
+      await ManageWeddingController().updateEvent(
+        clientId: clientId,
+        eventId: eventId,
+        eventName: updatedEvent['name']!,
+        startTime: updatedEvent['time']!,
+        description: updatedEvent['description'],
+      );
 
-    setState(() {
-      events[index] = {...updatedEvent, 'id': eventId};  // Preserve the eventId
-      _sortEvents();
-    });
-  } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Error updating event: $e'),
-        backgroundColor: Colors.red,
-      ),
-    );
+      setState(() {
+        events[index] = {
+          ...updatedEvent,
+          'id': eventId
+        }; // Preserve the eventId
+        _sortEvents();
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error updating event: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
-}
-
 
   void _sortEvents() {
     events.sort((a, b) {
@@ -285,6 +287,7 @@ class _TentativePageState extends State<TentativePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Tentative', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
@@ -329,6 +332,8 @@ class _TentativePageState extends State<TentativePage> {
                           const SizedBox(width: 10),
                           Expanded(
                             child: Card(
+                              color: Colors
+                                  .white, // Set the card background color to white
                               margin: const EdgeInsets.symmetric(vertical: 8.0),
                               child: ListTile(
                                 title: Text(event['name'] ?? ''),
@@ -408,6 +413,4 @@ class _TentativePageState extends State<TentativePage> {
       ),
     );
   }
-} 
-
-
+}

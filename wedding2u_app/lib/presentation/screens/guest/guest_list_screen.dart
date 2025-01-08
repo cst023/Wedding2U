@@ -39,7 +39,8 @@ class _GuestListScreenState extends State<GuestListScreen>
 
     try {
       // Fetch guests using the controller
-      final fetchedGuests = await _controller.fetchGuestsByInvitationCode(widget.invitationCode);
+      final fetchedGuests =
+          await _controller.fetchGuestsByInvitationCode(widget.invitationCode);
 
       setState(() {
         guests = fetchedGuests;
@@ -47,12 +48,9 @@ class _GuestListScreenState extends State<GuestListScreen>
         // Update guest counts
         guestCounts = {
           "All": guests.length,
-          "Confirmed":
-              guests.where((g) => g["status"] == "Confirmed").length,
-          "Declined":
-              guests.where((g) => g["status"] == "Declined").length,
-          "Pending":
-              guests.where((g) => g["status"] == "Pending").length,
+          "Confirmed": guests.where((g) => g["status"] == "Confirmed").length,
+          "Declined": guests.where((g) => g["status"] == "Declined").length,
+          "Pending": guests.where((g) => g["status"] == "Pending").length,
         };
       });
     } catch (e) {
@@ -72,6 +70,7 @@ class _GuestListScreenState extends State<GuestListScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Guests"),
         bottom: PreferredSize(

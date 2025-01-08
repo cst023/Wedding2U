@@ -296,7 +296,8 @@ class _GuestsPageState extends State<GuestsPage>
       final fetchedCode = await controller.fetchInvitationCode(clientId);
 
       setState(() {
-        invitationCode = fetchedCode ?? "Code unavailable. Please set your wedding countdown to obtain code.";
+        invitationCode = fetchedCode ??
+            "Code unavailable. Please set your wedding countdown to obtain code.";
       });
 
       // Show the dialog with the invitation code
@@ -310,14 +311,16 @@ class _GuestsPageState extends State<GuestsPage>
               children: [
                 Text(
                   invitationCode,
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
                     Clipboard.setData(ClipboardData(text: invitationCode));
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Code copied to clipboard!")),
+                      const SnackBar(
+                          content: Text("Code copied to clipboard!")),
                     );
                   },
                   child: const Text("Copy Code"),
@@ -350,6 +353,7 @@ class _GuestsPageState extends State<GuestsPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Guests"),
         bottom: PreferredSize(

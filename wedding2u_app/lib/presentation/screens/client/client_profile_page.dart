@@ -240,8 +240,8 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                             child: const Text(
                               'Log out',
                               style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.red,
+                                fontSize: 24,
+                                color: Color(0xFF222D52),
                               ),
                             ),
                           ),

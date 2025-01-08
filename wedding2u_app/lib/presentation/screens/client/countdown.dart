@@ -11,7 +11,7 @@ class CountdownPage extends StatefulWidget {
   @override
   _CountdownPageState createState() => _CountdownPageState();
 }
- 
+
 class _CountdownPageState extends State<CountdownPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final ManageWeddingController _manageWeddingController =
@@ -27,96 +27,95 @@ class _CountdownPageState extends State<CountdownPage> {
   final TextEditingController _weddingDateController = TextEditingController();
 
   Future<void> _fetchWeddingCountdown() async {
-  try {
-    final clientId = _auth.currentUser!.uid;
+    try {
+      final clientId = _auth.currentUser!.uid;
 
-    // Fetch wedding plan data from Firestore
-    final weddingPlan =
-        await _manageWeddingController.fetchWeddingPlan(clientId);
+      // Fetch wedding plan data from Firestore
+      final weddingPlan =
+          await _manageWeddingController.fetchWeddingPlan(clientId);
 
-    setState(() {
-      if (weddingPlan['countdown_date'] != null) {
-        // Parse the countdown_date as DateTime
-        _weddingDate = (weddingPlan['countdown_date'] as Timestamp).toDate();
-        _weddingDateController.text =
-            DateFormat('MMMM d, yyyy').format(_weddingDate!);
-      }
-      _coupleNameController.text = weddingPlan['wedding_couple'] ?? '';
-      _locationController.text = weddingPlan['wedding_venue'] ?? '';
-      _isLoading = false;
-    });
-  } catch (e) {
-    setState(() {
-      _isLoading = false;
-    });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Error fetching wedding plan: $e'),
-        backgroundColor: Colors.red,
-      ),
-    );
-  }
-}
-
-
-Future<void> _addEventToCalendar() async {
-  try {
-    final permissionsGranted =
-        await _deviceCalendarPlugin.requestPermissions();
-    if (!(permissionsGranted.data ?? false)) {
+      setState(() {
+        if (weddingPlan['countdown_date'] != null) {
+          // Parse the countdown_date as DateTime
+          _weddingDate = (weddingPlan['countdown_date'] as Timestamp).toDate();
+          _weddingDateController.text =
+              DateFormat('MMMM d, yyyy').format(_weddingDate!);
+        }
+        _coupleNameController.text = weddingPlan['wedding_couple'] ?? '';
+        _locationController.text = weddingPlan['wedding_venue'] ?? '';
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Calendar permissions denied.'),
+        SnackBar(
+          content: Text('Error fetching wedding plan: $e'),
           backgroundColor: Colors.red,
         ),
       );
-      return;
     }
+  }
 
-    final calendarsResult = await _deviceCalendarPlugin.retrieveCalendars();
-    if (!(calendarsResult.isSuccess) || calendarsResult.data == null) {
-      throw Exception('Failed to retrieve calendars.');
-    }
+  Future<void> _addEventToCalendar() async {
+    try {
+      final permissionsGranted =
+          await _deviceCalendarPlugin.requestPermissions();
+      if (!(permissionsGranted.data ?? false)) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Calendar permissions denied.'),
+            backgroundColor: Colors.red,
+          ),
+        );
+        return;
+      }
 
-    final calendar = calendarsResult.data!.firstWhere(
-      (cal) => cal.isDefault ?? false,
-      orElse: () => calendarsResult.data!.first,
-    );
+      final calendarsResult = await _deviceCalendarPlugin.retrieveCalendars();
+      if (!(calendarsResult.isSuccess) || calendarsResult.data == null) {
+        throw Exception('Failed to retrieve calendars.');
+      }
 
-    print('Using Calendar: ${calendar.name}, ID: ${calendar.id}');
+      final calendar = calendarsResult.data!.firstWhere(
+        (cal) => cal.isDefault ?? false,
+        orElse: () => calendarsResult.data!.first,
+      );
 
-    final event = Event(
-      calendar.id,
-      title: _coupleNameController.text.isEmpty
-          ? 'Wedding Countdown'
-          : '${_coupleNameController.text} Wedding',
-      location: _locationController.text,
-      start: TZDateTime.from(_weddingDate!, local),
-      end: TZDateTime.from(_weddingDate!.add(const Duration(hours: 4)), local),
-      description: 'Wedding ceremony countdown',
-    );
+      print('Using Calendar: ${calendar.name}, ID: ${calendar.id}');
 
-    final result = await _deviceCalendarPlugin.createOrUpdateEvent(event);
-    if (result?.isSuccess ?? false) {
+      final event = Event(
+        calendar.id,
+        title: _coupleNameController.text.isEmpty
+            ? 'Wedding Countdown'
+            : '${_coupleNameController.text} Wedding',
+        location: _locationController.text,
+        start: TZDateTime.from(_weddingDate!, local),
+        end:
+            TZDateTime.from(_weddingDate!.add(const Duration(hours: 4)), local),
+        description: 'Wedding ceremony countdown',
+      );
+
+      final result = await _deviceCalendarPlugin.createOrUpdateEvent(event);
+      if (result?.isSuccess ?? false) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Event added to calendar successfully!'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      } else {
+        throw Exception('Failed to add event to calendar.');
+      }
+    } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Event added to calendar successfully!'),
-          backgroundColor: Colors.green,
+        SnackBar(
+          content: Text('Error adding to calendar: $e'),
+          backgroundColor: Colors.red,
         ),
       );
-    } else {
-      throw Exception('Failed to add event to calendar.');
     }
-  } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Error adding to calendar: $e'),
-        backgroundColor: Colors.red,
-      ),
-    );
   }
-}
-
 
   @override
   void initState() {
@@ -169,6 +168,7 @@ Future<void> _addEventToCalendar() async {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           'Countdown',
@@ -225,7 +225,8 @@ Future<void> _addEventToCalendar() async {
                           controller: _coupleNameController,
                           decoration: const InputDecoration(
                             labelText: 'Couple Name',
-                            hintText: 'Enter Couple Name (e.g. Javier & Syahira)',
+                            hintText:
+                                'Enter Couple Name (e.g. Javier & Syahira)',
                             border: OutlineInputBorder(),
                           ),
                         )
@@ -282,7 +283,7 @@ Future<void> _addEventToCalendar() async {
                           },
                           child: TextField(
                             controller: _weddingDateController,
-                            enabled: false, 
+                            enabled: false,
                             decoration: const InputDecoration(
                               labelText: 'Wedding Date',
                               hintText: 'Select Wedding Date',
@@ -333,7 +334,7 @@ Future<void> _addEventToCalendar() async {
                         ),
                       ),
                     )
-                 /* else
+                  /* else
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
@@ -392,7 +393,8 @@ class CountdownItem extends StatelessWidget {
   final String label;
   final String value;
 
-  const CountdownItem({super.key, 
+  const CountdownItem({
+    super.key,
     required this.label,
     required this.value,
   });

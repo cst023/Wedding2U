@@ -43,6 +43,7 @@ class _ClientMainPageState extends State<ClientMainPage> {
     final userData =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     return Scaffold(
+      backgroundColor: const Color(0xFFF5F5F5), // Add the background color here
       body: SafeArea(
         child: Stack(
           children: [

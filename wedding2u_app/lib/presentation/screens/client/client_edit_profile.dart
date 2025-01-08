@@ -104,6 +104,7 @@ class _ClientEditProfileState extends State<ClientEditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF5F5F5), // Add the background color here
       appBar: AppBar(
         title: const Text(
           'Edit Profile',
@@ -252,7 +253,7 @@ class _ClientEditProfileState extends State<ClientEditProfile> {
                         _saveChanges();
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.pink[200],
+                        backgroundColor: const Color(0xFF222D52),
                         foregroundColor:
                             Colors.white, // Set text color to white
                         minimumSize: const Size(double.infinity, 50),

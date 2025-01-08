@@ -76,6 +76,7 @@ class _AcceptRejectScreenState extends State<AcceptRejectScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : FutureBuilder<Map<String, dynamic>>(

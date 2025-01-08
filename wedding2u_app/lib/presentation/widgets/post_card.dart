@@ -55,6 +55,7 @@ class PostCardState extends State<PostCard> {
         margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         elevation: 3,
+        color: Colors.white, // Set the card background color to white
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -103,4 +104,3 @@ class PostCardState extends State<PostCard> {
     );
   }
 }
-

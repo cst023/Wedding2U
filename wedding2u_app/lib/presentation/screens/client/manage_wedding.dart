@@ -54,6 +54,7 @@ class _ManageWeddingState extends State<ManageWedding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Manage My Wedding',
             style: TextStyle(color: Colors.black)),
@@ -283,6 +284,7 @@ class _ManageWeddingState extends State<ManageWedding> {
         Navigator.pushNamed(context, 'TentativePage');
       },
       child: Card(
+        color: Colors.white, // Set the card background color to white
         elevation: 3.0,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
@@ -315,6 +317,7 @@ class _ManageWeddingState extends State<ManageWedding> {
         Navigator.pushNamed(context, 'GuestsPage');
       },
       child: Card(
+        color: Colors.white, // Set the card background color to white
         elevation: 3.0,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
