@@ -10,8 +10,10 @@ class AddVenueDetailsScreen extends StatefulWidget {
 
 class _AddVenueDetailsScreenState extends State<AddVenueDetailsScreen> {
   final TextEditingController _venueNameController = TextEditingController();
-  final TextEditingController _venueDescriptionController = TextEditingController();
-  final TextEditingController _packageDescriptionController = TextEditingController();
+  final TextEditingController _venueDescriptionController =
+      TextEditingController();
+  final TextEditingController _packageDescriptionController =
+      TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final FirestoreService _firestoreService = FirestoreService();
   bool _isSaving = false;
@@ -74,7 +76,9 @@ class _AddVenueDetailsScreenState extends State<AddVenueDetailsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Enter Venue Details', style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
+              const Text('Enter Venue Details',
+                  style:
+                      TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
               const SizedBox(height: 16.0),
               const Text('Venue Name:', style: TextStyle(fontSize: 16.0)),
               const SizedBox(height: 8.0),
@@ -92,8 +96,8 @@ class _AddVenueDetailsScreenState extends State<AddVenueDetailsScreen> {
                 },
               ),
               const SizedBox(height: 16.0),
-
-              const Text('Venue Description:', style: TextStyle(fontSize: 16.0)),
+              const Text('Venue Description:',
+                  style: TextStyle(fontSize: 16.0)),
               const SizedBox(height: 8.0),
               TextFormField(
                 controller: _venueDescriptionController,
@@ -110,8 +114,8 @@ class _AddVenueDetailsScreenState extends State<AddVenueDetailsScreen> {
                 },
               ),
               const SizedBox(height: 16.0),
-
-              const Text('Package Description:', style: TextStyle(fontSize: 16.0)),
+              const Text('Package Description:',
+                  style: TextStyle(fontSize: 16.0)),
               const SizedBox(height: 8.0),
               TextFormField(
                 controller: _packageDescriptionController,
@@ -128,14 +132,13 @@ class _AddVenueDetailsScreenState extends State<AddVenueDetailsScreen> {
                 },
               ),
               const SizedBox(height: 16.0),
-
               const Spacer(),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: _isSaving ? null : _saveVenue,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.pink[400],
+                    backgroundColor: const Color(0xFFf7706d),
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                   ),
                   child: _isSaving
@@ -153,4 +156,3 @@ class _AddVenueDetailsScreenState extends State<AddVenueDetailsScreen> {
     );
   }
 }
-

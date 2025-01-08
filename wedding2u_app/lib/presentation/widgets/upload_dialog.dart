@@ -24,7 +24,7 @@ class _UploadDialogState extends State<UploadDialog> {
                 Navigator.pop(context); // Close dialog
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.pinkAccent,
+                backgroundColor: const Color(0xFFf7706d),
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8)),

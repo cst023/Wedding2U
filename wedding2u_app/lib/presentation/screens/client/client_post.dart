@@ -18,8 +18,10 @@ class _WeddingPostsState extends State<WeddingPosts> {
     super.initState();
     // Initialize the list of posts
     posts = [
-      Post(name: "Javier Miguel’s", imagePath: "assets/post_images/javier1.jpg"),
-      Post(name: "Azeleen Jane’s", imagePath: "assets/post_images/azeleen1.jpg"),
+      Post(
+          name: "Javier Miguel’s", imagePath: "assets/post_images/javier1.jpg"),
+      Post(
+          name: "Azeleen Jane’s", imagePath: "assets/post_images/azeleen1.jpg"),
       Post(name: "John & Emma’s", imagePath: "assets/post_images/john1.jpg"),
     ];
   }
@@ -56,7 +58,7 @@ class _WeddingPostsState extends State<WeddingPosts> {
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.pinkAccent,
+                  backgroundColor: const Color(0xFF222D52),
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8)),

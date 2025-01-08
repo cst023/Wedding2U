@@ -20,7 +20,7 @@ class _VenueDetailsState extends State<VenueDetails> {
   Map<String, dynamic>? venueData;
   DateTime? selectedDate; // Holds the selected date
   bool isBooked = false; // To track if the venue is booked
-  String clientId = ""; 
+  String clientId = "";
   @override
   void initState() {
     super.initState();
@@ -65,7 +65,8 @@ class _VenueDetailsState extends State<VenueDetails> {
     }
   }
 
-  void _showMessage(String message, Color color) { //todo: investigate how to use this method
+  void _showMessage(String message, Color color) {
+    //todo: investigate how to use this method
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
@@ -177,7 +178,7 @@ class _VenueDetailsState extends State<VenueDetails> {
                             borderRadius: const BorderRadius.vertical(
                                 top: Radius.circular(12.0)),
                             child: Image.asset(
-                              'assets/images/wedding_dais.jpg', 
+                              'assets/images/wedding_dais.jpg',
                               height: 200,
                               width: double.infinity,
                               fit: BoxFit.cover,
@@ -306,13 +307,14 @@ class _VenueDetailsState extends State<VenueDetails> {
                                 child: ElevatedButton(
                                   onPressed: isBooked ? null : _handleBooking,
                                   style: ElevatedButton.styleFrom(
-                                    padding:
-                                        const EdgeInsets.symmetric(vertical: 14.0),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 14.0),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
-                                    backgroundColor:
-                                        isBooked ? Colors.grey : Colors.pink,
+                                    backgroundColor: isBooked
+                                        ? Colors.grey
+                                        : const Color(0xFF222D52),
                                   ),
                                   child: Text(
                                     isBooked ? 'Booked' : 'Book Venue',

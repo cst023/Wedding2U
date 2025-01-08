@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:wedding2u_app/application/user_profile_controller.dart';
 
-
 class ClientProfilePage extends StatefulWidget {
   const ClientProfilePage({super.key});
 
@@ -49,7 +48,8 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.pushNamed(context, 'ClientMainPage', arguments: userData);
+              Navigator.pushNamed(context, 'ClientMainPage',
+                  arguments: userData);
             },
           ),
         ),
@@ -138,7 +138,7 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                                         print('Instagram clicked');
                                       },
                                       child: Image.asset(
-                                        'assets/images/ig_icon.jpg', 
+                                        'assets/images/ig_icon.jpg',
                                         height: 40,
                                         width: 40,
                                       ),
@@ -152,7 +152,7 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                                         print('Facebook clicked');
                                       },
                                       child: Image.asset(
-                                        'assets/images/fb_icon.jpg', 
+                                        'assets/images/fb_icon.jpg',
                                         height: 40,
                                         width: 40,
                                       ),
@@ -164,7 +164,7 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                                         print('WhatsApp clicked');
                                       },
                                       child: Image.asset(
-                                        'assets/images/whatsapp_icon.jpg', 
+                                        'assets/images/whatsapp_icon.jpg',
                                         height: 40,
                                         width: 40,
                                       ),
@@ -176,13 +176,13 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                                         print('X clicked');
                                       },
                                       child: Image.asset(
-                                        'assets/images/x_icon.jpg', 
+                                        'assets/images/x_icon.jpg',
                                         height: 40,
                                         width: 40,
                                       ),
                                     ),
                                   ],
-                                ), 
+                                ),
 
                                 const SizedBox(height: 20),
 
@@ -193,7 +193,7 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
                                         context, 'ClientEditProfile');
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.pink[200],
+                                    backgroundColor: const Color(0xFF222D52),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
@@ -214,15 +214,16 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
 
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.pushNamed(context, 'VenueBookingStatus');
+                                    Navigator.pushNamed(
+                                        context, 'VenueBookingStatus');
                                   },
                                   child: const ListTile(
                                     leading: Icon(Icons.event),
-                                    title: Text('View Booking Status', style: TextStyle(fontSize: 18)),
+                                    title: Text('View Booking Status',
+                                        style: TextStyle(fontSize: 18)),
                                     trailing: Icon(Icons.arrow_forward_ios),
                                   ),
                                 ),
-
                               ],
                             ),
                           ),

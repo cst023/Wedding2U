@@ -69,6 +69,7 @@ flutter:
   assets:
       - assets/images/wedding2u_landingpg.jpg
       - assets/images/wedding2u_logo.jpg
+      - assets/images/weddingrings.png
       - assets/images/client_icon.jpg
       - assets/images/guest_icon.jpg
       - assets/images/vendor_icon.jpg

@@ -77,7 +77,7 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen> {
         title: Text(widget.title,
             style: const TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: const Color(0xFFf7706d),
         foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
@@ -162,7 +162,7 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen> {
                   ElevatedButton(
                     onPressed: _addReview,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.pinkAccent,
+                      backgroundColor: const Color(0xFF222D52),
                       foregroundColor: Colors.white,
                     ),
                     child: const Text("Submit"),

@@ -150,7 +150,7 @@ class _AdminEditProfileState extends State<AdminEditProfile> {
                             right: 0,
                             child: CircleAvatar(
                               radius: 18,
-                              backgroundColor: Colors.pink[300],
+                              backgroundColor: const Color(0xFFf7706d),
                               child: const Icon(
                                 Icons.camera_alt,
                                 color: Colors.white,
@@ -257,7 +257,7 @@ class _AdminEditProfileState extends State<AdminEditProfile> {
                         _saveChanges();
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.pink[200],
+                        backgroundColor: const Color(0xFFf7706d),
                         foregroundColor:
                             Colors.white, // Set text color to white
                         minimumSize: const Size(double.infinity, 50),

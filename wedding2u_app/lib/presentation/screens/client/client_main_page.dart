@@ -40,7 +40,8 @@ class _ClientMainPageState extends State<ClientMainPage> {
 
   @override
   Widget build(BuildContext context) {
-    final userData = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    final userData =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -104,8 +105,8 @@ class _ClientMainPageState extends State<ClientMainPage> {
   Widget _buildBanner(String name) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.pink[100],
+      decoration: const BoxDecoration(
+        color: Color(0xFFf7706d),
       ),
       padding: const EdgeInsets.all(16.0),
       child: Row(
@@ -134,7 +135,7 @@ class _ClientMainPageState extends State<ClientMainPage> {
             ),
           ),
           Image.asset(
-            'assets/images/wedding_rings.png',
+            'assets/images/weddingrings.png',
             width: 80,
             height: 80,
             fit: BoxFit.cover,
@@ -180,7 +181,8 @@ class _ClientMainPageState extends State<ClientMainPage> {
           },
           child: CircleAvatar(
             radius: 32.0,
-            backgroundImage: const AssetImage('assets/images/profile_avatar.jpg'),
+            backgroundImage:
+                const AssetImage('assets/images/profile_avatar.jpg'),
             backgroundColor: Colors.grey[200],
           ),
         ),
@@ -191,14 +193,16 @@ class _ClientMainPageState extends State<ClientMainPage> {
   // Search Results Overlay
   Widget _buildSearchResultsOverlay() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.4, // Set height to 60% of screen height
-      color: Colors.white.withOpacity(0.9),
+      height: MediaQuery.of(context).size.height *
+          0.4, // Set height to 60% of screen height
+      color: const Color.fromARGB(255, 255, 255, 255),
       child: ListView.builder(
         itemCount: _searchResults.length,
         itemBuilder: (context, index) {
           final result = _searchResults[index];
           return ListTile(
-            leading: Icon(result['type'] == 'Venue' ? Icons.place : Icons.person),
+            leading:
+                Icon(result['type'] == 'Venue' ? Icons.place : Icons.person),
             title: Text(result['name']),
             subtitle: Text(result['type']),
             onTap: () {
@@ -213,7 +217,8 @@ class _ClientMainPageState extends State<ClientMainPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => VendorPortfolioPage(vendorId: result['id']),
+                    builder: (context) =>
+                        VendorPortfolioPage(vendorId: result['id']),
                   ),
                 );
               }
@@ -250,7 +255,8 @@ class _ClientMainPageState extends State<ClientMainPage> {
   }
 
   // Reusable Category Card Widget
-  Widget _buildCategoryCard({required String imagePath, required VoidCallback onTap}) {
+  Widget _buildCategoryCard(
+      {required String imagePath, required VoidCallback onTap}) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -333,4 +339,3 @@ class _ClientMainPageState extends State<ClientMainPage> {
     );
   }
 }
-

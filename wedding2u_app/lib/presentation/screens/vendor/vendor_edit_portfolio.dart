@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wedding2u_app/presentation/screens/vendor/vendor_add_new_project.dart';
-import 'package:wedding2u_app/presentation/screens/vendor/vendor_edit_project.dart';
 
 class EditPortfolio extends StatefulWidget {
   const EditPortfolio({super.key});
@@ -43,12 +41,14 @@ class _EditPortfolioState extends State<EditPortfolio> {
                     children: [
                       const Text(
                         'Service type:',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(width: 8),
                       Expanded(
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 4),
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey),
                             borderRadius: BorderRadius.circular(8),
@@ -90,7 +90,8 @@ class _EditPortfolioState extends State<EditPortfolio> {
                   GridView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                       crossAxisSpacing: 8,
                       mainAxisSpacing: 8,
@@ -102,7 +103,8 @@ class _EditPortfolioState extends State<EditPortfolio> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             image: const DecorationImage(
-                              image: AssetImage('assets/vendor_images/wedding1.jpg'),
+                              image: AssetImage(
+                                  'assets/vendor_images/wedding1.jpg'),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -113,7 +115,8 @@ class _EditPortfolioState extends State<EditPortfolio> {
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(color: Colors.grey),
                           ),
-                          child: const Icon(Icons.add, color: Colors.grey, size: 32),
+                          child: const Icon(Icons.add,
+                              color: Colors.grey, size: 32),
                         );
                       }
                     },
@@ -155,7 +158,7 @@ class _EditPortfolioState extends State<EditPortfolio> {
                 Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.redAccent,
+                backgroundColor: const Color(0xFFf7706d),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -172,4 +175,3 @@ class _EditPortfolioState extends State<EditPortfolio> {
     );
   }
 }
-

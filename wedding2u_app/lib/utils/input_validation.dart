@@ -1,4 +1,3 @@
-
 // Email validation
 String? validateEmail(String? value) {
   if (value == null || value.isEmpty) {

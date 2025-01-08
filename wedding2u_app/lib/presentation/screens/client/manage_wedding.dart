@@ -55,7 +55,8 @@ class _ManageWeddingState extends State<ManageWedding> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Manage My Wedding', style: TextStyle(color: Colors.black)),
+        title: const Text('Manage My Wedding',
+            style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         elevation: 1.0,
         leading: IconButton(
@@ -163,7 +164,7 @@ class _ManageWeddingState extends State<ManageWedding> {
                   onTap: () =>
                       Navigator.pushNamed(context, 'VenueBookingStatus'),
                   child: const Text('Booking Details',
-                      style: TextStyle(color: Colors.pink)),
+                      style: TextStyle(color: Color(0xFFf7706d))),
                 ),
               ],
             ),
@@ -174,107 +175,106 @@ class _ManageWeddingState extends State<ManageWedding> {
   }
 
   Widget _buildCountdown() {
-  if (_weddingDate == null) {
-    return GestureDetector(
-      onTap: () async {
-        final selectedDate = await showDatePicker(
-          context: context,
-          initialDate: DateTime.now(),
-          firstDate: DateTime.now(),
-          lastDate: DateTime(2101),
-        );
-        if (selectedDate != null) {
-          final clientId = _auth.currentUser!.uid;
-          await _controller.saveWeddingDate(context, clientId, selectedDate,
-              (date) {
-            setState(() {
-              _weddingDate = date;
+    if (_weddingDate == null) {
+      return GestureDetector(
+        onTap: () async {
+          final selectedDate = await showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime.now(),
+            lastDate: DateTime(2101),
+          );
+          if (selectedDate != null) {
+            final clientId = _auth.currentUser!.uid;
+            await _controller.saveWeddingDate(context, clientId, selectedDate,
+                (date) {
+              setState(() {
+                _weddingDate = date;
+              });
             });
-          });
-        }
-      },
-      child: Material(
-        elevation: 3.0,
-        borderRadius: BorderRadius.circular(8.0),
-        child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(16.0),
-          decoration: BoxDecoration(
-            color: Colors.pink[50],
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          child: const Text(
-            'Set Wedding Date',
-            style: TextStyle(
-              fontSize: 16.0,
-              color: Colors.pinkAccent,
-              fontWeight: FontWeight.bold,
+          }
+        },
+        child: Material(
+          elevation: 3.0,
+          borderRadius: BorderRadius.circular(8.0),
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+              color: Colors.pink[50],
+              borderRadius: BorderRadius.circular(8.0),
             ),
-            textAlign: TextAlign.center,
+            child: const Text(
+              'Set Wedding Date',
+              style: TextStyle(
+                fontSize: 16.0,
+                color: Color(0xFFf7706d),
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
           ),
         ),
-      ),
-    );
-  } else {
-    final now = DateTime.now();
-    final difference = _weddingDate!.difference(now);
-    final days = difference.inDays;
-    final hours = difference.inHours % 24;
-    final minutes = difference.inMinutes % 60;
+      );
+    } else {
+      final now = DateTime.now();
+      final difference = _weddingDate!.difference(now);
+      final days = difference.inDays;
+      final hours = difference.inHours % 24;
+      final minutes = difference.inMinutes % 60;
 
-    return GestureDetector(
-      onTap: () async {
-        await Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const CountdownPage()),
-        );
-        _fetchData(); // Refresh data when returning from CountdownPage
-      },
-      child: Material(
-        elevation: 3.0,
-        borderRadius: BorderRadius.circular(8.0),
-        child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(16.0),
-          decoration: BoxDecoration(
-            color: Colors.pink[100],
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          child: Column(
-            children: [
-              const Text(
-                'Wedding Countdown',
-                style: TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+      return GestureDetector(
+        onTap: () async {
+          await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CountdownPage()),
+          );
+          _fetchData(); // Refresh data when returning from CountdownPage
+        },
+        child: Material(
+          elevation: 3.0,
+          borderRadius: BorderRadius.circular(8.0),
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+              color: Colors.pink[100],
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Column(
+              children: [
+                const Text(
+                  'Wedding Countdown',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 4.0),
-              Text(
-                '${_weddingDate!.day}/${_weddingDate!.month}/${_weddingDate!.year}',
-                style: const TextStyle(
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white70,
+                const SizedBox(height: 4.0),
+                Text(
+                  '${_weddingDate!.day}/${_weddingDate!.month}/${_weddingDate!.year}',
+                  style: const TextStyle(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white70,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 4.0),
-              Text(
-                '$days Days, $hours Hours, $minutes Minutes',
-                style: const TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.white,
+                const SizedBox(height: 4.0),
+                Text(
+                  '$days Days, $hours Hours, $minutes Minutes',
+                  style: const TextStyle(
+                    fontSize: 16.0,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
-}
-
 
   Widget _buildWeddingTentativeCard(BuildContext context) {
     return GestureDetector(
@@ -353,8 +353,9 @@ class _ManageWeddingState extends State<ManageWedding> {
           },
         );
       },
-      icon: const Icon(Icons.add, color: Colors.pink),
-      label: const Text('Add More Task', style: TextStyle(color: Colors.pink)),
+      icon: const Icon(Icons.add, color: Color(0xFFf7706d)),
+      label: const Text('Add More Task',
+          style: TextStyle(color: Color(0xFFf7706d))),
     );
   }
 }

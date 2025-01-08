@@ -50,8 +50,10 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const AdminDashboard2()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AdminDashboard2()));
             },
           ),
         ),
@@ -200,7 +202,7 @@ class _AdminProfilePageState extends State<AdminProfilePage> {
                                     );
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.pink[200],
+                                    backgroundColor: const Color(0xFFf7706d),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
