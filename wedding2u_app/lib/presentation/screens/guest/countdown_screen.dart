@@ -23,8 +23,10 @@ class _CountdownScreenState extends State<CountdownScreen> {
   @override
   void initState() {
     super.initState();
-    _weddingPlanFuture = GuestListController().getWeddingPlanDetailsByInvitationCode(widget.invitationCode);
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) => _updateCountdown());
+    _weddingPlanFuture = GuestListController()
+        .getWeddingPlanDetailsByInvitationCode(widget.invitationCode);
+    _timer = Timer.periodic(
+        const Duration(seconds: 1), (timer) => _updateCountdown());
   }
 
   void _updateCountdown() async {
@@ -43,11 +45,13 @@ class _CountdownScreenState extends State<CountdownScreen> {
 
   Future<void> _addEventToCalendar(Map<String, dynamic> weddingPlan) async {
     try {
-      final permissionsGranted = await _deviceCalendarPlugin.requestPermissions();
+      final permissionsGranted =
+          await _deviceCalendarPlugin.requestPermissions();
       if (!(permissionsGranted.data ?? false)) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Calendar permission denied. Please enable it in your device settings.'),
+            content: Text(
+                'Calendar permission denied. Please enable it in your device settings.'),
             backgroundColor: Colors.red,
           ),
         );
@@ -70,7 +74,8 @@ class _CountdownScreenState extends State<CountdownScreen> {
         title: '${weddingPlan['wedding_couple']} Wedding Ceremony',
         description: 'Venue: ${weddingPlan['wedding_venue']}',
         start: TZDateTime.from(weddingDate, local),
-        end: TZDateTime.from(weddingDate.add(const Duration(hours: 3)), local), // Assuming a 3-hour event
+        end: TZDateTime.from(weddingDate.add(const Duration(hours: 3)),
+            local), // Assuming a 3-hour event
       );
 
       final result = await _deviceCalendarPlugin.createOrUpdateEvent(event);
@@ -125,7 +130,8 @@ class _CountdownScreenState extends State<CountdownScreen> {
           final weddingPlan = snapshot.data!;
           final weddingCouple = weddingPlan['wedding_couple'] ?? 'Couple';
           final weddingVenue = weddingPlan['wedding_venue'] ?? 'Venue';
-          final weddingDate = (weddingPlan['countdown_date'] as Timestamp).toDate();
+          final weddingDate =
+              (weddingPlan['countdown_date'] as Timestamp).toDate();
           final formattedDate = DateFormat('d MMMM yyyy').format(weddingDate);
 
           return Center(
@@ -144,7 +150,10 @@ class _CountdownScreenState extends State<CountdownScreen> {
                 const SizedBox(height: 16),
                 Text(
                   weddingCouple,
-                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, fontFamily: 'Cursive'),
+                  style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Cursive'),
                 ),
                 const SizedBox(height: 8),
                 Text(
@@ -158,7 +167,7 @@ class _CountdownScreenState extends State<CountdownScreen> {
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 28,
-                    color: Colors.pink,
+                    color: Color(0xFFf7706d),
                     fontWeight: FontWeight.bold,
                   ),
                 ),

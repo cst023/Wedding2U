@@ -82,7 +82,7 @@ class _TentativeScreenState extends State<TentativeScreen> {
                                 width: 20,
                                 height: 20,
                                 decoration: const BoxDecoration(
-                                  color: Colors.deepPurple,
+                                  color: Color(0xFF222D52),
                                   shape: BoxShape.circle,
                                 ),
                               ),
@@ -90,7 +90,7 @@ class _TentativeScreenState extends State<TentativeScreen> {
                                 Container(
                                   width: 2,
                                   height: 50,
-                                  color: Colors.deepPurple,
+                                  color: const Color(0xFF222D52),
                                 ),
                             ],
                           ),
@@ -120,5 +120,3 @@ class _TentativeScreenState extends State<TentativeScreen> {
     );
   }
 }
-
-

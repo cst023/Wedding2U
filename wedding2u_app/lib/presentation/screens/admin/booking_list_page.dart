@@ -33,44 +33,43 @@ class _BookingListPageState extends State<BookingListPage>
   }
 
   Future<void> _fetchBookings() async {
-  setState(() {
-    _isLoading = true;
-  });
-
-  try {
-    List<Map<String, dynamic>> fetchedBookings =
-        await VenueBookingController().fetchAllBookingsWithClientNames();
-
     setState(() {
-      bookings = fetchedBookings.map((booking) {
-        // Format the request_date
-        final Timestamp? requestTimestamp = booking['requestDate'];
-        final String formattedRequestDate = requestTimestamp != null
-            ? DateFormat('dd/MM/yyyy').format(requestTimestamp.toDate())
-            : 'Unknown';
-
-        return {
-          'id': booking['id'],
-          'clientName': booking['clientName'],
-          'venueName': booking['venueName'],
-          'bookingDate': booking['bookingDate'],
-          'requestDate': formattedRequestDate, // Use formatted date
-          'status': booking['status'],
-        };
-      }).toList();
-
-      filteredBookings = bookings;
-      _updateBookingCounts();
-      _isLoading = false;
+      _isLoading = true;
     });
-  } catch (e) {
-    setState(() {
-      _isLoading = false;
-    });
-    print("Error fetching bookings: $e");
+
+    try {
+      List<Map<String, dynamic>> fetchedBookings =
+          await VenueBookingController().fetchAllBookingsWithClientNames();
+
+      setState(() {
+        bookings = fetchedBookings.map((booking) {
+          // Format the request_date
+          final Timestamp? requestTimestamp = booking['requestDate'];
+          final String formattedRequestDate = requestTimestamp != null
+              ? DateFormat('dd/MM/yyyy').format(requestTimestamp.toDate())
+              : 'Unknown';
+
+          return {
+            'id': booking['id'],
+            'clientName': booking['clientName'],
+            'venueName': booking['venueName'],
+            'bookingDate': booking['bookingDate'],
+            'requestDate': formattedRequestDate, // Use formatted date
+            'status': booking['status'],
+          };
+        }).toList();
+
+        filteredBookings = bookings;
+        _updateBookingCounts();
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+      print("Error fetching bookings: $e");
+    }
   }
-}
-
 
   void _filterBookings(String query) {
     setState(() {
@@ -194,7 +193,7 @@ class _BookingListPageState extends State<BookingListPage>
                   style: const TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.deepPurpleAccent)),
+                      color: Color(0xFF222D52))),
               const SizedBox(height: 8.0),
               Text("Request Date: ${booking["requestDate"]}"),
               const SizedBox(height: 8.0),
@@ -242,7 +241,8 @@ class _BookingListPageState extends State<BookingListPage>
                     },
                   ),
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                  child: const Text("Decline", style: TextStyle(color: Colors.white)),
+                  child: const Text("Decline",
+                      style: TextStyle(color: Colors.white)),
                 ),
                 ElevatedButton(
                   onPressed: () => _showConfirmationDialog(
@@ -278,7 +278,8 @@ class _BookingListPageState extends State<BookingListPage>
                   ),
                   style:
                       ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                  child: const Text("Approve", style: TextStyle(color: Colors.white)),
+                  child: const Text("Approve",
+                      style: TextStyle(color: Colors.white)),
                 ),
               ],
             ),

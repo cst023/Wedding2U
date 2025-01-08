@@ -30,13 +30,15 @@ class RejectedScreen extends StatelessWidget {
             const SizedBox(height: 24),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.pink,
-                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                backgroundColor: const Color(0xFF222D52),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
               ),
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const ContinueGuest()),
+                  MaterialPageRoute(
+                      builder: (context) => const ContinueGuest()),
                 );
               },
               child: const Text(

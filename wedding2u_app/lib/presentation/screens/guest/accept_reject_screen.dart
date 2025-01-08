@@ -55,7 +55,7 @@ class _AcceptRejectScreenState extends State<AcceptRejectScreen> {
         context,
         MaterialPageRoute(
           builder: (context) => rsvpStatus == "Confirmed"
-              ? HomeScreen(invitationCode: widget.invitationCode )
+              ? HomeScreen(invitationCode: widget.invitationCode)
               : const RejectedScreen(),
         ),
       );
@@ -117,7 +117,7 @@ class _AcceptRejectScreenState extends State<AcceptRejectScreen> {
                         style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
-                          color: Colors.pink,
+                          color: Color(0xFFf7706d),
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -152,8 +152,7 @@ class _AcceptRejectScreenState extends State<AcceptRejectScreen> {
                           const SizedBox(height: 12),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  const Color.fromARGB(255, 233, 30, 99),
+                              backgroundColor: const Color(0xFF222D52),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),

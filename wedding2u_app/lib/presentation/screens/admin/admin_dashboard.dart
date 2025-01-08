@@ -24,7 +24,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                 Container(
                   width: double.infinity, // Full width of the screen
                   decoration: BoxDecoration(
-                    color: Colors.pink[100],
+                    color: const Color(0xFFF8BBD0),
                     borderRadius: BorderRadius.circular(0),
                   ),
                   padding: const EdgeInsets.all(16.0),
@@ -94,11 +94,11 @@ class _AdminDashboardState extends State<AdminDashboard> {
                           // Clickable image for the profile picture
                           GestureDetector(
                             onTap: () {
-                    
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const AdminProfilePage(),
+                                  builder: (context) =>
+                                      const AdminProfilePage(),
                                 ),
                               );
                             },
@@ -126,7 +126,8 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const VenueCatalog()),
+                                      builder: (context) =>
+                                          const VenueCatalog()),
                                 );
                               },
                               child: Container(

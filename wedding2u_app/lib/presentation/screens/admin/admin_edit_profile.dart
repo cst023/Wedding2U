@@ -145,13 +145,13 @@ class _AdminEditProfileState extends State<AdminEditProfile> {
                             backgroundColor: Colors.grey[300],
                           ),
                           // Camera Icon Overlay
-                          Positioned(
+                          const Positioned(
                             bottom: 0,
                             right: 0,
                             child: CircleAvatar(
                               radius: 18,
-                              backgroundColor: const Color(0xFFf7706d),
-                              child: const Icon(
+                              backgroundColor: Color(0xFFf7706d),
+                              child: Icon(
                                 Icons.camera_alt,
                                 color: Colors.white,
                                 size: 18,

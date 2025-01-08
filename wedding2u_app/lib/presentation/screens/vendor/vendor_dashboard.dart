@@ -18,7 +18,7 @@ class VendorDashboard extends StatelessWidget {
           children: [
             // Banner (Welcome Message and Profile)
             Container(
-              color: Colors.pink.shade100,
+              color: const Color(0xFFf7706d),
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -30,6 +30,7 @@ class VendorDashboard extends StatelessWidget {
                         "Welcome",
                         style: TextStyle(
                           fontSize: 30,
+                          color: Color.fromARGB(255, 255, 255, 255),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -38,7 +39,7 @@ class VendorDashboard extends StatelessWidget {
                         "Vendor Dashboard",
                         style: TextStyle(
                           fontSize: 20,
-                          color: Colors.black54,
+                          color: Color.fromARGB(255, 255, 255, 255),
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -51,36 +52,46 @@ class VendorDashboard extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const VendorNotification()),
+                                builder: (context) =>
+                                    const VendorNotification()),
                           );
                         },
-                        icon: const Icon(Icons.notifications_none, size: 28),
+                        icon: const Icon(
+                          Icons.notifications_none,
+                          size: 28,
+                          color: Color.fromARGB(255, 255, 255, 255),
+                        ),
                       ),
                       IconButton(
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const ChatList()),
+                            MaterialPageRoute(
+                                builder: (context) => const ChatList()),
                           );
                         },
-                        icon: const Icon(Icons.chat_bubble_outline, size: 28),
+                        icon: const Icon(
+                          Icons.chat_bubble_outline,
+                          size: 28,
+                          color: Color.fromARGB(255, 255, 255, 255),
+                        ),
                       ),
                       GestureDetector(
-                            onTap: () {
-                              Navigator.push(
+                        onTap: () {
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const VendorProfilePage()),
+                                builder: (context) =>
+                                    const VendorProfilePage()),
                           );
-                            },
-                            child: CircleAvatar(
-                              radius: 32.0, // Profile picture size
-                              backgroundImage: const AssetImage(
-                                  'assets/vendor_images/gerry.jpg'),
-                              backgroundColor:
-                                  Colors.grey[200], // Fallback color
-                            ),
-                          ),
+                        },
+                        child: CircleAvatar(
+                          radius: 32.0, // Profile picture size
+                          backgroundImage: const AssetImage(
+                              'assets/vendor_images/gerry.jpg'),
+                          backgroundColor: Colors.grey[200], // Fallback color
+                        ),
+                      ),
                     ],
                   )
                 ],
@@ -114,7 +125,8 @@ class VendorDashboard extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ManageServiceRequest()),
+                              builder: (context) =>
+                                  const ManageServiceRequest()),
                         );
                       },
                       child: Container(

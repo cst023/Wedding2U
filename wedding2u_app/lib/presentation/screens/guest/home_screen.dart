@@ -9,7 +9,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class HomeScreen extends StatefulWidget {
   final String invitationCode;
 
-   const HomeScreen({super.key, required this.invitationCode});
+  const HomeScreen({super.key, required this.invitationCode});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -50,8 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
           final countdownDate = weddingPlan['countdown_date'] != null
               ? (weddingPlan['countdown_date'] as Timestamp).toDate()
               : DateTime.now();
-          final formattedDate =
-              DateFormat('d MMMM yyyy').format(countdownDate);
+          final formattedDate = DateFormat('d MMMM yyyy').format(countdownDate);
 
           return Column(
             children: [
@@ -71,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Colors.pink,
+                  color: Color(0xFFf7706d),
                 ),
               ),
               const SizedBox(height: 8),
@@ -91,7 +90,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => GuestListScreen(invitationCode: widget.invitationCode)),
+                            builder: (context) => GuestListScreen(
+                                invitationCode: widget.invitationCode)),
                       ),
                     ),
                     buildCard(
@@ -100,7 +100,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => TentativeScreen(invitationCode: widget.invitationCode)),
+                            builder: (context) => TentativeScreen(
+                                invitationCode: widget.invitationCode)),
                       ),
                     ),
                     buildCard(
@@ -109,7 +110,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => CountdownScreen(invitationCode: widget.invitationCode)),
+                            builder: (context) => CountdownScreen(
+                                invitationCode: widget.invitationCode)),
                       ),
                     ),
                   ],
@@ -133,12 +135,11 @@ class _HomeScreenState extends State<HomeScreen> {
       margin: const EdgeInsets.symmetric(vertical: 10),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
-        leading: Icon(icon, color: Colors.pink),
+        leading: Icon(icon, color: const Color(0xFFf7706d)),
         title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-        trailing: const Icon(Icons.arrow_forward_ios, color: Colors.pink),
+        trailing: const Icon(Icons.arrow_forward_ios, color: Color(0xFFf7706d)),
         onTap: onTap,
       ),
     );
   }
 }
-
