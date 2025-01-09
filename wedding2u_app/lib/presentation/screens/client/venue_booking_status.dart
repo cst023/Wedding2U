@@ -30,20 +30,24 @@ class _VenueBookingStatusState extends State<VenueBookingStatus> {
       List<Map<String, dynamic>> bookings =
           await _bookingController.getClientBookings(clientId);
 
-      setState(() {
-        _bookings = bookings;
-        _isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _bookings = bookings;
+          _isLoading = false;
+        });
+      }
     } catch (e) {
-      setState(() {
-        _isLoading = false;
-      });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error fetching bookings: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error fetching bookings: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
   }
 
@@ -209,35 +213,40 @@ class _VenueBookingStatusState extends State<VenueBookingStatus> {
   void _showCancelConfirmation(Map<String, dynamic> booking) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
+      builder: (BuildContext dialogContext) => AlertDialog(
         title: const Text('Cancel Booking'),
         content: const Text(
             'Are you sure you want to cancel this booking? This action cannot be undone.'),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Navigator.pop(dialogContext),
             child: const Text('No'),
           ),
           ElevatedButton(
             onPressed: () async {
-              Navigator.pop(context); // Close the dialog
+              Navigator.pop(dialogContext); 
+              if (!mounted) return; 
               try {
-                // Call the controller method to delete the booking
+                
                 await _bookingController.deleteBooking(booking['id']);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Booking canceled successfully!'),
-                    backgroundColor: Colors.green,
-                  ),
-                );
+                if (mounted) {
+                  ScaffoldMessenger.of(dialogContext).showSnackBar(
+                    const SnackBar(
+                      content: Text('Booking canceled successfully!'),
+                      backgroundColor: Colors.green,
+                    ),
+                  );
+                }
                 _fetchBookings(); // Refresh the booking list
               } catch (e) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('Error canceling booking: $e'),
-                    backgroundColor: Colors.red,
-                  ),
-                );
+                if (mounted) {
+                  ScaffoldMessenger.of(dialogContext).showSnackBar(
+                    SnackBar(
+                      content: Text('Error canceling booking: $e'),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
               }
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
