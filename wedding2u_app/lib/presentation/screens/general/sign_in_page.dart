@@ -77,14 +77,15 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomInset:
+          false, 
       body: Stack(
         children: [
           Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+              children: [
                 const SizedBox(height: 40.0),
 
                 // Image at the top
@@ -97,127 +98,126 @@ class _SignInState extends State<SignIn> {
 
                 const SizedBox(height: 20.0),
 
+                // Use Expanded for the form and scrollable content
                 Expanded(
-                  child: ListView(
-                    shrinkWrap: true,
-                    children: <Widget>[
-                      // Title
-                      Container(
-                        alignment: Alignment.center,
-                        child: const Text(
-                          'Sign In',
-                          style: TextStyle(
-                            fontSize: 36,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        // Title
+                        Container(
+                          alignment: Alignment.center,
+                          child: const Text(
+                            'Sign In',
+                            style: TextStyle(
+                              fontSize: 36,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
-                      ),
 
-                      const SizedBox(height: 30.0),
+                        const SizedBox(height: 30.0),
 
-                      // Form for validation
-                      Form(
-                        key: _formKey, // Add the form key here
-                        child: Column(
-                          children: <Widget>[
-                            // Email Address
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                labelText: 'Your Email',
-                                icon: Icon(Icons.email),
+                        // Form for validation
+                        Form(
+                          key: _formKey,
+                          child: Column(
+                            children: <Widget>[
+                              // Email Address
+                              TextFormField(
+                                decoration: const InputDecoration(
+                                  labelText: 'Your Email',
+                                  icon: Icon(Icons.email),
+                                ),
+                                onChanged: (value) => email = value,
+                                keyboardType: TextInputType.emailAddress,
+                                validator: validateEmail,
                               ),
-                              onChanged: (value) => email = value,
-                              keyboardType: TextInputType.emailAddress,
-                              validator: validateEmail, // Required
-                            ),
 
-                            const SizedBox(height: 20.0),
+                              const SizedBox(height: 20.0),
 
-                            // Password
-                            TextFormField(
-                              decoration: InputDecoration(
-                                labelText: 'Password',
-                                icon: const Icon(Icons.lock),
-                                suffixIcon: IconButton(
-                                  icon: Icon(
-                                    _isPasswordVisible
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
-                                    color: Colors.grey,
+                              // Password
+                              TextFormField(
+                                decoration: InputDecoration(
+                                  labelText: 'Password',
+                                  icon: const Icon(Icons.lock),
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      _isPasswordVisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                      color: Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        _isPasswordVisible =
+                                            !_isPasswordVisible;
+                                      });
+                                    },
                                   ),
-                                  onPressed: () {
-                                    setState(() {
-                                      _isPasswordVisible = !_isPasswordVisible;
-                                    });
+                                ),
+                                controller: _controller,
+                                onChanged: (value) => password = value,
+                                obscureText: !_isPasswordVisible,
+                              ),
+
+                              const SizedBox(height: 30.0),
+
+                              // Forgot Password Link
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const ForgotPassword(),
+                                      ),
+                                    );
                                   },
-                                ),
-                              ),
-                              controller: _controller,
-                              onChanged: (value) => password = value,
-                              obscureText:
-                                  !_isPasswordVisible, // Toggle visibility
-                            ),
-
-                            const SizedBox(height: 30.0),
-
-                            // Forgot Password Link
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ForgotPassword(),
-                                    ),
-                                  );
-                                },
-                                child: const Text(
-                                  "Forgot Password?",
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                            const SizedBox(height: 50.0),
-
-                            // Sign In Button
-                            Center(
-                              child: SizedBox(
-                                width: 150,
-                                child: ElevatedButton(
-                                  onPressed: _submitLoginForm,
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: const Color(
-                                        0xFF222D52), // Updated color
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 12),
-                                  ),
                                   child: const Text(
-                                    "Sign In",
+                                    "Forgot Password?",
                                     style: TextStyle(
-                                      fontSize: 20,
-                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
 
-                            const SizedBox(height: 20),
-                          ],
+                              const SizedBox(height: 50.0),
+
+                              // Sign In Button
+                              Center(
+                                child: SizedBox(
+                                  width: 150,
+                                  child: ElevatedButton(
+                                    onPressed: _submitLoginForm,
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: const Color(0xFF222D52),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 12),
+                                    ),
+                                    child: const Text(
+                                      "Sign In",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
 
-                const SizedBox(height: 70),
+                const SizedBox(height: 20),
 
                 // Sign Up Link
                 Center(
@@ -247,8 +247,7 @@ class _SignInState extends State<SignIn> {
                       Navigator.pushNamed(context, 'ContinueGuest');
                     },
                     style: OutlinedButton.styleFrom(
-                      side: const BorderSide(
-                          color: Colors.black, width: 1.5), // Black border
+                      side: const BorderSide(color: Colors.black, width: 1.5),
                       padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
                     child: const Text(
@@ -260,6 +259,8 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                 ),
+
+                const SizedBox(height: 20.0),
               ],
             ),
           ),
