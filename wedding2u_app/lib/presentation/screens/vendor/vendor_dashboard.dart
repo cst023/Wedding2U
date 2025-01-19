@@ -47,33 +47,39 @@ class VendorDashboard extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const VendorNotification()),
-                          );
-                        },
-                        icon: const Icon(
-                          Icons.notifications_none,
-                          size: 28,
-                          color: Color.fromARGB(255, 255, 255, 255),
+                      Container(
+                        margin: const EdgeInsets.only(right: 8),
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const VendorNotification()),
+                            );
+                          },
+                          icon: const Icon(
+                            Icons.notifications_none,
+                            size: 28,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                          ),
                         ),
                       ),
-                      IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ChatList()),
-                          );
-                        },
-                        icon: const Icon(
-                          Icons.chat_bubble_outline,
-                          size: 28,
-                          color: Color.fromARGB(255, 255, 255, 255),
+                      Container(
+                        margin: const EdgeInsets.only(right: 16),
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const ChatList()),
+                            );
+                          },
+                          icon: const Icon(
+                            Icons.chat_bubble_outline,
+                            size: 28,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                          ),
                         ),
                       ),
                       GestureDetector(
@@ -114,7 +120,7 @@ class VendorDashboard extends StatelessWidget {
                       },
                       child: Container(
                         child: Image.asset(
-                          'assets/vendor_role_images/manage_portfolio.jpg',
+                          'assets/vendor_role_images/managePort.png',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -131,7 +137,7 @@ class VendorDashboard extends StatelessWidget {
                       },
                       child: Container(
                         child: Image.asset(
-                          'assets/vendor_role_images/manage_service.jpg',
+                          'assets/vendor_role_images/manageServ.png',
                           fit: BoxFit.cover,
                         ),
                       ),
