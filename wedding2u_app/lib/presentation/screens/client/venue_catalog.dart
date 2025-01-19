@@ -43,7 +43,10 @@ class _VenueCatalogState extends State<VenueCatalog> {
       appBar: AppBar(
         title: const Text(
           'Venues',
-          style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+          style: TextStyle(
+            color: Color.fromARGB(255, 255, 255, 255),
+            fontWeight: FontWeight.bold, // Makes the text bold
+          ),
         ),
         backgroundColor: const Color(0xFFf7706d),
         elevation: 0.0,

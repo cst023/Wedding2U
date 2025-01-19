@@ -48,11 +48,17 @@ class _PhotographersPageState extends State<PhotographersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFFFFFFF),
       appBar: AppBar(
-        title: const Text('Photographers'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        title: const Text(
+          'Photographers',
+          style: TextStyle(
+            color: Color.fromARGB(255, 255, 255, 255),
+            fontWeight: FontWeight.bold, // Makes the text bold
+          ),
+        ),
+        backgroundColor: const Color(0xFFf7706d),
+        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())

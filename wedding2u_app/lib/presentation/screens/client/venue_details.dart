@@ -141,12 +141,17 @@ class _VenueDetailsState extends State<VenueDetails> {
       appBar: AppBar(
         title: const Text(
           'Venue Details',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+            color: Color.fromARGB(255, 255, 255, 255),
+            fontWeight: FontWeight.bold, // Makes the text bold
+          ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: const Color(0xFFf7706d),
+        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
         elevation: 0.0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back,
+              color: Color.fromARGB(255, 226, 226, 226)),
           onPressed: () {
             Navigator.pop(context);
           },

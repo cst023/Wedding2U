@@ -36,19 +36,20 @@ class _WeddingPostsState extends State<WeddingPosts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFFFFFFF),
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back,
+              color: Color.fromARGB(255, 255, 255, 255)),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         title:
             const Text('Posts', style: TextStyle(fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        backgroundColor: const Color(0xFFf7706d),
+        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
         elevation: 0,
       ),
       body: Column(

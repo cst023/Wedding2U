@@ -54,14 +54,15 @@ class _ManageWeddingState extends State<ManageWedding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: AppBar(
         title: const Text('Manage My Wedding',
-            style: TextStyle(color: Colors.black)),
-        backgroundColor: Colors.white,
+            style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+        backgroundColor: const Color(0xFFf7706d),
         elevation: 1.0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back,
+              color: Color.fromARGB(255, 255, 255, 255)),
           onPressed: () {
             Navigator.pop(context);
           },

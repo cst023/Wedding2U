@@ -49,9 +49,15 @@ class _CaterersPageState extends State<CaterersPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Caterers'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        title: const Text(
+          'Caterers',
+          style: TextStyle(
+            color: Color.fromARGB(255, 255, 255, 255),
+            fontWeight: FontWeight.bold, // Makes the text bold
+          ),
+        ),
+        backgroundColor: const Color(0xFFf7706d),
+        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())

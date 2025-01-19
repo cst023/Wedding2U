@@ -108,12 +108,13 @@ class _ClientEditProfileState extends State<ClientEditProfile> {
       appBar: AppBar(
         title: const Text(
           'Edit Profile',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: const Color(0xFFf7706d),
         elevation: 1.0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back,
+              color: Color.fromARGB(255, 255, 255, 255)),
           onPressed: () {
             Navigator.pop(context);
           },

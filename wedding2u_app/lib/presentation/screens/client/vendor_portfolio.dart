@@ -28,7 +28,8 @@ class _VendorPortfolioPageState extends State<VendorPortfolioPage> {
     });
 
     try {
-      final portfolioData = await _controller.fetchVendorPortfolio(widget.vendorId);
+      final portfolioData =
+          await _controller.fetchVendorPortfolio(widget.vendorId);
       setState(() {
         _vendorData = portfolioData['vendorData'];
         _galleryImages = portfolioData['galleryImages'];
@@ -66,12 +67,15 @@ class _VendorPortfolioPageState extends State<VendorPortfolioPage> {
       appBar: AppBar(
         title: Text(
           '${_vendorData!['name']}\'s Portfolio',
-          style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+              color: Color.fromARGB(255, 255, 255, 255),
+              fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: const Color(0xFFf7706d),
         elevation: 1,
-        iconTheme: const IconThemeData(color: Colors.black),
+        iconTheme:
+            const IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -87,7 +91,8 @@ class _VendorPortfolioPageState extends State<VendorPortfolioPage> {
                   width: double.infinity,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/vendor_images/gerry_banner.jpg'),
+                      image:
+                          AssetImage('assets/vendor_images/gerry_banner.jpg'),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -138,7 +143,8 @@ class _VendorPortfolioPageState extends State<VendorPortfolioPage> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 219, 148, 171),
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 12),
                     ),
                     child: const Text(
                       'Contact',
@@ -152,7 +158,8 @@ class _VendorPortfolioPageState extends State<VendorPortfolioPage> {
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 219, 148, 171),
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 12),
                     ),
                     child: const Text(
                       'Book',
@@ -217,7 +224,8 @@ class _VendorPortfolioPageState extends State<VendorPortfolioPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
               child: Text(
                 _vendorData!['description'] ?? 'No description provided.',
                 style: const TextStyle(color: Colors.grey, height: 1.5),

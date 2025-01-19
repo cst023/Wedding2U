@@ -14,18 +14,26 @@ class _VendorCatalogState extends State<VendorCatalog> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // White background
+      backgroundColor:
+          const Color.fromARGB(255, 255, 255, 255), // White background
       appBar: AppBar(
-        title: const Text('Vendors'),
+        title: const Text(
+          'Vendors',
+          style: TextStyle(
+            color: Color.fromARGB(255, 255, 255, 255),
+            fontWeight: FontWeight.bold, // Makes the text bold
+          ),
+        ),
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back,
+              color: Color.fromARGB(255, 255, 255, 255)),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        backgroundColor: const Color(0xFFf7706d),
+        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
         elevation: 1,
       ),
       body: Padding(
@@ -37,7 +45,8 @@ class _VendorCatalogState extends State<VendorCatalog> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const PhotographersPage()),
+                  MaterialPageRoute(
+                      builder: (context) => const PhotographersPage()),
                 );
               },
               child: const VendorCard(
@@ -49,29 +58,30 @@ class _VendorCatalogState extends State<VendorCatalog> {
             // Make-Up Artist Section
             GestureDetector(
               onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const MakeupArtistsPage()),
-              );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const MakeupArtistsPage()),
+                );
               },
               child: const VendorCard(
-              imagePath: 'assets/vendor_images/makeup.jpg',
-              icon: Icons.brush_outlined,
-              label: 'Make-Up Artist',
+                imagePath: 'assets/vendor_images/makeup.jpg',
+                icon: Icons.brush_outlined,
+                label: 'Make-Up Artist',
               ),
             ),
             // Caterer Section
             GestureDetector(
               onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const CaterersPage()),
-              );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CaterersPage()),
+                );
               },
               child: const VendorCard(
-              imagePath: 'assets/vendor_images/catering.jpg',
-              icon: Icons.restaurant_outlined,
-              label: 'Caterer',
+                imagePath: 'assets/vendor_images/catering.jpg',
+                icon: Icons.restaurant_outlined,
+                label: 'Caterer',
               ),
             ),
           ],
@@ -135,6 +145,3 @@ class VendorCard extends StatelessWidget {
     );
   }
 }
-
-
-

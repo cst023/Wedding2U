@@ -58,12 +58,17 @@ class _VenueBookingStatusState extends State<VenueBookingStatus> {
       appBar: AppBar(
         title: const Text(
           'Venue Booking Status',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+            color: Color.fromARGB(255, 255, 255, 255),
+            fontWeight: FontWeight.bold, // Makes the text bold
+          ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: const Color(0xFFf7706d),
+        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
         elevation: 0.0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back,
+              color: Color.fromARGB(255, 255, 255, 255)),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -209,51 +214,52 @@ class _VenueBookingStatusState extends State<VenueBookingStatus> {
     );
   }
 
-void _showCancelConfirmation(Map<String, dynamic> booking) {
-  showDialog(
-    context: context,
-    builder: (BuildContext dialogContext) => AlertDialog(
-      title: const Text('Cancel Booking'),
-      content: const Text(
-          'Are you sure you want to cancel this booking? This action cannot be undone.'),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(dialogContext),
-          child: const Text('No'),
-        ),
-        ElevatedButton(
-          onPressed: () async {
-            Navigator.pop(dialogContext); // Close the dialog
-            if (!mounted) return; // Ensure the widget is still mounted
-            try {
-              await _bookingController.deleteBooking(booking['id']);
-              if (mounted) {
-                ScaffoldMessenger.of(context).showSnackBar( // Use the parent context
-                  const SnackBar(
-                    content: Text('Booking canceled successfully!'),
-                    backgroundColor: Colors.green,
-                  ),
-                );
+  void _showCancelConfirmation(Map<String, dynamic> booking) {
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) => AlertDialog(
+        title: const Text('Cancel Booking'),
+        content: const Text(
+            'Are you sure you want to cancel this booking? This action cannot be undone.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: const Text('No'),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              Navigator.pop(dialogContext); // Close the dialog
+              if (!mounted) return; // Ensure the widget is still mounted
+              try {
+                await _bookingController.deleteBooking(booking['id']);
+                if (mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    // Use the parent context
+                    const SnackBar(
+                      content: Text('Booking canceled successfully!'),
+                      backgroundColor: Colors.green,
+                    ),
+                  );
+                }
+                _fetchBookings(); // Refresh the booking
+                print("booking list refreshed");
+              } catch (e) {
+                if (mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    // Use the parent context
+                    SnackBar(
+                      content: Text('Error canceling booking: $e'),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
               }
-              _fetchBookings(); // Refresh the booking 
-              print("booking list refreshed");
-            } catch (e) {
-              if (mounted) {
-                ScaffoldMessenger.of(context).showSnackBar( // Use the parent context
-                  SnackBar(
-                    content: Text('Error canceling booking: $e'),
-                    backgroundColor: Colors.red,
-                  ),
-                );
-              }
-            }
-          },
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-          child: const Text('Yes, Cancel'),
-        ),
-      ],
-    ),
-  );
-}
-
+            },
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+            child: const Text('Yes, Cancel'),
+          ),
+        ],
+      ),
+    );
+  }
 }

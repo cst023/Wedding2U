@@ -43,10 +43,18 @@ class _ClientProfilePageState extends State<ClientProfilePage> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Profile'),
-          backgroundColor: Colors.white,
+          title: const Text(
+            'Profile',
+            style: TextStyle(
+              color: Color.fromARGB(255, 255, 255, 255),
+              fontWeight: FontWeight.bold, // Makes the text bold
+            ),
+          ),
+          backgroundColor: const Color(0xFFf7706d),
+          foregroundColor: const Color.fromARGB(255, 255, 255, 255),
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back,
+                color: Color.fromARGB(255, 255, 255, 255)),
             onPressed: () {
               Navigator.pushNamed(context, 'ClientMainPage',
                   arguments: userData);

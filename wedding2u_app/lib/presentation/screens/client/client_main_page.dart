@@ -102,12 +102,19 @@ class _ClientMainPageState extends State<ClientMainPage> {
     );
   }
 
-  // Banner Widget
+// Banner Widget
   Widget _buildBanner(String name) {
     return Container(
       width: double.infinity,
       decoration: const BoxDecoration(
         color: Color(0xFFf7706d),
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromARGB(66, 255, 0, 0), // Shadow color
+            offset: Offset(0, 4), // X and Y offset
+            blurRadius: 10, // Spread of the shadow
+          ),
+        ],
       ),
       padding: const EdgeInsets.all(16.0),
       child: Row(
@@ -169,6 +176,8 @@ class _ClientMainPageState extends State<ClientMainPage> {
                     )
                   : null,
               hintText: 'Search for venues or vendors',
+              filled: true, // Enables the background color
+              fillColor: Colors.white, // Sets the background color to white
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
@@ -237,39 +246,90 @@ class _ClientMainPageState extends State<ClientMainPage> {
       child: Row(
         children: [
           _buildCategoryCard(
-            imagePath: 'assets/images/venues2_icon.jpg',
+            imagePath: 'assets/images/location.png',
             onTap: () => Navigator.pushNamed(context, 'VenueCatalog'),
+            label: 'Venue',
           ),
           const SizedBox(width: 16),
           _buildCategoryCard(
-            imagePath: 'assets/images/posts2_icon.jpg',
+            imagePath: 'assets/images/post.png',
             onTap: () => Navigator.pushNamed(context, 'WeddingPosts'),
+            label: 'Post',
           ),
           const SizedBox(width: 16),
           _buildCategoryCard(
-            imagePath: 'assets/images/vendors2_icon.jpg',
+            imagePath: 'assets/images/vendor.png',
             onTap: () => Navigator.pushNamed(context, 'VendorCatalog'),
+            label: 'Vendor',
           ),
         ],
       ),
     );
   }
 
-  // Reusable Category Card Widget
-  Widget _buildCategoryCard(
-      {required String imagePath, required VoidCallback onTap}) {
+// Reusable Category Card Widget
+  Widget _buildCategoryCard({
+    required String imagePath,
+    required VoidCallback onTap,
+    required String label, // Label for text below the image
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey, width: 1),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Image.asset(
-          imagePath,
-          width: 160,
-          height: 160,
-          fit: BoxFit.cover,
+        width: 180, // Control width of the card
+        child: Column(
+          children: [
+            Stack(
+              alignment: Alignment.center, // Align everything in the center
+              children: [
+                // Circle frame behind the image (no clipping)
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white, // White background for the circle
+                    shape: BoxShape.circle, // Circle shape
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        blurRadius: 6,
+                        offset: Offset(0, 4),
+                      ),
+                    ], // Subtle shadow for a clean look
+                  ),
+                  width: 120, // Fixed width for the circle
+                  height: 120, // Fixed height for the circle
+                ),
+                // Image in front of the circle (without clipping)
+                Positioned(
+                  top: 13,
+                  left: 4, // Adjust this value to move the image down
+                  child: Container(
+                    width: 120, // Adjust width as needed
+                    height: 90, // Adjust height as needed
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      // Image will be in front of the circle, not clipped
+                    ),
+                    child: Image.asset(
+                      imagePath,
+                      fit: BoxFit.contain, // Ensure the whole image is visible
+                      width: 100, // Smaller size so the image fits nicely
+                      height: 100, // Smaller size to fit inside the circle
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8), // Space between image and text
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight:
+                    FontWeight.w600, // Minimalist style with medium weight
+                color: Colors.black, // Text color
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -319,7 +379,7 @@ class _ClientMainPageState extends State<ClientMainPage> {
     );
   }
 
-  // Reusable Review Card Widget
+// Reusable Review Card Widget
   Widget _buildReviewCard(String imagePath, BuildContext context) {
     return GestureDetector(
       onTap: () {
@@ -327,14 +387,21 @@ class _ClientMainPageState extends State<ClientMainPage> {
       },
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey, width: 1),
+          border: Border.all(
+            color: const Color.fromARGB(111, 0, 0, 0),
+            width: 2,
+          ),
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Image.asset(
-          imagePath,
-          width: 180,
-          height: 180,
-          fit: BoxFit.cover,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(
+              10), // Matches the container's border radius
+          child: Image.asset(
+            imagePath,
+            width: 180,
+            height: 180,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );
