@@ -114,7 +114,7 @@ class VendorDashboard extends StatelessWidget {
                       },
                       child: Container(
                         child: Image.asset(
-                          'assets/vendor_role_images/manage_portfolio.jpg',
+                          'assets/vendor_role_images/managePort.png',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -131,7 +131,7 @@ class VendorDashboard extends StatelessWidget {
                       },
                       child: Container(
                         child: Image.asset(
-                          'assets/vendor_role_images/manage_service.jpg',
+                          'assets/vendor_role_images/manageServ.png',
                           fit: BoxFit.cover,
                         ),
                       ),

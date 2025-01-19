@@ -123,8 +123,8 @@ flutter:
       - assets/vendor_images/placeholder_makeup_artist.jpg
       - assets/vendor_images/placeholder_caterer.jpg
       - assets/guest_images/wedding.jpg
-      - assets/vendor_role_images/manage_portfolio.jpg
-      - assets/vendor_role_images/manage_service.jpg
+      - assets/vendor_role_images/managePort.png
+      - assets/vendor_role_images/manageServ.png
       - assets/vendor_role_images/background_photo.jpg
 
 
